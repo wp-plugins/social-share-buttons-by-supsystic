@@ -1,0 +1,82 @@
+.supsystic-plugin .overtable-buttons {
+    margin-bottom: 10px;
+}
+
+.supsystic-plugin .overtable-buttons .regular-text {
+    width: 300px;
+}
+
+.supsystic-plugin .overtable-buttons .layer {
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.supsystic-plugin .overtable-buttons h2 {
+    display: inline-block;
+    position: relative;
+    top: 12px;
+}
+
+.supsystic-plugin .overtable-buttons .layer .button {
+    margin-left: 5px;
+}
+
+.supsystic-plugin .projects .title {
+    width: 60%;
+}
+
+.supsystic-plugin .projects .likes {
+    text-align: center;
+}
+
+.supsystic-plugin .projects .actions {
+    text-align: center;
+}
+
+.supsystic-plugin .form-table.form th {
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.supsystic-plugin .scroll {
+    padding: 10px;
+}
+
+.supsystic-plugin .scroll ul ul {
+    padding-left: 20px;
+}
+
+.supsystic-plugin .networks {
+    margin-top: 10px;
+}
+
+.supsystic-plugin .network {
+    background-color: #fff;
+    /*border: 1px solid #000;*/
+    padding: 10px;
+    margin: 0 0 10px 0;
+}
+
+.supsystic-plugin .network .delete {
+    color: #e74c3c;
+    margin-right: 7px;
+}
+
+.supsystic-plugin .network .delete:hover {
+    color: red;
+}
+
+.supsystic-plugin .network .settings {
+    display: inline-block;
+    float: right;
+}
+
+.supsystic-plugin .network .settings a {
+    color: #7f8c8d;
+}
+
+.supsystic-plugin .networks .network .network-title {
+    font-weight: bold;
+    color: #000;
+    font-size: 15px;
+}

@@ -1,0 +1,65 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="overtable-buttons">
+        <a class="button" href="#" id="addProject">
+            {{ environment.translate('Add Project') }}
+        </a>
+    </div>
+    <!-- /.overtable-buttons -->
+    <!-- /.button -->
+    <table class="wp-list-table widefat projects">
+        <thead>
+        <tr>
+            <th scope="col" class="id">ID</th>
+            <th scope="col" class="title">{{ environment.translate('Project Title') }}</th>
+            <th scope="col" class="date">{{ environment.translate('Create Date') }}</th>
+            {#<th scope="col" class="likes">{{ environment.translate('Likes / Shares') }}</th>#}
+            <th scope="col" class="actions">{{ environment.translate('Actions') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+                <tr>
+                    <th scope="row" class="id">{{ project.id }}</th>
+                    <th scope="row" class="title">
+                        <a href="{{ environment.generateUrl('projects', 'view', { 'id': project.id }) }}" data-toggle="tooltip" title="{{ environment.translate('Edit project') }}">
+                            {{ project.title }}
+                        </a>
+                    </th>
+                    <th scope="row" class="date">
+                        {{ project.date | date('d/m/Y') }}
+                    </th>
+                    {#<th scope="row" class="likes">#}
+                        {#0 / 0#}
+                    {#</th>#}
+                    <th scope="row" class="actions">
+                        <a class="button" href="{{ environment.generateUrl('projects', 'view', { 'id': project.id }) }}">
+                            <i class="fa fa-fw fa-pencil"></i>
+                            <!-- /.fa fa-fw fa-pencil -->
+                            {{ environment.translate('Edit') }}
+                        </a>
+                        <!-- /.button -->
+                        <a class="button delete" href="{{ environment.generateUrl('projects', 'delete', { 'id': project.id }) }}">
+                            <i class="fa fa-fw fa-trash-o"></i>
+                            <!-- /.fa fa-fw fa-trash-o -->
+                        </a>
+                        <!-- /.button -->
+                    </th>
+                </tr>
+            {% else %}
+                <tr>
+                    <th scope="row" colspan="5">
+                        {{ environment.translate('Currently you haven\'t any projects') }}
+                    </th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="addProjectDialog" title="{{ environment.translate('Create Project') }}" style="display: none;">
+        <label for="projectTitle">{{ environment.translate('Project title') }}</label>
+        <input type="text" name="title" id="projectTitle" class="regular-text"/>
+        <!-- /#projectTitle.regular-text -->
+    </div>
+{% endblock %}

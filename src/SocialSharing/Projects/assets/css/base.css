@@ -1,0 +1,43 @@
+/* Base styles for buttons container */
+
+@import "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css";
+@import "buttons/flat.css";
+
+
+.supsystic-social-sharing.supsystic-social-sharing-spacing > a {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.supsystic-social-sharing.supsystic-social-sharing-click {
+    display: none;
+}
+.supsystic-social-sharing.supsystic-social-sharing-fixed {
+    position: fixed;
+    text-align: center;
+}
+.supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-left {
+    left: 0;
+    top: 50%;
+}
+.supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-right {
+    right: 0;
+    top: 50%;
+}
+.supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-top {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-top.supsystic-social-sharing-adminbar {
+    top: 35px;
+}
+.supsystic-social-sharing.supsystic-social-sharing-left.supsystic-social-sharing-spacing a,
+.supsystic-social-sharing.supsystic-social-sharing-right.supsystic-social-sharing-spacing a {
+    margin-bottom: 5px;
+}

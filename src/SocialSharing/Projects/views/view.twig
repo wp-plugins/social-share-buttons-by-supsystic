@@ -1,0 +1,28 @@
+{% extends '@projects/add.twig' %}
+
+{% block toolbar %}
+    <h2 data-toggle="tooltip" data-placement="bottom" data-original="{{ project.title | title }}" title="{{ environment.translate('Click to rename project and hit [Enter]') }}" contenteditable="">{{ project.title | title }}</h2>
+
+    <div class="layer">
+        <button class="button" id="save">
+            {{ environment.translate('Save') }}
+        </button>
+        <!-- /.button -->
+        <a href="{{ environment.generateUrl('projects', 'clone', { 'id': project.id }) }}" class="button">
+            {{ environment.translate('Clone') }}
+        </a>
+        <a href="{{ environment.generateUrl('shares', 'statistic', { 'project_id': project.id }) }}" class="button">
+            {{ environment.translate('Statistic') }}
+        </a>
+    </div>
+    <!-- /.layer -->
+
+    <div class="layer" style="float: right;">
+        <a href="{{ environment.generateUrl('projects', 'delete', { 'id': project.id }) }}" class="button delete">
+            {{ environment.translate('Delete') }}
+        </a>
+        <!-- /.button -->
+    </div>
+    <!-- /.layer -->
+
+{% endblock %}

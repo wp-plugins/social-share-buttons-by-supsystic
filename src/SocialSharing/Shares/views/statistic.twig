@@ -1,0 +1,47 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <div class="supsystic-item">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>{{ environment.translate('Project "%s" statistics') | format(project.title) }}</h2>
+                </div>
+                <!-- /.col-xs-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 stats-block">
+                    <h2>{{ environment.translate('Network total shares') }}</h2>
+                    <canvas id="totalStatistic" style="height: 200px;" data-stats="{{ data|json_encode }}"></canvas>
+                </div>
+                <div class="col-xs-12 col-sm-9 stats-block">
+                    <h2>{{ environment.translate('Total shares for last 30 days') }}</h2>
+                    <canvas id="last30Statistic" style="height: 200px;"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>{{ environment.translate('Most popular pages for last 30 days') }}</h2>
+                <table class="wp-list-table widefat" id="popularPages">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">{{ environment.translate('Title') }}</th>
+                            <th scope="col">{{ environment.translate('Type') }}</th>
+                            <th scope="col">{{ environment.translate('Shares') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- /.col-xs-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.supsystic-item -->
+{% endblock %}
