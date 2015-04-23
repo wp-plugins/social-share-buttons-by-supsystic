@@ -66,6 +66,12 @@
                                 {% endfor %}
                             </div>
                             <!-- /.networks -->
+                            <div id="savingNetworksSorting" style="text-align:center;display: none;">
+                                <i class="fa fa-fw fa-spin fa-circle-o-notch"></i>
+                                <!-- /.fa fa-fw fa-spin fa-circle-o-notch -->
+                                {{ environment.translate('Saving networks sort order...') }}
+                            </div>
+                            <!-- /#savingNetworksSorting -->
                         </form>
                         <!-- /#networks -->
 
@@ -137,6 +143,23 @@
                                         </a>
                                         <!-- /.sharer-flat sharer-flat-3 twitter -->
                                     </th>
+                                    <th scope="row"><input type="radio"
+                                                           name="settings[design]"
+                                                           value="flat-4"
+                                                           {% if project.settings.design | default('flat-1') == 'flat-4' %}checked="checked"{% endif %}
+                                                           id="flat-3"/>
+                                        <!-- /#flat-3 --><a
+                                                class="pricon sharer-flat sharer-flat-4 twitter {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
+                                                href="javascript:void(0);"><i
+                                                    class="fa fa-fw fa-twitter"></i>
+                                            <!-- /.fa fa-fw fa-twitter -->
+                                            <div class="counter-wrap"><span
+                                                        class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
+                                                <!-- /.counter --></div>
+                                            <!-- /.counter-wrap -->
+                                        </a>
+                                        <!-- /.sharer-flat sharer-flat-3 twitter -->
+                                    </th>
                                 </tr>
                                 </tbody>
                             </table>
@@ -144,37 +167,6 @@
 
                             <table class="form-table form">
                                 <tbody>
-                                {#<tr>#}
-                                {#<th scope="row">#}
-                                {#Intro Animation#}
-                                {#</th>#}
-                                {#<td>#}
-                                {#<select name="" id="">#}
-                                {#<option value="">Fade In</option>#}
-                                {#</select>#}
-                                {#<!-- /# -->#}
-                                {#</td>#}
-                                {#</tr>#}
-                                {#<tr>#}
-                                {#<th scope="row">#}
-                                {#Into Animation#}
-                                {#</th>#}
-                                {#<td>#}
-                                {#<input type="checkbox" name="" id=""/>#}
-                                {#<!-- /# -->#}
-                                {#</td>#}
-                                {#</tr>#}
-
-                                {#<tr>#}
-                                {#<th scope="row">#}
-                                {#Minimum Count Display#}
-                                {#</th>#}
-                                {#<td>#}
-                                {#<input class="regular-text" type="text" name="" id=""/>#}
-                                {#<!-- /#.regular-text -->#}
-                                {#</td>#}
-                                {#</tr>#}
-
                                 <tr>
                                     <th scope="row">
                                         <label for="bd-spacing">
@@ -187,6 +179,22 @@
                                                {% if project.settings.spacing == 'on' %}checked="checked" {% endif %}
                                                id="bd-spacing"/>
                                         <!-- /#bd-spacing -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <label for="bd-buttons-size">
+                                            {{ environment.translate('Buttons size') }}
+                                        </label>
+                                    </th>
+                                    <td>
+                                        <select name="settings[buttons_size]" id="bd-buttons-size">
+                                            <option value="0.5" {% if project.settings.buttons_size == '0.5' %}selected="selected"{% endif %}>{{ environment.translate('Smallest') }}</option>
+                                            <option value="0.7" {% if project.settings.buttons_size == '0.7' %}selected="selected"{% endif %}>{{ environment.translate('Small') }}</option>
+                                            <option value="1" {% if project.settings.buttons_size | default(1) == '1' %}selected="selected"{% endif %}>{{ environment.translate('Normal') }}</option>
+                                            <option value="1.2" {% if project.settings.buttons_size == '1.2' %}selected="selected"{% endif %}>{{ environment.translate('Big') }}</option>
+                                            <option value="1.5" {% if project.settings.buttons_size == '1.5' %}selected="selected"{% endif %}>{{ environment.translate('Biggest') }}</option>
+                                        </select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -205,49 +213,18 @@
 
                                 <tr>
                                     <th scope="row">
-                                        <label for="bd-display-plugin-shares">
-                                            {{ environment.translate('Plugin total shares') }}
+                                        <label for="bd-counter-type">
+                                            {{ environment.translate('Show numbers from') }}
                                         </label>
                                     </th>
                                     <td>
-                                        <input type="radio"
-                                               name="settings[shares]"
-                                               value="total"
-                                               {% if project.settings.display_total_shares is not defined %}disabled="disabled"{% endif %}
-                                               {% if project.settings.shares == 'total' %}checked="checked"{% endif %}
-                                               id="bd-display-plugin-shares"/>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <label for="bd-display-project-shares">
-                                            {{ environment.translate('Project total shares') }}
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <input type="radio"
-                                               name="settings[shares]"
-                                               value="project"
-                                               {% if project.settings.display_total_shares is not defined %}disabled="disabled"{% endif %}
-                                               {% if project.settings.shares | default('project') == 'project' %}checked="checked"{% endif %}
-                                               id="bd-display-project-shares"/>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">
-                                        <label for="bd-display-post-shares">
-                                            {{ environment.translate('Current page total shares') }}
-                                        </label>
-                                    </th>
-                                    <td>
-                                        <input type="radio"
-                                               name="settings[shares]"
-                                               value="post"
-                                               {% if project.settings.display_total_shares is not defined %}disabled="disabled"{% endif %}
-                                                {% if project.settings.shares | default('project') == 'post' %}checked="checked"{% endif %}
-                                               id="bd-display-post-shares"/>
+                                        <select name="settings[shares]"
+                                                id="bd-counter-type">
+                                            {% for value, description in { 'plugin': environment.translate('The all projects'), 'project': environment.translate('The entire project'), 'post': environment.translate('The each page') } %}
+                                                <option value="{{ value }}" {% if project.settings.shares | default('post') == value %}selected="selected"{% endif %}>{{ description }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <!-- /#bd-counter-type -->
                                     </td>
                                 </tr>
 
@@ -267,56 +244,74 @@
                                     </td>
                                 </tr>
 
-                                {#<tr>#}
-                                {#<th scope="row">#}
-                                {#Display Total Shares#}
-                                {#</th>#}
-                                {#<td>#}
-                                {#<select name="" id="">#}
-                                {#<option value="">Light</option>#}
-                                {#</select>#}
-                                {#<!-- /# -->#}
-                                {#</td>#}
-                                {#</tr>#}
-
-                                {#<tr>#}
-                                {#<th scope="row">#}
-                                {#Add Icon Spacing#}
-                                {#</th>#}
-                                {#<td>#}
-                                {#<input type="checkbox" name="" id=""/>#}
-                                {#<!-- /# -->#}
-                                {#</td>#}
-                                {#</tr>#}
-
                                 </tbody>
                             </table>
-
-                            <h3>{{ environment.translate('Animation') }}</h3>
-                            <div style="text-align: center" class="supsystic-social-sharing">
-                                <a data-animation="{{ project.settings.animation | default('no-animation') }}" class="sharer-flat sharer-{{ project.settings.design | default('flat-1') }} twitter animated {{ project.settings.animation | default('no-animation') }} infinite animation-preview" href="javascript:void(0);">
-                                    <i class="fa fa-fw fa-twitter"></i>
-                                    <!-- /.fa fa-fw fa-twitter -->
-                                    <div class="counter-wrap">
-                                        <span class="counter">preview</span>
-                                        <!-- /.counter -->
-                                    </div>
-                                    <!-- /.counter-wrap -->
-                                </a>
-                                <!-- /.sharer-flat sharer-flat-1 -->
-                            </div>
-                            <select name="settings[animation]" id="animation" style="width: 100%; margin-top: 15px;">
-                                <option value="no-animation" {% if project.settings.animation == 'no-animation' %}selected="selected"{% endif %}>none</option>
-                                <option value="pulse" {% if project.settings.animation == 'pulse' %}selected="selected"{% endif %}>pulse</option>
-                                <option value="rubberBand" {% if project.settings.animation == 'rubberBand' %}selected="selected"{% endif %}>rubberBand</option>
-                                <option value="shake" {% if project.settings.animation == 'shake' %}selected="selected"{% endif %}>shake</option>
-                                <option value="swing" {% if project.settings.animation == 'swing' %}selected="selected"{% endif %}>swing</option>
-                                <option value="tada" {% if project.settings.animation == 'tada' %}selected="selected"{% endif %}>tada</option>
-                                <option value="wobble" {% if project.settings.animation == 'wobble' %}selected="selected"{% endif %}>wobble</option>
-                            </select>
                         </div>
                         <!-- /.scroll -->
 
+                        <div class="scroll">
+                            <h2>{{ environment.translate('Animation') }}</h2>
+                            <table class="form-table">
+                                <tr>
+                                    <td colspan="2">
+                                        <div style="text-align: center" class="supsystic-social-sharing">
+                                            <a data-animation="{{ project.settings.animation | default('no-animation') }}" class="sharer-flat sharer-{{ project.settings.design | default('flat-1') }} twitter {{ project.settings.animation | default('no-animation') }} animation-preview" href="javascript:void(0);">
+                                                <i class="fa fa-fw fa-twitter icon-animation-preview" data-animation="no-animation"></i>
+                                                <!-- /.fa fa-fw fa-twitter -->
+                                                <div class="counter-wrap">
+                                                    <span class="counter">preview</span>
+                                                    <!-- /.counter -->
+                                                </div>
+                                                <!-- /.counter-wrap -->
+                                            </a>
+                                            <!-- /.sharer-flat sharer-flat-1 -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    {% set animations = ['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'] %}
+                                    <th scope="row">
+                                        <label for="ba-button-animation">
+                                            {{ environment.translate('Buttons animation') }}
+                                        </label>
+                                    </th>
+                                    <td>
+                                        <select name="settings[buttons_animation]"
+                                                id="ba-button-animation">
+                                            {% for animation in animations %}
+                                                <option value="{{ animation }}"
+                                                        {% if project.settings.buttons_animation == animation %}
+                                                            selected="selected"
+                                                        {% endif %}>
+                                                    {{ animation }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <label for="ba-icons-animation">
+                                            {{ environment.translate('Icons animation') }}
+                                        </label>
+                                    </th>
+                                    <td>
+                                        <select name="settings[icons_animation]"
+                                                id="ba-icons-animation">
+                                            {% for animation in animations %}
+                                                <option value="{{ animation }}"
+                                                        {% if project.settings.icons_animation == animation %}
+                                                    selected="selected"
+                                                        {% endif %}>
+                                                    {{ animation }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- /.scroll -->
 
                         <div class="scroll">
                             <h2>Where to show</h2>

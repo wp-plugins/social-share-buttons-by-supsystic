@@ -39,6 +39,7 @@ class SocialSharing_Networks_Controller extends SocialSharing_Core_BaseControlle
 
     /**
      * @param Rsc_Http_Request $request
+     * @return Rsc_Http_Response
      */
     public function incrementAction(Rsc_Http_Request $request)
     {
@@ -46,5 +47,35 @@ class SocialSharing_Networks_Controller extends SocialSharing_Core_BaseControlle
         $this->modelsFactory->get('networks')->incrementTotalShares($id);
 
         return $this->response(Rsc_Http_Response::AJAX, array('ty' => 'np'));
+    }
+
+    public function updateSortingAction(Rsc_Http_Request $request)
+    {
+        $projectId = $request->post->get('project_id');
+        $positions = $request->post->get('positions');
+        /** @var SocialSharing_Networks_Model_ProjectNetworks $projectNetworks */
+        $projectNetworks = $this->modelsFactory->get('projectNetworks', 'networks');
+
+        if (!is_array($positions) || count($positions) === 0) {
+            // Returns here success to prevent errors on frontend.
+            // Its not error, just empty array
+            return $this->ajaxSuccess(array(
+                'notice' => 'empty'
+            ));
+        }
+
+        foreach ($positions as $data) {
+            try {
+                $projectNetworks->updateNetworkPosition(
+                    $projectId,
+                    $data['network'],
+                    $data['position']
+                );
+            } catch (Exception $e) {
+                return $this->ajaxError($e->getMessage());
+            }
+        }
+
+        return $this->ajaxSuccess();
     }
 }

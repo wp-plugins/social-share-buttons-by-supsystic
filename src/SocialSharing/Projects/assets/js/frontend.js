@@ -13,15 +13,23 @@
             var $container = $(container),
                 $buttons = $container.find('a'),
                 animation = $container.attr('data-animation'),
-                animationClasses = 'animated ' + animation,
+                iconsAnimation = $container.attr('data-icons-animation'),
                 animationEndEvents = 'webkitAnimationEnd mozAnimationEnd ' +
                     'MSAnimationEnd oanimationend animationend';
 
+            var getAnimationClasses = function (animation) {
+                return 'animated ' + animation;
+            };
+
             if ($buttons.length) {
                 $buttons.hover(function () {
-                    $(this).addClass(animationClasses)
+                    $(this).addClass(getAnimationClasses(animation))
                         .one(animationEndEvents, function () {
-                            $(this).removeClass(animationClasses);
+                            $(this).removeClass(getAnimationClasses(animation));
+                        });
+                    $(this).find('i.fa').addClass(getAnimationClasses(iconsAnimation))
+                        .one(animationEndEvents, function () {
+                            $(this).removeClass(getAnimationClasses(iconsAnimation));
                         });
                 });
             }

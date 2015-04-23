@@ -50,6 +50,26 @@ class SocialSharing_Networks_Model_ProjectNetworks extends SocialSharing_Core_Ba
         }
     }
 
+
+    /**
+     * @param int $projectId
+     * @param int $networkId
+     * @param int $position
+     */
+    public function updateNetworkPosition($projectId, $networkId, $position)
+    {
+        $query = $this->getQueryBuilder()
+            ->update($this->getTable())
+            ->where('project_id', '=', (int)$projectId)
+            ->andWhere('network_id', '=', (int)$networkId)
+            ->set('position', (int)$position);
+
+        $this->db->query($query->build());
+        if ($this->db->last_error) {
+            throw new RuntimeException($this->db->last_error);
+        }
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -61,5 +81,4 @@ class SocialSharing_Networks_Model_ProjectNetworks extends SocialSharing_Core_Ba
 
         return parent::getTable($tableName);
     }
-
 }

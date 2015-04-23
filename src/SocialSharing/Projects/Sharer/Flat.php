@@ -135,6 +135,21 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
             case 'like':
                 $classes[] = 'fa-heart';
                 break;
+            case 'reddit':
+                $classes[] = 'fa-reddit';
+                break;
+            case 'pinterest':
+                $classes[] = 'fa-pinterest';
+                break;
+            case 'digg':
+                $classes[] = 'fa-digg';
+                break;
+            case 'stumbleupon':
+                $classes[] = 'fa-stumbleupon';
+                break;
+            case 'delicious':
+                $classes[] = 'fa-delicious';
+                break;
         }
 
         return $classes;

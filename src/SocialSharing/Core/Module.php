@@ -15,6 +15,9 @@ class SocialSharing_Core_Module extends SocialSharing_Core_BaseModule
         $dispatcher = $this->getEnvironment()->getDispatcher();
         $dispatcher->on('after_ui_loaded', array($this, 'loadScripts'), -5);
         $dispatcher->on('after_modules_loaded', array($this, 'disablePromo'), -5);
+
+        // Improve admin_notices action
+        add_action('admin_notices', array($this, 'doPluginNotices'));
     }
 
     /**
@@ -38,5 +41,15 @@ class SocialSharing_Core_Module extends SocialSharing_Core_BaseModule
     {
         $pluginName = $this->getEnvironment()->getPluginName();
         update_option($pluginName.'_promo_shown', 1);
+    }
+
+    public function doPluginNotices()
+    {
+        if (!$this->getEnvironment()->isPluginPage()) {
+            return;
+        }
+
+        $dispatcher = $this->getEnvironment()->getDispatcher();
+        $dispatcher->dispatch('notices');
     }
 }

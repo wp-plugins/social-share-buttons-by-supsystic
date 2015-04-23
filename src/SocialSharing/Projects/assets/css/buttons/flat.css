@@ -17,6 +17,11 @@
     text-decoration: none;
     text-align: center;
     width: 3em;
+
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
 }
 .supsystic-social-sharing.supsystic-social-sharing-left .sharer-flat,
 .supsystic-social-sharing.supsystic-social-sharing-right .sharer-flat {
@@ -52,6 +57,15 @@
     -moz-border-radius: 100%;
     border-radius: 100%;
 }
+.supsystic-social-sharing .sharer-flat.sharer-flat-4:hover:after {
+    content: " ";
+    background-color: #fff;
+    position: absolute;
+    width: 93%;
+    height: 92%;
+    left: 3.5%;
+    top: 5%;
+}
 .supsystic-social-sharing .sharer-flat.sharer-flat-3 .counter-wrap {
     left: 0;
     right: 0;
@@ -61,11 +75,14 @@
 .supsystic-social-sharing .sharer-flat .fa-fw {
     position: relative;
     top: 0.75em;
+    /*top: 1em;*/
+    z-index: 1001;
 }
 .supsystic-social-sharing .sharer-flat .counter-wrap {
     position: absolute;
     right: -0.5em;
     top: -0.5em;
+    z-index: 1000;
 }
 .supsystic-social-sharing .sharer-flat .counter-wrap .counter {
     background-color: #c0392b;
@@ -76,7 +93,7 @@
     font-size: .5em;
     font-weight: bold;
     padding: 4px 8px;
-    text-shadow: 1px 1px 0px #d14233;
+    text-shadow: 1px 1px 0 #d14233;
 }
 .supsystic-social-sharing .sharer-flat.without-counter .counter-wrap {
     display: none;
@@ -86,48 +103,88 @@
 }
 .supsystic-social-sharing .sharer-flat.twitter:hover {
     background-color: #55acee;
-    -webkit-transition: all 300ms ease;
-    -moz-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
-    transition: all 300ms ease;
+}
+.supsystic-social-sharing .sharer-flat-4.twitter:hover {
+    color: #55acee;
 }
 .supsystic-social-sharing .sharer-flat.facebook {
     background-color: #4c70ba;
 }
 .supsystic-social-sharing .sharer-flat.facebook:hover {
     background-color: #3b5998;
-    -webkit-transition: all 300ms ease;
-    -moz-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
-    transition: all 300ms ease;
+}
+.supsystic-social-sharing .sharer-flat-4.facebook:hover {
+    color: #3b5998;
 }
 .supsystic-social-sharing .sharer-flat.googleplus {
     background-color: #e47365;
 }
 .supsystic-social-sharing .sharer-flat.googleplus:hover {
     background-color: #dd4b39;
-    -webkit-transition: all 300ms ease;
-    -moz-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
-    transition: all 300ms ease;
+}
+.supsystic-social-sharing .sharer-flat-4.googleplus:hover {
+    color: #dd4b39;
 }
 .supsystic-social-sharing .sharer-flat.vk {
     background-color: #587fae;
 }
 .supsystic-social-sharing .sharer-flat.vk:hover {
     background-color: #45668e;
-    -webkit-transition: all 300ms ease;
-    -moz-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
-    transition: all 300ms ease;
+}
+.supsystic-social-sharing .sharer-flat-4.vk:hover {
+    color: #45668e;
 }
 .supsystic-social-sharing .sharer-flat.like {
     background-color: #9b59b6;
 }
 .supsystic-social-sharing .sharer-flat.like:hover {
     background-color: #8e44ad;
-    -webkit-transition: all 300ms ease;
-    -moz-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
-    transition: all 300ms ease;
+}
+.supsystic-social-sharing .sharer-flat-4.like:hover {
+    color: #8e44ad;
+}
+.supsystic-social-sharing .sharer-flat.reddit {
+    background-color: #5f99cf;
+}
+.supsystic-social-sharing .sharer-flat.reddit:hover {
+    background-color: #cee3f8;
+}
+.supsystic-social-sharing .sharer-flat-4.reddit:hover {
+    color: #cee3f8;
+}
+.supsystic-social-sharing .sharer-flat.pinterest {
+    background-color: #e04046;
+}
+.supsystic-social-sharing .sharer-flat.pinterest:hover {
+    background-color: #cc2127;
+}
+.supsystic-social-sharing .sharer-flat-4.pinterest:hover {
+    color: #cc2127;
+}
+.supsystic-social-sharing .sharer-flat.digg {
+    background-color: #1a1a1a;
+}
+.supsystic-social-sharing .sharer-flat.digg:hover {
+    background-color: #000000;
+}
+.supsystic-social-sharing .sharer-flat-4.digg:hover {
+    color: #000000;
+}
+.supsystic-social-sharing .sharer-flat.stumbleupon {
+    background-color: #ef7053;
+}
+.supsystic-social-sharing .sharer-flat.stumbleupon:hover {
+    background-color: #eb4924;
+}
+.supsystic-social-sharing .sharer-flat-4.stumbleupon:hover {
+    color: #eb4924;
+}
+.supsystic-social-sharing .sharer-flat.delicious {
+    background-color: #66b2ff;
+}
+.supsystic-social-sharing .sharer-flat.delicious:hover {
+    background-color: #3399ff;
+}
+.supsystic-social-sharing .sharer-flat-4.delicious:hover {
+    color: #3399ff;
 }

@@ -216,7 +216,7 @@ class SocialSharing_Projects_Model_Projects extends SocialSharing_Core_BaseModel
                 'project_networks'
             ) . '` AS pn ON p.id = pn.project_id LEFT JOIN `' . $this->getTable(
                 'networks'
-            ) . '` AS n ON pn.network_id = n.id WHERE p.id = ' . $project->id
+            ) . '` AS n ON pn.network_id = n.id WHERE p.id = ' . $project->id . ' ORDER BY pn.position ASC'
         );
 
         if (count($project->networks) === 1 && !$project->networks[0]->id) {

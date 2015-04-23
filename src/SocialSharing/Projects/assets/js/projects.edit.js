@@ -16,7 +16,8 @@
             $shortNumbers = $('input[name="settings[short_numbers]"]'),
             $previewButtons = $('.pricon'),
             $design = $('input[name="settings[design]"]'),
-            $animation = $('#animation');
+            $animation = $('#ba-button-animation'),
+            $iconAnimation = $('#ba-icons-animation');
 
         // Rename
         $('h2[contenteditable]').on('keydown', function (e) {
@@ -63,9 +64,44 @@
             var $preview = $('.animation-preview'),
                 current = $preview.attr('data-animation');
 
-            $preview.removeClass(current);
+            //$preview.removeClass(current);
             $preview.addClass($animation.val());
             $preview.attr('data-animation', $animation.val());
+            $preview.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $(this).removeClass($animation.val() + ' animated');
+            })
+        });
+
+        $iconAnimation.on('change', function () {
+            var $preview = $('.icon-animation-preview'),
+                current = $preview.attr('data-animation');
+
+            //$preview.removeClass(current + ' animated');
+            $preview.addClass($iconAnimation.val() + ' animated');
+            $preview.attr('data-animation', $iconAnimation.val());
+            $preview.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $(this).removeClass($iconAnimation.val() + ' animated');
+            })
+        });
+
+        $('.animation-preview').hover(function () {
+            var $preview = $(this),
+                current = $animation.val();
+
+            $preview.addClass($animation.val() + ' animated');
+            $preview.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $(this).removeClass(current + ' animated');
+            })
+        });
+
+        $('.animation-preview').hover(function () {
+            var $preview = $('.icon-animation-preview'),
+                current = $iconAnimation.val();
+
+            $preview.addClass($iconAnimation.val() + ' animated');
+            $preview.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $(this).removeClass(current + ' animated');
+            })
         });
 
         // Design and animation
@@ -73,7 +109,7 @@
             var type = $design.filter(':checked').val(),
                 $preview = $('.animation-preview');
 
-            $preview.removeClass('sharer-flat-1 sharer-flat-2 sharer-flat-3');
+            $preview.removeClass('sharer-flat-1 sharer-flat-2 sharer-flat-3 sharer-flat-4');
             $preview.addClass('sharer-'+type);
         });
 
@@ -133,7 +169,44 @@
         // Networks list
         $networksList = $('.networks');
         $networksList.find('.network > .delete').bind('click', onRemoveNetwork);
-        $networksList.sortable();
+        $networksList.sortable({
+            sort: function (e, ui) {
+                ui.item.css({
+                    backgroundColor: '#eee'
+                });
+            },
+            stop: function (e, ui) {
+
+                ui.item.css({
+                    backgroundColor: '#fff'
+                });
+
+                $('#savingNetworksSorting').show();
+
+                var positions = [];
+
+                $networksList.find('.network').each(function (i, el) {
+                    var id = parseInt(el.id.slice(7));
+
+                    positions.push({
+                        network: id,
+                        position: i
+                    });
+                });
+
+                app.request({
+                    module: 'networks',
+                    action: 'updateSorting'
+                }, {
+                    project_id: app.getParameterByName('id'),
+                    positions: positions
+                }).always(function () {
+                    $('#savingNetworksSorting').hide();
+                }).fail(function (error) {
+                    alert('Failed to save sort order: ' + error);
+                });
+            }
+        });
 
         // Initialize networks dialog
         $networksDialogTrigger = $('#addNetwork');

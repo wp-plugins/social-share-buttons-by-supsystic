@@ -162,7 +162,18 @@ abstract class SocialSharing_Projects_Sharer
                 $this->getBuilder()->createAttribute('class', $classes),
                 $this->getBuilder()->createAttribute(
                     'data-animation',
-                    $this->getProject()->get('animation', 'no-animation')
+                    $this->getProject()->get('buttons_animation', 'no-animation')
+                ),
+                $this->getBuilder()->createAttribute(
+                    'data-icons-animation',
+                    $this->getProject()->get('icons_animation', 'no-animation')
+                ),
+                $this->getBuilder()->createAttribute(
+                    'style',
+                    sprintf(
+                        'font-size: %sem;',
+                        $this->getProject()->get('buttons_size', 1)
+                    )
                 )
             )
         );
@@ -254,7 +265,7 @@ abstract class SocialSharing_Projects_Sharer
         $isHome = $this->isHome();
 
         $replace = array(
-            '{url}'   => $isHome ? get_bloginfo('wpurl') : get_permalink(),
+            '{url}'   => $isHome ? urlencode(get_bloginfo('wpurl')) : urlencode(get_permalink()),
             '{title}' => $isHome ? get_bloginfo('name') : get_the_title()
         );
 

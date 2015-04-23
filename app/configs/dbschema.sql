@@ -26,6 +26,7 @@ CREATE TABLE `%prefix%project_networks` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) UNSIGNED NULL DEFAULT NULL,
   `network_id` INT(11) UNSIGNED NULL DEFAULT NULL,
+  `position` INT(11) UNSIGNED NULL DEFAULT '0',
   PRIMARY KEY  (`id`),
   INDEX `FK__%prefix%projects` (`project_id`),
   INDEX `FK__%prefix%networks` (`network_id`),
@@ -53,8 +54,13 @@ CREATE TABLE `%prefix%shares` (
 ;
 
 
-INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`) VALUES (null, 'Facebook', 'http://www.facebook.com/sharer.php?u={url}', 'facebook', '#3b5998', '#ffffff');
-INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`) VALUES (null, 'Twitter', 'https://twitter.com/share?url={url}&text={title}', 'twitter', '#55acee', '#ffffff');
-INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`) VALUES (null, 'Google+', 'https://plus.google.com/share?url={url}', 'googleplus', '#dd4b39', '#ffffff');
-INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`) VALUES (null, 'VKontakte', 'http://vk.com/share.php?url={url}', 'vk', '#45668e', '#ffffff');
-INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`) VALUES (null, 'Like', '#', 'like', '#9b59b6', '#ffffff');
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (1, 'Facebook', 'http://www.facebook.com/sharer.php?u={url}', 'facebook', '#3b5998', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (2, 'Twitter', 'https://twitter.com/share?url={url}&text={title}', 'twitter', '#55acee', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (3, 'Google+', 'https://plus.google.com/share?url={url}', 'googleplus', '#dd4b39', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (4, 'VKontakte', 'http://vk.com/share.php?url={url}', 'vk', '#45668e', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (5, 'Like', '#', 'like', '#9b59b6', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (6, 'Reddit', 'http://reddit.com/submit?url={url}&title={title}', 'reddit', '#cee3f8', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (7, 'Pinterest', 'http://pinterest.com/pin/create/link/?url={url}', 'pinterest', '#cc2127', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (8, 'Digg', 'http://digg.com/submit?url={url}&title={title}', 'digg', '#000000', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (9, 'StumbleUpon', 'http://www.stumbleupon.com/submit?url={url}&title={title}', 'stumbleupon', '#eb4924', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (10, 'Delicious', 'https://delicious.com/save?v=5&&jump=close&url={url}&title={title}', 'delicious', '#3399ff', '#ffffff', 0);

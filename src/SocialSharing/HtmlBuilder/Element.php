@@ -50,7 +50,7 @@ class SocialSharing_HtmlBuilder_Element extends SocialSharing_HtmlBuilder_Abstra
     {
         $elements = array();
 
-        if ($this->hasAttributes()) {
+        if (count($this->elements) > 0) {
             foreach ($this->elements as $element) {
                 $elements[] = $element->build();
             }
