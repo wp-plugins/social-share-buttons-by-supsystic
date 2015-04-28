@@ -51,7 +51,7 @@ class SupsysticSocialSharing
                 'uploads_rw'       => true,
                 'jpeg_quality'     => 95,
                 'plugin_db_update' => true,
-                'revision'         => 19
+                'revision'         => 20
             )
         );
 
@@ -60,14 +60,14 @@ class SupsysticSocialSharing
 
     public function run()
     {
-        if (isset($_GET['install_db'])) {
+        /*if (isset($_GET['sharing_install_db'])) {
             $this->createSchema();
         }
 
-        if (isset($_GET['reinstall_db'])) {
+        if (isset($_GET['sharing_reinstall_db'])) {
             $this->dropSchema();
             $this->createSchema();
-        }
+        }*/
 
         $this->environment->run();
     }

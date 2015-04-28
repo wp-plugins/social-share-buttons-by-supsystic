@@ -2,7 +2,18 @@
 
 {% block content %}
     <div class="supsystic-item">
+        <!-- /.container-fluid -->
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="{{ environment.generateUrl('projects', 'view', { id: project.id }) }}" class="button" title="{{ environment.translate('Return to the project "%s"') | format(project.title) }}">
+                        <i class="fa fa-fw fa-angle-left"></i>
+                        {{ environment.translate('Return to the project') }}
+                    </a>
+                </div>
+                <!-- /.col-xs-12 -->
+            </div>
+            <!-- /.row -->
             <div class="row">
                 <div class="col-xs-12">
                     <h2>{{ environment.translate('Project "%s" statistics') | format(project.title) }}</h2>
