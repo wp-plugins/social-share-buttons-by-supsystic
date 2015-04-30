@@ -53,9 +53,22 @@
                 .show();
         });
 
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            $('.supsystic-social-sharing-mobile').hide();
-        }
+
+        $('.supsystic-social-sharing').each(function () {
+            var $el = $(this);
+
+            if ($el.hasClass('supsystic-social-sharing-mobile')) {
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    $el.hide();
+                } else {
+                    $el.show();
+                }
+            } else {
+                if (!$el.hasClass('supsystic-social-sharing-click')) {
+                    $el.show();
+                }
+            }
+        });
     });
 
 }(window.jQuery, window));

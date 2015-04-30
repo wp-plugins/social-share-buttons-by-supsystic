@@ -51,7 +51,7 @@ class SupsysticSocialSharing
                 'uploads_rw'       => true,
                 'jpeg_quality'     => 95,
                 'plugin_db_update' => true,
-                'revision'         => 20
+                'revision'         => 31
             )
         );
 
@@ -74,7 +74,7 @@ class SupsysticSocialSharing
 
     public function activate($bootstrap)
     {
-        if (!get_option($this->environment->getPluginName().'_installed', 1)) {
+        if (!get_option($this->environment->getPluginName().'_installed', false)) {
             register_activation_hook($bootstrap, array($this, 'createSchema'));
         }
     }
@@ -93,9 +93,11 @@ class SupsysticSocialSharing
             if (!function_exists('dbDelta')) {
                 require_once(ABSPATH.'wp-admin/includes/upgrade.php');
             }
-            $wpdb->query('SET FOREIGN_KEY_CHECKS=0');
+
+            dbDelta('SET FOREIGN_KEY_CHECKS=0');
             dbDelta($sql);
-            $wpdb->query('SET FOREIGN_KEY_CHECKS=1');
+            dbDelta('SET FOREIGN_KEY_CHECKS=1');
+
             update_option($this->environment->getPluginName().'_installed', 1);
         }
     }

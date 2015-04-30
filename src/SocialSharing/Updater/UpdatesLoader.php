@@ -28,11 +28,11 @@ class SocialSharing_Updater_UpdatesLoader
             return null;
         }
 
-        return include $this->getFilePath($revision);
+        return file_get_contents($this->getFilePath($revision));
     }
 
     protected function getFilePath($revision)
     {
-        return $this->path.'/Updates/rev'.$revision.'.php';
+        return $this->path.'/Updates/rev'.$revision.'.sql';
     }
 }

@@ -26,23 +26,23 @@ class SocialSharing_Updater_Module extends SocialSharing_Core_BaseModule
         $installed = $this->getInstalledRevision();
 
         if (!$installed) {
-            $this->setInstalledRevision($revision);
+            $this->setInstalledRevision(0);
         }
 
         if ($revision > $installed) {
             $updatesLoader = $this->getUpdatesLoader();
             $prefix = $this->getPrefix();
-            $db = $this->getDatabase();
+
+            if (!function_exists('dbDelta')) {
+                require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+            }
 
             for ($i = $installed; $i <= $revision; $i++) {
                 if (!$queries = $updatesLoader->load($i)) {
                     continue;
                 }
 
-                foreach ((array)$queries as $query) {
-                    $query = str_replace('%prefix%', $prefix, $query);
-                    $db->query($query);
-                }
+                dbDelta(str_replace('%prefix%', $prefix, $queries));
             }
 
             $this->setInstalledRevision($revision);
@@ -90,9 +90,6 @@ class SocialSharing_Updater_Module extends SocialSharing_Core_BaseModule
         return $this->updatesLoader;
     }
 
-    /**
-     * @return wpdb
-     */
     public function getDatabase()
     {
         global $wpdb;

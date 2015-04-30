@@ -2,7 +2,7 @@
 Contributors: supsystic.com
 Tags: share counter, social media share, social network share, social share, social share buttons, social sharing, facebook like, facebook share, like, share buttons, share links, sharebar
 Tested up to: 4.2.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 
 Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
@@ -112,7 +112,7 @@ With Social Share by Supsystic you will be able to choose where to show social s
 
 * At the Sidebar of the page - top, bottom,left, right.
 * At the posts or pages content - above content, below content or above + below content. 
-* At the popup window - you need to install Popup by Supsystic plugin to use this feature. After installation the plugin, you can insert the project shortcode to the text block of popup. And popup window will display social share buttons.
+* At the popup window - you need to install Popup by Supsystic plugin to use this feature. 
 * At the theme’s widgets areas - create a widget of your project at Appearance -> Widgets.
 * Use shortcode - insert the project shortcode and show buttons where you want.
 
@@ -132,6 +132,13 @@ Here you can set when to show social share buttons:
 * When user click on page
 
 == Changelog ==
+
+= 1.1.4 / 30.04.2015 =
+ * Fixed bug with social sharing project creation
+ * Fixed bug with social buttons responsive design
+ * Fixed BadMethodCallException in Updater module
+ * Fixed "Hide on mobile" sharing setting
+ * Fixed social share counters for "The all project" option
 
 = 1.1.3 / 28.04.2015 =
  * New buttons design

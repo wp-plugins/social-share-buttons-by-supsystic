@@ -59,12 +59,12 @@ class SocialSharing_Shares_Module extends SocialSharing_Core_BaseModule
         foreach ($project->getNetworks() as $index => $network) {
             if (!in_array(
                     $project->get('shares'),
-                    array('total', 'project', 'post'),
+                    array('plugin', 'project', 'post'),
                     false
                 )
             ) {
                 $network->shares = 0;
-            } elseif ($project->get('shares') === 'total') {
+            } elseif ($project->get('shares') === 'plugin') {
                 $network->shares = $shares->getNetworkShares($network->id);
             } elseif ($project->get('shares') === 'project') {
                 $network->shares = $shares->getProjectNetworkShares(

@@ -22,6 +22,7 @@ CREATE TABLE `%prefix%networks` (
   COLLATE='utf8_general_ci'
   ENGINE=InnoDB
 ;
+
 CREATE TABLE `%prefix%project_networks` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `project_id` INT(11) UNSIGNED NULL DEFAULT NULL,
@@ -63,4 +64,4 @@ INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `
 INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (7, 'Pinterest', 'http://pinterest.com/pin/create/link/?url={url}', 'pinterest', '#cc2127', '#ffffff', 0);
 INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (8, 'Digg', 'http://digg.com/submit?url={url}&title={title}', 'digg', '#000000', '#ffffff', 0);
 INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (9, 'StumbleUpon', 'http://www.stumbleupon.com/submit?url={url}&title={title}', 'stumbleupon', '#eb4924', '#ffffff', 0);
-INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (10, 'Delicious', 'https://delicious.com/save?v=5&&jump=close&url={url}&title={title}', 'delicious', '#3399ff', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (10, 'Delicious', 'https://delicious.com/save?v=5&jump=close&url={url}&title={title}', 'delicious', '#3399ff', '#ffffff', 0);

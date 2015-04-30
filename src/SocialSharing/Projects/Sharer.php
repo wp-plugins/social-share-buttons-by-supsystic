@@ -171,7 +171,7 @@ abstract class SocialSharing_Projects_Sharer
                 $this->getBuilder()->createAttribute(
                     'style',
                     sprintf(
-                        'font-size: %sem;',
+                        'font-size: %sem; display: none;',
                         $this->getProject()->get('buttons_size', 1)
                     )
                 )
