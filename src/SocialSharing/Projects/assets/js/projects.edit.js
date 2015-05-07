@@ -57,6 +57,8 @@
 
             element.remove();
             checkbox.removeAttr('checked');
+
+            $('body').trigger('networksChanged');
         });
 
         // Animation
@@ -175,11 +177,13 @@
                     backgroundColor: '#eee'
                 });
             },
-            stop: function (e, ui) {
+            update: function (e, ui) {
 
-                ui.item.css({
-                    backgroundColor: '#fff'
-                });
+                if (ui && ui.item) {
+                    ui.item.css({
+                        backgroundColor: '#fff'
+                    });
+                }
 
                 $('#savingNetworksSorting').show();
 
@@ -220,7 +224,7 @@
             modal: true,
             width: 500,
             buttons: {
-                Select: (function btnSelect() {
+                Save: (function btnSelect() {
                     var checked = $(this).find(':checked'),
                         form = $('form#settings');
 
@@ -251,14 +255,21 @@
                         if (!$networksList.has('#network' + network.id).length) {
                             $networksList.append($networkContainer);
                         }
-
-                        $networksDialog.dialog('close');
                     });
+
+                    $networksDialog.dialog('close');
+                    $('body').trigger('networksChanged');
                 }),
                 Close: (function btnClose() {
                     $networksDialog.dialog('close');
                 })
             }
+        });
+
+        // Autosave
+        $('body').on('networksChanged', function () {
+            $('button#save').click();
+            $networksList.sortable('option', 'update')(null);
         });
 
         // Checkboxes
@@ -311,6 +322,19 @@
                         .find('a')
                         .attr('href');
                 });
+            }
+        });
+
+        $('.select-all').on('click', function() {
+            var $icon = $(this).find('i'),
+                $networkCheckboxes = $('[name="networks"]');
+
+            if($icon.hasClass('fa-check')) {
+                $networkCheckboxes.attr('checked', true);
+                $icon.removeClass('fa-check').addClass('fa-remove');
+            } else {
+                $networkCheckboxes.attr('checked', false);
+                $icon.removeClass('fa-remove').addClass('fa-check');
             }
         });
     });

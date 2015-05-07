@@ -56,6 +56,23 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
         $settings = $request->post->get('settings');
         $projects = $this->modelsFactory->get('projects');
 
+        if (array_key_exists('popup_id', $settings)) {
+            /** @var SocialSharing_Popup_Module $popup */
+            $popup = $this->getEnvironment()->getModule('popup');
+
+            if (!$popup->isInstalled()) {
+                $settings['popup_id'] = 0;
+            } else {
+                $hasPopup = $popup->call('getModule', array('popup'))
+                    ->getModel()
+                    ->getById($settings['popup_id']);
+
+                if (!$hasPopup) {
+                    $settings['popup_id'] = 0;
+                }
+            }
+        }
+
         $projects->save($id, $settings);
 
         return $this->ajaxSuccess(array('popup_id' => $settings['popup_id']));

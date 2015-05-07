@@ -10,7 +10,10 @@
                            name="title"
                            placeholder="{{ environment.translate('Project title') }}"/>
                     <!-- /#projectTitle.regular-text -->
-                    <button type="submit" class="button">Save</button>
+                    <button type="submit" class="button">
+                        <i class="fa fa-save"></i>
+                        {{ environment.translate('Save') }}
+                    </button>
                     <!-- /.button -->
                 </form>
             {% endblock %}
@@ -269,7 +272,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    {% set animations = ['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'] %}
+                                    {% set animations = ['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble', 'difuz'] %}
                                     <th scope="row">
                                         <label for="ba-button-animation">
                                             {{ environment.translate('Buttons animation') }}
@@ -549,7 +552,13 @@
         {% endblock inner_content %}
         <div id="networks-dialog"
              title="{{ environment.translate('Select network') }}"
-             style="display: none">
+             style="display: none;">
+            <div class="buttons-helpers">
+                <button class="ui-button select-all" style="margin-bottom: 10px; float: right;">
+                    <i class="fa fa-check"></i>
+                    {{ environment.translate('Select All') }}
+                </button>
+            </div>
             {% for network in networks %}
                 <div>
                     <label for="network{{ network.id }}-checkbox">

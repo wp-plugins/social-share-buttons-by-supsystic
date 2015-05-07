@@ -41,3 +41,9 @@
 .supsystic-social-sharing.supsystic-social-sharing-right.supsystic-social-sharing-spacing a {
     margin-bottom: 5px;
 }
+
+.supsystic-container .sharer-flat.animated.difuz:hover,
+.supsystic-social-sharing .sharer-flat.animated.difuz:hover{
+    width: 30px;
+    transition: 800ms;
+}

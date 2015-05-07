@@ -179,6 +179,11 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
             return;
         }
 
+        if (array_key_exists('place', $attributes) && array_key_exists('extra', $attributes)) {
+            $project->settings['where_to_show'] = $attributes['place'];
+            $project->settings['where_to_show_extra'] = $attributes['extra'];
+        }
+
         return $this->handleProject($project);
     }
 }

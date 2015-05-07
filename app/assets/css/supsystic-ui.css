@@ -223,6 +223,7 @@ ul.supsystic-bar-controls > li.separator {
 .ui-widget-content {
     background: #fff !important;
     padding: 15px 5px;
+    z-index: 10;
 }
 
 .ui-widget-header {
@@ -507,6 +508,13 @@ h2.nav-tab-wrapper, h3.nav-tab-wrapper {
 /*form tables*/
 .supsystic-plugin .form-table th {
     font-size: 16px;
+    position: relative;
+}
+
+.supsystic-plugin .form-table th input[type="radio"][name="settings[design]"] {
+    position: absolute;
+    top: 40px;
+    z-index: 2;
 }
 
 .supsystic-plugin .description,

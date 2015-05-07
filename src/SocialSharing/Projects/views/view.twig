@@ -5,13 +5,16 @@
 
     <div class="layer">
         <button class="button" id="save">
+            <i class="fa fa-save"></i>
             {{ environment.translate('Save') }}
         </button>
         <!-- /.button -->
         <a href="{{ environment.generateUrl('projects', 'clone', { 'id': project.id }) }}" class="button">
+            <i class="fa fa-copy"></i>
             {{ environment.translate('Clone') }}
         </a>
         <a href="{{ environment.generateUrl('shares', 'statistic', { 'project_id': project.id }) }}" class="button">
+            <i class="fa fa-line-chart"></i>
             {{ environment.translate('Statistic') }}
         </a>
     </div>
@@ -19,6 +22,7 @@
 
     <div class="layer" style="float: right;">
         <a href="{{ environment.generateUrl('projects', 'delete', { 'id': project.id }) }}" class="button delete">
+            <i class="fa fa-trash"></i>
             {{ environment.translate('Delete') }}
         </a>
         <!-- /.button -->

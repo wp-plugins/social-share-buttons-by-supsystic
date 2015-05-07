@@ -72,12 +72,21 @@ class SocialSharing_Shares_Module extends SocialSharing_Core_BaseModule
                     $network->id
                 );
             } elseif ($project->get('shares') === 'post') {
-                $postId = !is_home() ? get_the_ID() : null;
+//                $postId = !is_home() ? get_the_ID() : null;
+
+                $schema = is_ssl() ? 'https://' : 'http://';
+                $currentUrl = strtolower(trailingslashit($schema . $_SERVER['HTTP_HOST'] . '/' . $_SERVER['REQUEST_URI']));
+                $baseUrl = strtolower(trailingslashit(get_bloginfo('wpurl')));
+
+                $postId = $currentUrl === $baseUrl ? null : get_the_ID();
+
                 $network->shares = $shares->getProjectPageShares(
                     $project->getId(),
                     $network->id,
                     $postId
                 );
+            } else {
+                $network->shares = 0;
             }
 
             $networks[$index] = $network;

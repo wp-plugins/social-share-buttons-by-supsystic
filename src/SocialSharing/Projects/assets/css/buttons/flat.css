@@ -58,13 +58,13 @@
     border-radius: 100%;
 }
 .supsystic-social-sharing .sharer-flat.sharer-flat-4:hover:after {
-    content: " ";
+    content: "";
     background-color: #fff;
     position: absolute;
     width: 93%;
     height: 92%;
     left: 3.5%;
-    top: 5%;
+    top: 3.5%;
 }
 .supsystic-social-sharing .sharer-flat.sharer-flat-3 .counter-wrap {
     left: 0;

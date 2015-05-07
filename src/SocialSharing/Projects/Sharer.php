@@ -241,18 +241,11 @@ abstract class SocialSharing_Projects_Sharer
 
     protected function isHome()
     {
-        $isHome = false;
+        $schema = is_ssl() ? 'https://' : 'http://';
+        $currentUrl = strtolower(trailingslashit($schema . $_SERVER['HTTP_HOST'] . '/' . $_SERVER['REQUEST_URI']));
+        $baseUrl = strtolower(trailingslashit(get_bloginfo('wpurl')));
 
-        if (in_array(
-                $this->project->get('where_to_show'),
-                array('sidebar', 'widget'),
-                false
-            ) && is_home()
-        ) {
-            $isHome = true;
-        }
-
-        return $isHome;
+        return $currentUrl === $baseUrl;
     }
 
     /**
