@@ -235,4 +235,8 @@ class SocialSharing_Projects_Model_Projects extends SocialSharing_Core_BaseModel
             array($project)
         );
     }
+
+    public function getTooltips() {
+        return require_once('tooltips.php');
+    }
 }

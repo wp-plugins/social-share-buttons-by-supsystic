@@ -20,6 +20,18 @@
     </div>
     <!-- /.layer -->
 
+    <div class="layer" style="border-bottom: 1px solid black; padding: 0 20px;">
+        <button class="button admin-nav-button active first" data-block="main">
+            <i class="fa fa-home"></i>
+            {{ environment.translate('Where and what') }}
+        </button>
+        <button class="button admin-nav-button" data-block="design">
+            <i class="fa fa-desktop"></i>
+            {{ environment.translate('Design') }}
+        </button>
+        <!-- /.button -->
+    </div>
+
     <div class="layer" style="float: right;">
         <a href="{{ environment.generateUrl('projects', 'delete', { 'id': project.id }) }}" class="button delete">
             <i class="fa fa-trash"></i>

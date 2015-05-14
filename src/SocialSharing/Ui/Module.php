@@ -22,6 +22,16 @@ class SocialSharing_Ui_Module extends SocialSharing_Core_BaseModule
             ->setHookName('admin_enqueue_scripts')
             ->setLocalSource('js/supsystic.ui.js');
 
+        $tooltipsterStyles = new SocialSharing_Ui_Style();
+        $tooltipsterStyles->setHandle('supsystic-social-sharing-tooltipster-styles')
+            ->setHookName('admin_enqueue_scripts')
+            ->setLocalSource('css/libraries/tooltipster.css');
+
+        $tooltipsterScripts = new SocialSharing_Ui_Script();
+        $tooltipsterScripts->setHandle('supsystic-social-sharing-tooltipster-scripts')
+            ->setHookName('admin_enqueue_scripts')
+            ->setLocalSource('js/plugins/jquery.tooltipster.min.js');
+
         $bootstrap = new SocialSharing_Ui_Script();
         $bootstrap->setHandle('supsystic-social-sharing-bootstrap')
             ->setLocalSource('js/libraries/bootstrap/bootstrap.min.js')
@@ -29,6 +39,8 @@ class SocialSharing_Ui_Module extends SocialSharing_Core_BaseModule
 
         $this->addAsset($uiStyles);
         $this->addAsset($uiScripts);
+        $this->addAsset($tooltipsterStyles);
+        $this->addAsset($tooltipsterScripts);
         $this->addAsset($bootstrap);
 
         $this->addAsset(

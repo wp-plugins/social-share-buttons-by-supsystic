@@ -104,11 +104,48 @@
 .supsystic-social-sharing .sharer-flat.twitter:hover {
     background-color: #55acee;
 }
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.twitter:hover {
+    background-color: #153f54;
+}
 .supsystic-social-sharing .sharer-flat-4.twitter:hover {
     color: #55acee;
 }
+.supsystic-social-sharing .sharer-flat.livejournal {
+    background-color: rgb(43, 87, 128);
+rgb(18, 123, 182);
+}
+.supsystic-social-sharing .sharer-flat.livejournal:hover {
+    background-color: rgb(38, 78, 114);
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.livejournal:hover {
+    background-color: rgb(18, 36, 53);
+}
+.supsystic-social-sharing .sharer-flat.odnoklassniki {
+    background-color: rgb(255, 163, 0);
+}
+.supsystic-social-sharing .sharer-flat.odnoklassniki:hover {
+    background-color: rgb(206, 130, 0);
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.odnoklassniki:hover {
+    background-color: rgb(116, 71, 0);
+}
+.supsystic-social-sharing .sharer-flat .fa-ok:before {
+    content: "OK";
+}
+.supsystic-social-sharing .sharer-flat.linkedin {
+    background-color: rgb(18, 123, 182);
+}
+.supsystic-social-sharing .sharer-flat.linkedin:hover {
+    background-color: rgb(17, 111, 165);
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.linkedin:hover {
+    background-color: rgb(17, 111, 165);
+}
 .supsystic-social-sharing .sharer-flat.facebook {
     background-color: #4c70ba;
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.facebook:hover {
+    background-color: #13192f;
 }
 .supsystic-social-sharing .sharer-flat.facebook:hover {
     background-color: #3b5998;
@@ -121,6 +158,9 @@
 }
 .supsystic-social-sharing .sharer-flat.googleplus:hover {
     background-color: #dd4b39;
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.googleplus:hover {
+    background-color: #7a2b1e;
 }
 .supsystic-social-sharing .sharer-flat-4.googleplus:hover {
     color: #dd4b39;
@@ -140,6 +180,9 @@
 .supsystic-social-sharing .sharer-flat.like:hover {
     background-color: #8e44ad;
 }
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.like:hover {
+    background-color: #442557;
+}
 .supsystic-social-sharing .sharer-flat-4.like:hover {
     color: #8e44ad;
 }
@@ -149,6 +192,9 @@
 .supsystic-social-sharing .sharer-flat.reddit:hover {
     background-color: #cee3f8;
 }
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.reddit:hover {
+    background-color: #4a505b;
+}
 .supsystic-social-sharing .sharer-flat-4.reddit:hover {
     color: #cee3f8;
 }
@@ -157,6 +203,9 @@
 }
 .supsystic-social-sharing .sharer-flat.pinterest:hover {
     background-color: #cc2127;
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.pinterest:hover {
+    background-color: #7c1519;
 }
 .supsystic-social-sharing .sharer-flat-4.pinterest:hover {
     color: #cc2127;
@@ -176,6 +225,9 @@
 .supsystic-social-sharing .sharer-flat.stumbleupon:hover {
     background-color: #eb4924;
 }
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.stumbleupon:hover {
+    background-color: #7a2615;
+}
 .supsystic-social-sharing .sharer-flat-4.stumbleupon:hover {
     color: #eb4924;
 }
@@ -184,6 +236,9 @@
 }
 .supsystic-social-sharing .sharer-flat.delicious:hover {
     background-color: #3399ff;
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.delicious:hover {
+    background-color: #0f2643;
 }
 .supsystic-social-sharing .sharer-flat-4.delicious:hover {
     color: #3399ff;

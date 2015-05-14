@@ -223,7 +223,7 @@ ul.supsystic-bar-controls > li.separator {
 .ui-widget-content {
     background: #fff !important;
     padding: 15px 5px;
-    z-index: 10;
+    z-index: 9999;
 }
 
 .ui-widget-header {
@@ -465,6 +465,12 @@ h2.nav-tab-wrapper, h3.nav-tab-wrapper {
 
 .supsystic-plugin .fa-question.supsystic-tooltip.fa-2x {
     padding: 0 6px;
+}
+
+.supsystic-plugin .location-tooltip {
+    border: 1px solid black;
+    padding: 2px 5px;
+    border-radius: 50%;
 }
 
 /*sticky items*/

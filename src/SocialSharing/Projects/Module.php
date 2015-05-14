@@ -117,6 +117,15 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
                     ->addDependency('jquery-ui-dialog')
                     ->addDependency('jquery-ui-sortable')
             );
+
+            $ui->addAsset(
+                $ui->create('script', 'sss-settings-dialogs')
+                    ->setModuleSource($this, 'js/dialogs.js')
+                    ->setHookName($hookName)
+                    ->setVersion($version)
+                    ->addDependency('jquery-ui-dialog')
+                    ->addDependency('jquery-ui-sortable')
+            );
         }
 
     }

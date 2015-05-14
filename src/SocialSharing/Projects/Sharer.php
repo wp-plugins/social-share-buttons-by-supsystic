@@ -134,6 +134,8 @@ abstract class SocialSharing_Projects_Sharer
         $classes = $this->getBaseClasses();
         $buttons = $this->buildButtons();
 
+        $sidebarClasses = array('supsystic-social-sharing-right', 'supsystic-social-sharing-left', 'supsystic-social-sharing-top', 'supsystic-social-sharing-bottom');
+
         if ((!array_key_exists('action', $_GET) || $_GET['action'] !== 'getPreviewHtml') && $this->project->isShowOnPosts()) {
             $current = get_post();
 
@@ -169,6 +171,14 @@ abstract class SocialSharing_Projects_Sharer
                     $this->getProject()->get('icons_animation', 'no-animation')
                 ),
                 $this->getBuilder()->createAttribute(
+                    'data-overlay',
+                    $this->getProject()->get('overlay_with_shadow', false)
+                ),
+                $this->getBuilder()->createAttribute(
+                    'data-change-size',
+                    $this->getProject()->get('change_size', false)
+                ),
+                $this->getBuilder()->createAttribute(
                     'style',
                     sprintf(
                         'font-size: %sem; display: none;',
@@ -181,6 +191,15 @@ abstract class SocialSharing_Projects_Sharer
         if (count($buttons) > 0) {
             foreach ($buttons as $button) {
                 $container->addElement($button);
+            }
+        }
+
+        $settings = $this->project->getSettings();
+
+        foreach($classes as $class) {
+            if(in_array($class, $sidebarClasses) && $settings['sidebar_navigation'] == 'on') {
+                $navButton = $this->getBuilder()->createElement('div', array($this->getBuilder()->createAttribute('class', 'nav-button hide')));
+                $container->addElement($navButton);
             }
         }
 

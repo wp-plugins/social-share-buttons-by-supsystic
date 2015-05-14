@@ -2,7 +2,7 @@
 Contributors: supsystic.com
 Tags: share counter, social media share, social network share, social share, social share buttons, social sharing, facebook like, facebook share, like, share buttons, share links, sharebar
 Tested up to: 4.2.2
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 
 Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
@@ -53,7 +53,7 @@ Social Share solution offers you wonderful collection of multiple design buttons
 
 = To install a social sharing plugin via FTP = 
 
-1. Download the plugin
+1. Download the Social Share buttons plugin
 2. Unarchive plugin
 3. Copy the social-share-buttons-by-supsystic folder with plugin
 4. Open the ftp \wp-content\plugins\
@@ -132,6 +132,23 @@ Here you can set when to show social share buttons:
 * When user click on page
 
 == Changelog ==
+
+= 1.1.6 / 13.05.2015 =
+ * Tooltips system added for display section
+ * Social buttons layer optimized
+ * Close buttons added to animation dialogs
+ * Share Buttons and icons animation now starts on hover event
+ * Show and hide social button added to sidebar section
+ * Admin settings functional changes
+ * Admin options view changed
+ * Added tab filter
+ * Overlay buttons shadow effect added
+ * Overlay change size effect added
+ * Social Share buttons and icons animations moved to dialogs
+ * Sharing live preview for new effects
+ * Live preview for buttons size option
+
+
 
 = 1.1.5 / 07.05.2015 =
  * Added  social counters

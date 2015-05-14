@@ -14,12 +14,46 @@
                 $buttons = $container.find('a'),
                 animation = $container.attr('data-animation'),
                 iconsAnimation = $container.attr('data-icons-animation'),
+                buttonChangeSize = $container.attr('data-change-size'),
+                $navButton  = $container.find('.nav-button'),
                 animationEndEvents = 'webkitAnimationEnd mozAnimationEnd ' +
-                    'MSAnimationEnd oanimationend animationend';
+                    'MSAnimationEnd oanimationend animationend',
+                transitionHelper = {
+                    'supsystic-social-sharing-right': {
+                        'transition': 'translateX(160px)',
+                        'display': 'block'
+                    },
+                    'supsystic-social-sharing-left': {
+                        'transition': 'translateX(-160px)',
+                        'display': 'block'
+                    },
+                    'supsystic-social-sharing-top': {
+                        'transition': 'translateY(-160px)',
+                        'display': 'inline-block'
+                    },
+                    'supsystic-social-sharing-bottom': {
+                        'transition': 'translateY(160px)',
+                        'display': 'inline-block'
+                    }
+                },
+                buttonsTransition = null;
 
             var getAnimationClasses = function (animation) {
                 return 'animated ' + animation;
             };
+
+            var checkNavOrientation = function() {
+                $.each(transitionHelper, function(index, value) {
+                    if($.inArray(index, $container.attr('class').split(' ')) > -1) {
+                        $container.find('.nav-button').css({
+                            'display': value['display']
+                        });
+
+                        buttonsTransition = value['transition'];
+                    }
+                });
+            };
+
 
             if ($buttons.length) {
                 $buttons.hover(function () {
@@ -33,6 +67,32 @@
                         });
                 });
             }
+
+            if(buttonChangeSize == 'on') {
+                var buttonWidht = $buttons.width();
+
+                $buttons.filter('.sharer-flat-2').on('mouseover', function() {
+                    $(this).css('width', buttonWidht - buttonWidht/4);
+                }).on('mouseleave', function() {
+                    $(this).css('width', buttonWidht);
+                });
+            }
+
+            checkNavOrientation();
+            $navButton.on('click', function() {
+                if($(this).hasClass('hide')) {
+                    $(this).css('transform', 'rotate(180deg)')
+                        .removeClass('hide').addClass('show');
+
+                    $container.find('a').css('transform', buttonsTransition);
+                } else {
+                    $(this).css('transform', 'rotate(0deg)')
+                        .addClass('hide').removeClass('show');
+
+                    $container.find('a').css('transform', 'translateX(0)');
+                }
+            });
+
         });
 
         var onResize = function () {

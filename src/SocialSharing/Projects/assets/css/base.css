@@ -19,20 +19,24 @@
 .supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-left {
     left: 0;
     top: 50%;
+    z-index: 999;
 }
 .supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-right {
     right: 0;
     top: 50%;
+    z-index: 999;
 }
 .supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-top {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 999;
 }
 .supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-bottom {
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 999;
 }
 .supsystic-social-sharing.supsystic-social-sharing-fixed.supsystic-social-sharing-top.supsystic-social-sharing-adminbar {
     top: 35px;
@@ -46,4 +50,35 @@
 .supsystic-social-sharing .sharer-flat.animated.difuz:hover{
     width: 30px;
     transition: 800ms;
+}
+
+.supsystic-social-sharing .nav-button {
+    font-size: 16px !important;
+    line-height: 22px !important;
+    background: rgba(0, 0, 0, 0.3);
+    height: 24px;
+    width: 24px;
+    display: block;
+    cursor: pointer;
+    margin: 8px 0 0 8px !important;
+    border-radius: 12px;
+    color: #ffffff;
+    opacity: 0.0;
+    transition: 1s;
+}
+
+.supsystic-social-sharing .nav-button.show {
+    opacity: 1.0 !important;
+}
+
+.supsystic-social-sharing:hover .nav-button {
+    opacity: 1.0;
+}
+
+.supsystic-social-sharing:hover .nav-button:hover {
+    background: #000000;
+}
+
+.supsystic-social-sharing .nav-button:before {
+    content: ">";
 }

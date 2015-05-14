@@ -90,6 +90,7 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
 
         $project = $this->modelsFactory->get('projects')->get($projectId);
         $networks = $this->modelsFactory->get('networks')->all();
+        $tooltips = $this->modelsFactory->get('projects')->getTooltips();
 
         return $this->response(
             '@projects/view.twig',
@@ -101,6 +102,7 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
                 'popup_installed' => $this->getEnvironment()->getModule(
                     'popup'
                 )->isInstalled(),
+                'tooltips'        => $tooltips
             )
         );
     }

@@ -1,0 +1,41 @@
+{% macro buttonsAnimation(effects) %}
+    <div class="buttons-adnimation-dialog" title="Choose effect" hidden>
+        <div class="supsystic-social-sharing" data-overlay="{{ project.settings.overlay_with_shadow }}" style="text-align: center; padding: 40px 0; border-bottom: 1px solid rgb(200, 200, 200);">
+            {% for effect in effects %}
+                <div class="wrapper">
+                    <a data-animation="{{ effect }}" class="sharer-flat sharer-flat-1 twitter choose-effect-buttons" href="javascript:void(0);">
+                        <i class="fa fa-fw fa-twitter icon-animation-preview" data-animation="no-animation"></i>
+                        <!-- /.fa fa-fw fa-twitter -->
+                        <div class="counter-wrap">
+                            <span class="counter">preview</span>
+                            <!-- /.counter -->
+                        </div>
+                        <!-- /.counter-wrap -->
+                    </a>
+                    <!-- /.sharer-flat sharer-flat-1 -->
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro iconsAnimation(effects) %}
+    <div class="icons-adnimation-dialog" title="Choose effect" hidden>
+        <div class="supsystic-social-sharing" data-overlay="{{ project.settings.overlay_with_shadow }}" style="text-align: center; padding: 40px 0; border-bottom: 1px solid rgb(200, 200, 200);">
+            {% for effect in effects %}
+                <div class="wrapper">
+                    <a data-animation="{{ effect }}" class="sharer-flat sharer-flat-1 twitter choose-effect-icons" href="javascript:void(0);">
+                        <i class="fa fa-fw fa-twitter"></i>
+                        <!-- /.fa fa-fw fa-twitter -->
+                        <div class="counter-wrap">
+                            <span class="counter">preview</span>
+                            <!-- /.counter -->
+                        </div>
+                        <!-- /.counter-wrap -->
+                    </a>
+                    <!-- /.sharer-flat sharer-flat-1 -->
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endmacro %}

@@ -150,6 +150,15 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
             case 'delicious':
                 $classes[] = 'fa-delicious';
                 break;
+            case 'livejournal':
+                $classes[] = 'fa-pencil';
+                break;
+            case 'odnoklassniki':
+                $classes[] = 'fa-ok';
+                break;
+            case 'linkedin':
+                $classes[] = 'fa-linkedin';
+                break;
         }
 
         return $classes;

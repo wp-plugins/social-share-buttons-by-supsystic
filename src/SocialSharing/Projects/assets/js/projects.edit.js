@@ -17,7 +17,9 @@
             $previewButtons = $('.pricon'),
             $design = $('input[name="settings[design]"]'),
             $animation = $('#ba-button-animation'),
-            $iconAnimation = $('#ba-icons-animation');
+            $iconAnimation = $('#ba-icons-animation'),
+            $adminNavButtons = $('.admin-nav-button'),
+            buttonWidth = $('.sharer-flat').width();
 
         // Rename
         $('h2[contenteditable]').on('keydown', function (e) {
@@ -165,8 +167,8 @@
         });
 
         // Initialize horizontal scroll
-        scroll = new app.ScrollController('.scrollable-content', {blockWidth: 380});
-        scroll.init();
+        //scroll = new app.ScrollController('.scrollable-content', {blockWidth: 380});
+        //scroll.init();
 
         // Networks list
         $networksList = $('.networks');
@@ -337,6 +339,72 @@
                 $icon.removeClass('fa-remove').addClass('fa-check');
             }
         });
+
+        $adminNavButtons.on('click', function() {
+            var $sections = $('.scroll');
+
+            $adminNavButtons.removeClass('active');
+            $(this).addClass('active');
+
+            $sections.hide()
+                .filter('[data-navigation="' + $(this).data('block') + '"]').show();
+        });
+
+        $('[name="settings[overlay_with_shadow]"]').on('click', function() {
+            var $container = $('.supsystic-social-sharing');
+
+            if($(this).is(':checked')) {
+                $container.attr('data-overlay', 'on');
+            } else {
+                $container.attr('data-overlay', '');
+            }
+        });
+
+        $('div.supsystic-social-sharing .sharer-flat').on('mouseover', function() {
+            if($('[name="settings[change_size]"]').is(':checked')) {
+                $(this).css('width', buttonWidth - buttonWidth/4);
+            }
+        }).on('mouseleave', function() {
+            $(this).css('width', buttonWidth);
+        });
+
+        $('[name="settings[buttons_size]"]').on('change', function() {
+            $('.supsystic-social-sharing').css('font-size', $(this).val() + 'em');
+        }).trigger('change');
+
+        $('[data-navigation="design"] .sharer-flat').on('click', function() {
+            $(this).parent().find('[type="radio"]').attr('checked', true);
+        });
+
+        $('.location-tooltip').tooltipster({
+            animation: 'slide',
+            position: 'right'
+        });
+
+        $('.choose-effect-buttons').on('mouseover', function() {
+            $(this).addClass('animated ' + $(this).data('animation'));
+        });
+
+        $('.choose-effect-buttons').bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function() {
+            $(this).removeClass('animated ' + $(this).data('animation'));
+        });
+
+        $('.choose-effect-icons').on('mouseover', function() {
+            $(this).find('i').addClass('animated ' + $(this).data('animation'));
+        });
+
+        $('.choose-effect-icons').bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", function() {
+            $(this).find('i').removeClass('animated ' + $(this).data('animation'));
+        });
+
+        $('[name="settings[where_to_show]"]').on('click', function() {
+            if($(this).val() == 'sidebar') {
+                $('#wts-sidebar-nav').parent().show();
+            } else {
+                $('#wts-sidebar-nav').parent().hide();
+            }
+        });
+
     });
 
 }(window.jQuery, window.supsystic.SocialSharing));
