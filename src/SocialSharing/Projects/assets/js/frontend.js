@@ -16,6 +16,9 @@
                 iconsAnimation = $container.attr('data-icons-animation'),
                 buttonChangeSize = $container.attr('data-change-size'),
                 $navButton  = $container.find('.nav-button'),
+                $printButton = $container.find('.print'),
+                $bookmarkButton = $container.find('.bookmark'),
+                $mailButton = $container.find('.mail'),
                 animationEndEvents = 'webkitAnimationEnd mozAnimationEnd ' +
                     'MSAnimationEnd oanimationend animationend',
                 transitionHelper = {
@@ -54,6 +57,18 @@
                 });
             };
 
+            var initNetworksPopup = function() {
+                var $networksContainer = $('.networks-list-container'),
+                    $button = $('.list-button');
+
+                $button.on('click', function() {
+                    $networksContainer.removeClass('hidden')
+                        .bPopup({
+                            position: [100, 'auto']
+                        });
+                });
+            };
+
 
             if ($buttons.length) {
                 $buttons.hover(function () {
@@ -71,7 +86,7 @@
             if(buttonChangeSize == 'on') {
                 var buttonWidht = $buttons.width();
 
-                $buttons.filter('.sharer-flat-2').on('mouseover', function() {
+                $buttons.filter('.sharer-flat-2, .sharer-flat-4').on('mouseover', function() {
                     $(this).css('width', buttonWidht - buttonWidht/4);
                 }).on('mouseleave', function() {
                     $(this).css('width', buttonWidht);
@@ -81,16 +96,38 @@
             checkNavOrientation();
             $navButton.on('click', function() {
                 if($(this).hasClass('hide')) {
-                    $(this).css('transform', 'rotate(180deg)')
-                        .removeClass('hide').addClass('show');
+                    $(this).removeClass('hide').addClass('show');
 
                     $container.find('a').css('transform', buttonsTransition);
                 } else {
-                    $(this).css('transform', 'rotate(0deg)')
-                        .addClass('hide').removeClass('show');
+                    $(this).addClass('hide').removeClass('show');
 
                     $container.find('a').css('transform', 'translateX(0)');
                 }
+            });
+
+            initNetworksPopup();
+
+            $printButton.on('click', function() {
+                window.print();
+            });
+
+            $bookmarkButton.on('click', function() {
+                if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
+                    window.sidebar.addPanel(document.title,window.location.href,'');
+                } else if(window.external && ('AddFavorite' in window.external)) { // IE Favorite
+                    window.external.AddFavorite(location.href,document.title);
+                } else if(window.opera && window.print) { // Opera Hotlist
+                    this.title=document.title;
+                    return true;
+                } else { // webkit - safari/chrome
+                    alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+                }
+            });
+
+            $mailButton.on('click', function() {
+                var url = '<a href="' + window.location.href + '">' + document.title + '</a>';
+                window.open('mailto:adresse@example.com?subject=' + document.title + '&body=' + url);
             });
 
         });

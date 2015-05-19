@@ -66,6 +66,15 @@
     left: 3.5%;
     top: 3.5%;
 }
+.supsystic-social-sharing .sharer-flat.sharer-flat-5 {
+    -webkit-border-top-left-radius: 50%;
+    -webkit-border-bottom-right-radius: 50%;
+    -moz-border-radius-topleft: 50%;
+    -moz-border-radius-bottomright: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    overflow: hidden;
+}
 .supsystic-social-sharing .sharer-flat.sharer-flat-3 .counter-wrap {
     left: 0;
     right: 0;
@@ -77,6 +86,22 @@
     top: 0.75em;
     /*top: 1em;*/
     z-index: 1001;
+}
+.supsystic-social-sharing[data-buttons-size="1"] .sharer-flat .fa-fw:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: -80px;
+    left: -29%;
+    right: -80px;
+    background: rgba(0,0,0,.1);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -o-transition: background .8s linear;
+    -moz-transition: background .8s linear;
+    -webkit-transition: background .8s linear;
+    transition: background .8s linear;
 }
 .supsystic-social-sharing .sharer-flat .counter-wrap {
     position: absolute;
@@ -112,7 +137,6 @@
 }
 .supsystic-social-sharing .sharer-flat.livejournal {
     background-color: rgb(43, 87, 128);
-rgb(18, 123, 182);
 }
 .supsystic-social-sharing .sharer-flat.livejournal:hover {
     background-color: rgb(38, 78, 114);
@@ -242,4 +266,31 @@ rgb(18, 123, 182);
 }
 .supsystic-social-sharing .sharer-flat-4.delicious:hover {
     color: #3399ff;
+}
+.supsystic-social-sharing .sharer-flat.print {
+    background-color: rgb(18, 36, 53);
+}
+.supsystic-social-sharing .sharer-flat.print:hover {
+    background-color: rgb(15, 20, 34);
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.print:hover {
+    background-color: rgb(0, 0, 0);
+}
+.supsystic-social-sharing .sharer-flat.bookmark {
+    background-color: #ef7053;
+}
+.supsystic-social-sharing .sharer-flat.bookmark:hover {
+    background-color: #af5841;
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.bookmark:hover {
+    background-color: #371b17;
+}
+.supsystic-social-sharing .sharer-flat.mail {
+    background-color: #ed4926;
+}
+.supsystic-social-sharing .sharer-flat.mail:hover {
+    background-color: #ae351e;
+}
+.supsystic-social-sharing[data-overlay="on"] .sharer-flat.mail:hover {
+    background-color: #47140e;
 }

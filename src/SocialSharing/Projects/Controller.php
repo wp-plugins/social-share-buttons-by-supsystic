@@ -65,7 +65,7 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
             } else {
                 $hasPopup = $popup->call('getModule', array('popup'))
                     ->getModel()
-                    ->getById($settings['popup_id']);
+                    ->getById((int)$settings['popup_id']);
 
                 if (!$hasPopup) {
                     $settings['popup_id'] = 0;

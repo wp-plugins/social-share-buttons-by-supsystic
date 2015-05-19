@@ -62,6 +62,10 @@ abstract class SocialSharing_Projects_Sharer
         return $this->builder;
     }
 
+    public function getEnvironment() {
+        return $this->environment;
+    }
+
     /**
      * Returns Dispatcher.
      * @return Rsc_Dispatcher
@@ -179,6 +183,10 @@ abstract class SocialSharing_Projects_Sharer
                     $this->getProject()->get('change_size', false)
                 ),
                 $this->getBuilder()->createAttribute(
+                    'data-buttons-size',
+                    $this->getProject()->get('buttons_size', 'normal')
+                ),
+                $this->getBuilder()->createAttribute(
                     'style',
                     sprintf(
                         'font-size: %sem; display: none;',
@@ -195,15 +203,41 @@ abstract class SocialSharing_Projects_Sharer
         }
 
         $settings = $this->project->getSettings();
+        $listClasses = array();
+        $buttons = $this->buildButtons('all', $listClasses);
+
+        if($settings['show_more'] == 'on') {
+            $this->showMore($container, $buttons, $listClasses);
+        }
 
         foreach($classes as $class) {
             if(in_array($class, $sidebarClasses) && $settings['sidebar_navigation'] == 'on') {
-                $navButton = $this->getBuilder()->createElement('div', array($this->getBuilder()->createAttribute('class', 'nav-button hide')));
+                $navButton = $this->getBuilder()->createElement('div', array($this->getBuilder()->createAttribute('class', 'nav-button hide ' . $settings['where_to_show_extra'])));
                 $container->addElement($navButton);
             }
         }
 
         return $container->build();
+    }
+
+    protected function showMore($container, $buttons, $listClasses) {
+        $networksList = $this->getBuilder()->createElement('div',
+            array($this->getBuilder()->createAttribute('class', 'networks-list-container supsystic-social-sharing hidden'))
+        );
+
+        if (count($buttons) > 0) {
+            foreach ($buttons as $button) {
+                $networksList->addElement($button);
+            }
+        }
+
+        $listButtonClasses = 'list-button ' . implode(' ', $listClasses);
+        $listButton = $this->getBuilder()->createElement('div', array(
+            $this->getBuilder()->createAttribute('class', $listButtonClasses))
+        );
+
+        $container->addElement($networksList);
+        $container->addElement($listButton);
     }
 
     protected function filter($hook, $method)

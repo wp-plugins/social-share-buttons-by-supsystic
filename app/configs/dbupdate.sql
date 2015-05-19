@@ -1,3 +1,6 @@
 INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (11, 'Livejournal', 'http://www.livejournal.com/update.bml?subject={title}&event={url}', 'livejournal', '#3399ff', '#ffffff', 0);
 INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (12, 'Odnoklassniki', 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st.comments={title}&st._surl={url}', 'odnoklassniki', '#3399ff', '#ffffff', 0);
 INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (13, 'Linkedin', 'https://www.linkedin.com/shareArticle?mini=true&title={title}&url{url}', 'linkedin', '#3399ff', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (14, 'Print', '#', 'print', '#3399ff', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (15, 'Add Bookmark', '#', 'bookmark', '#3399ff', '#ffffff', 0);
+INSERT INTO `%prefix%networks` (`id`, `name`, `url`, `class`, `brand_primary`, `brand_secondary`, `total_shares`) VALUES (16, 'Mail', '#', 'mail', '#3399ff', '#ffffff', 0);

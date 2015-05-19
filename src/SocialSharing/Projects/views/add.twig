@@ -63,6 +63,8 @@
                                             <input name="networks[]"
                                                    value="{{ network.id }}"
                                                    type="hidden"/>
+
+                                            {#<input type="text" name="networksTooltip" style="float: right; width: 200px;"/>#}
                                         </div>
                                         <!-- /#network{{ network.id }}.network -->
                                     {% endif %}
@@ -162,6 +164,23 @@
                                             <!-- /.counter-wrap -->
                                         </a>
                                         <!-- /.sharer-flat sharer-flat-3 twitter -->
+                                    </th>
+                                    <th scope="row"><input type="radio"
+                                                           name="settings[design]"
+                                                           value="flat-5"
+                                                           {% if project.settings.design | default('flat-1') == 'flat-5' %}checked="checked"{% endif %}
+                                                           id="flat-4"/>
+                                        <!-- /#flat-1 --><a
+                                                class="pricon sharer-flat sharer-flat-5 twitter {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
+                                                href="javascript:void(0);"><i
+                                                    class="fa fa-fw fa-twitter"></i>
+                                            <!-- /.fa fa-fw fa-twitter -->
+                                            <div class="counter-wrap"><span
+                                                        class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
+                                                <!-- /.counter --></div>
+                                            <!-- /.counter-wrap -->
+                                        </a>
+                                        <!-- /.sharer-flat sharer-flat-1 twitter -->
                                     </th>
                                 </tr>
                                 </tbody>
@@ -493,6 +512,13 @@
                                        {% if project.settings.sidebar_navigation == 'on' %}checked{% endif %}/>
                                 {{ environment.translate('Show navigation button') }}
                             </label>
+                            <div title="Show all networks" style="margin-top: 10px;">
+                                <input type="checkbox"
+                                       id="wts-show-more"
+                                       name="settings[show_more]"
+                                       {% if project.settings.show_more == 'on' %}checked{% endif %}/>
+                                {{ environment.translate('Add button to show all networks') }}
+                            </div>
                         </div>
                         <!-- /.scroll -->
 

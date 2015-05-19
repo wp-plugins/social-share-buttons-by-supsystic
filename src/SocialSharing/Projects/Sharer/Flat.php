@@ -8,7 +8,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
      * Builds the networks buttons.
      * @return string
      */
-    protected function buildButtons()
+    protected function buildButtons($networks = null, &$classes = array())
     {
         // Current post
         $current = $this->isHome() ? null : get_post();
@@ -27,7 +27,9 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
             $shortNumbers = true;
         }
 
-        foreach ($this->getProject()->getNetworks() as $network) {
+        $networks = $networks ? $this->getEnvironment()->getModule('networks')->getController()->getModelsFactory()->get('networks')->all() : $this->getProject()->getNetworks();
+
+        foreach ($networks as $network) {
             $finalClasses = array_merge($classes, array($network->class));
             $totalShares = $shortNumbers ? $this->humanizeTotalShares($network->shares) : $network->shares;
 
@@ -158,6 +160,15 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                 break;
             case 'linkedin':
                 $classes[] = 'fa-linkedin';
+                break;
+            case 'print':
+                $classes[] = 'fa-print';
+                break;
+            case 'bookmark':
+                $classes[] = 'fa-plus';
+                break;
+            case 'mail':
+                $classes[] = 'fa-comment';
                 break;
         }
 

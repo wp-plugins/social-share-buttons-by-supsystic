@@ -3,7 +3,7 @@
     $(document).ready(function () {
 
         var scroll,
-            $networksList,
+            $networksList = $('.networks'),
             $networksDialog,
             $networksDialogTrigger,
             $wtsList = $('.where-to-show'),
@@ -134,13 +134,34 @@
                 $('#nonetworks').hide();
             }
 
+            var networksPositions = [];
+
+            $networksList.find('.network').each(function(index) {
+                networksPositions.push({
+                    'network': $(this).find('[name="networks[]"]').val(),
+                    'position': index
+                });
+            });
+
             $.post(
                 $('form#networks').attr('action'),
                 $('form#networks').serialize()
-            ).done(function () {$.post($('form#settings').attr('action'), $('form#settings').serialize()).done(function (r) {
-                    $(e.currentTarget).html(oldHtml);
-                    if ('popup_id' in r) $('input[name="settings[popup_id]"]').val(r.popup_id);
-                }) });
+            ).done(function () {
+                    $.post($('form#networks').attr('action'), {
+                        'action': 'social-sharing',
+                        'route': {
+                            'module': 'networks',
+                            'action': 'updateSorting'
+                        },
+                        'project_id': 1,
+                        'positions': networksPositions
+                    }).done(function(response) {
+                        $.post($('form#settings').attr('action'), $('form#settings').serialize()).done(function (r) {
+                            $(e.currentTarget).html(oldHtml);
+                            if ('popup_id' in r) $('input[name="settings[popup_id]"]').val(r.popup_id);
+                        })
+                    });
+                });
         });
 
         // Extra "Where to show" fields
@@ -171,7 +192,6 @@
         //scroll.init();
 
         // Networks list
-        $networksList = $('.networks');
         $networksList.find('.network > .delete').bind('click', onRemoveNetwork);
         $networksList.sortable({
             sort: function (e, ui) {
