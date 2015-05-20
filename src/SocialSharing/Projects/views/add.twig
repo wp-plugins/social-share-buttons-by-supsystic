@@ -502,6 +502,7 @@
                                     </label>
                                     <div id="wts-shortcode" style="margin-top: 10px; {% if project.settings.where_to_show == 'code' %}display: block; {% else %}display: none;{% endif %}">
                                         <code>[supsystic-social-sharing id="{{ project.id }}"]</code>
+                                        <code style="font-size: 10px; display: block; margin-top: 10px;">{{ "<?php echo do_shortcode('[supsystic-social-sharing id=\"" ~ project.id ~ "\"]') ?>" }}</code>
                                     </div>
                                 </li>
                             </ul>

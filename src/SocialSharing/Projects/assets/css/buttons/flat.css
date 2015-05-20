@@ -87,7 +87,7 @@
     /*top: 1em;*/
     z-index: 1001;
 }
-.supsystic-social-sharing[data-buttons-size="1"] .sharer-flat .fa-fw:after {
+.supsystic-social-sharing[data-buttons-size="1"] .sharer-flat.sharer-flat-5 .fa-fw:after {
     content: "";
     position: absolute;
     top: 0;
@@ -144,6 +144,9 @@
 .supsystic-social-sharing[data-overlay="on"] .sharer-flat.livejournal:hover {
     background-color: rgb(18, 36, 53);
 }
+.supsystic-social-sharing .sharer-flat-4.livejournal:hover {
+    color: #55acee;
+}
 .supsystic-social-sharing .sharer-flat.odnoklassniki {
     background-color: rgb(255, 163, 0);
 }
@@ -153,8 +156,16 @@
 .supsystic-social-sharing[data-overlay="on"] .sharer-flat.odnoklassniki:hover {
     background-color: rgb(116, 71, 0);
 }
+.supsystic-social-sharing .sharer-flat-4.odnoklassniki:hover {
+    color: rgb(206, 130, 0);
+}
 .supsystic-social-sharing .sharer-flat .fa-ok:before {
     content: "OK";
+    font-size: 10px;
+    font-weight: normal !important;
+}
+.supsystic-social-sharing[data-buttons-size="0.5"] .sharer-flat .fa-ok:before {
+    font-size: 7px !important;
 }
 .supsystic-social-sharing .sharer-flat.linkedin {
     background-color: rgb(18, 123, 182);
@@ -164,6 +175,9 @@
 }
 .supsystic-social-sharing[data-overlay="on"] .sharer-flat.linkedin:hover {
     background-color: rgb(17, 111, 165);
+}
+.supsystic-social-sharing .sharer-flat-4.linkedin:hover {
+    color: #55acee;
 }
 .supsystic-social-sharing .sharer-flat.facebook {
     background-color: #4c70ba;
@@ -276,6 +290,9 @@
 .supsystic-social-sharing[data-overlay="on"] .sharer-flat.print:hover {
     background-color: rgb(0, 0, 0);
 }
+.supsystic-social-sharing .sharer-flat-4.print:hover {
+    color: rgb(15, 20, 34);
+}
 .supsystic-social-sharing .sharer-flat.bookmark {
     background-color: #ef7053;
 }
@@ -285,6 +302,9 @@
 .supsystic-social-sharing[data-overlay="on"] .sharer-flat.bookmark:hover {
     background-color: #371b17;
 }
+.supsystic-social-sharing .sharer-flat-4.bookmark:hover {
+    color: #af5841;
+}
 .supsystic-social-sharing .sharer-flat.mail {
     background-color: #ed4926;
 }
@@ -293,4 +313,7 @@
 }
 .supsystic-social-sharing[data-overlay="on"] .sharer-flat.mail:hover {
     background-color: #47140e;
+}
+.supsystic-social-sharing .sharer-flat-4.mail:hover {
+    color: #ae351e;
 }

@@ -113,7 +113,7 @@
             var type = $design.filter(':checked').val(),
                 $preview = $('.animation-preview');
 
-            $preview.removeClass('sharer-flat-1 sharer-flat-2 sharer-flat-3 sharer-flat-4');
+            $preview.removeClass('sharer-flat-1 sharer-flat-2 sharer-flat-3 sharer-flat-4 sharer-flat-5');
             $preview.addClass('sharer-'+type);
         });
 
@@ -153,7 +153,7 @@
                             'module': 'networks',
                             'action': 'updateSorting'
                         },
-                        'project_id': 1,
+                        'project_id': parseInt($('#networks [name="project_id"]').val()),
                         'positions': networksPositions
                     }).done(function(response) {
                         $.post($('form#settings').attr('action'), $('form#settings').serialize()).done(function (r) {
