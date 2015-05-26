@@ -140,8 +140,10 @@ abstract class SocialSharing_Projects_Sharer
 
         $sidebarClasses = array('supsystic-social-sharing-right', 'supsystic-social-sharing-left', 'supsystic-social-sharing-top', 'supsystic-social-sharing-bottom');
 
+
         if ((!array_key_exists('action', $_GET) || $_GET['action'] !== 'getPreviewHtml') && $this->project->isShowOnPosts()) {
             $current = get_post();
+
 
             if ($current === null) {
                 return '';

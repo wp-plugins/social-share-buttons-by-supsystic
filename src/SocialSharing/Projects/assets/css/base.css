@@ -142,3 +142,14 @@
 .supsystic-social-sharing .list-button:before {
     content: "...";
 }
+
+.supsystic-container .networks-tooltip {
+    float: right;
+    width: 200px;
+    height: 24px;
+}
+
+.supsystic-social-sharing.chage-size .sharer-flat-2:hover,
+.supsystic-social-sharing.chage-size .sharer-flat-4:hover {
+    width: calc(100% - 25%);
+}

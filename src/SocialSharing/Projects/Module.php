@@ -46,11 +46,36 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
             ->setHookName('wp_enqueue_scripts')
         );
 
+        $ui->addAsset(
+            $ui->create('style', 'sss-tooltipster-main')
+                ->setModuleSource($this, 'css/tooltipster.css')
+                ->setHookName($hookName)
+        );
+
+        $ui->addAsset(
+            $ui->create('style', 'sss-tooltipster-main')
+                ->setModuleSource($this, 'css/tooltipster.css')
+                ->setHookName('wp_enqueue_scripts')
+        );
+
+        $ui->addAsset(
+            $ui->create('style', 'sss-tooltipster-shadow')
+                ->setModuleSource($this, 'css/tooltipster-shadow.css')
+                ->setHookName('wp_enqueue_scripts')
+        );
+
         $ui->addAsset($ui->create('script', 'jquery'));
 
         $ui->addAsset(
             $ui->create('script', 'sss-frontend')
                 ->setModuleSource($this, 'js/frontend.js')
+                ->setHookName('wp_enqueue_scripts')
+                ->addDependency('jquery')
+        );
+
+        $ui->addAsset(
+            $ui->create('script', 'sss-tooltipster-scripts')
+                ->setModuleSource($this, 'js/jquery.tooltipster.min.js')
                 ->setHookName('wp_enqueue_scripts')
                 ->addDependency('jquery')
         );
@@ -126,6 +151,15 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
             );
 
             $ui->addAsset(
+                $ui->create('script', 'sss-tooltipster-scripts')
+                    ->setModuleSource($this, 'js/jquery.tooltipster.min.js')
+                    ->setHookName($hookName)
+                    ->setVersion($version)
+                    ->addDependency('jquery-ui-dialog')
+                    ->addDependency('jquery-ui-sortable')
+            );
+
+            $ui->addAsset(
                 $ui->create('script', 'sss-settings-dialogs')
                     ->setModuleSource($this, 'js/dialogs.js')
                     ->setHookName($hookName)
@@ -161,7 +195,8 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
             $this->getEnvironment()
         );
 
-        if ($project->isShowAtShortcode() || $project->isShowAt('popup')) {
+        if (($project->isShowAtShortcode() || $project->isShowAt('popup')) && is_single()) {
+
             return $sharer->build();
         }
 

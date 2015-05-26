@@ -18,6 +18,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         $buttons = array();
         // Use short numbers or not
         $shortNumbers = false;
+        $savedData = get_option('networks_tooltips_' . $this->getProject()->getId());
 
         if (!$this->getProject()->isDisplayTotalShares()) {
             $classes[] = 'without-counter';
@@ -32,6 +33,10 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         foreach ($networks as $network) {
             $finalClasses = array_merge($classes, array($network->class));
             $totalShares = $shortNumbers ? $this->humanizeTotalShares($network->shares) : $network->shares;
+
+            if(isset($savedData[$network->id]) && $savedData[$network->id]) {
+                array_push($finalClasses, 'tooltip');
+            }
 
             $button = $this->getBuilder()
                 ->createElement(
@@ -60,6 +65,10 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                         $this->getBuilder()->createAttribute(
                             'data-post-id',
                             $current ? $current->ID : null
+                        ),
+                        $this->getBuilder()->createAttribute(
+                            'title',
+                            $savedData[$network->id] ? $savedData[$network->id] : null
                         ),
                         $this->getBuilder()->createAttribute(
                             'data-url',

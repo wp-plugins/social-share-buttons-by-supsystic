@@ -49,6 +49,20 @@ class SocialSharing_Networks_Controller extends SocialSharing_Core_BaseControlle
         return $this->response(Rsc_Http_Response::AJAX, array('ty' => 'np'));
     }
 
+    public function saveTooltipsAction(Rsc_Http_Request $request) {
+        $projectId = $request->post->get('project_id');
+        $data = $request->post->get('data');
+
+        if(!$savedData = get_option('networks_tooltips_' . $projectId)) {
+            update_option('networks_tooltips_' . $projectId, array($data['id'] => $data['value']));
+        } else {
+            $savedData[$data['id']] = $data['value'];
+            update_option('networks_tooltips_' . $projectId, $savedData);
+        }
+
+        return $this->ajaxSuccess();
+    }
+
     public function updateSortingAction(Rsc_Http_Request $request)
     {
         $projectId = $request->post->get('project_id');

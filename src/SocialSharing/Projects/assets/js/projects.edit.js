@@ -15,6 +15,7 @@
             $sharesRadios = $('input[name="settings[shares]"]'),
             $shortNumbers = $('input[name="settings[short_numbers]"]'),
             $previewButtons = $('.pricon'),
+            $preview = $('.supsystic-social-sharing'),
             $design = $('input[name="settings[design]"]'),
             $animation = $('#ba-button-animation'),
             $iconAnimation = $('#ba-icons-animation'),
@@ -260,7 +261,8 @@
                             $networkContainer = $('<div/>', {
                                 class: 'network',
                                 id: 'network' + network.id
-                            });
+                            }),
+                            $tooltipVal = $('<input>', { type: 'text', id: network.id, name: 'networksTooltip', class: 'networks-tooltip'});
 
                         $networkContainer.append(
                             $('<a/>', { class: 'delete', href: '#' })
@@ -272,10 +274,15 @@
                         ).append(
                             $('<input>', { type: 'hidden', name: 'networks[]' })
                                 .val(network.id)
+                        ).append(
+                            $tooltipVal
                         );
 
                         if (!$networksList.has('#network' + network.id).length) {
                             $networksList.append($networkContainer);
+                            $tooltipVal.bind('focusout', function() {
+                                saveTooltip($(this));
+                            });
                         }
                     });
 
@@ -385,7 +392,9 @@
                 $(this).css('width', buttonWidth - buttonWidth/4);
             }
         }).on('mouseleave', function() {
-            $(this).css('width', buttonWidth);
+            if($('[name="settings[change_size]"]').is(':checked')) {
+                $(this).css('width', buttonWidth);
+            }
         });
 
         $('[name="settings[buttons_size]"]').on('change', function() {
@@ -422,6 +431,35 @@
                 $('#wts-sidebar-nav').parent().show();
             } else {
                 $('#wts-sidebar-nav').parent().hide();
+            }
+        });
+
+        var saveTooltip = function($element) {
+            var networkId = $element.attr('id'),
+                tooltip = $element.val();
+
+            $.post($('form#networks').attr('action'), {
+                'action': 'social-sharing',
+                'route': {
+                    'module': 'networks',
+                    'action': 'saveTooltips'
+                },
+                'project_id': parseInt($('#networks [name="project_id"]').val()),
+                'data': { 'id': networkId, 'value': tooltip }
+            }).done(function(response) {
+                console.log(response);
+            });
+        };
+
+        $('[name="networksTooltip"]').on('focusout', function() {
+            saveTooltip($(this));
+        });
+
+        $('[name="settings[display_total_shares]"]').on('change', function() {
+            if(this.checked) {
+                $preview.find('.counter-wrap').show();
+            } else {
+                $preview.find('.counter-wrap').hide();
             }
         });
 

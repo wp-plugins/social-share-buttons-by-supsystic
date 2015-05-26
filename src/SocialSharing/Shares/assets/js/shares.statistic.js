@@ -102,7 +102,7 @@
                     row.append($('<td/>').text('-'));
                     row.append($('<td/>').html(
                         $('<a/>', { href: window.location.origin, target: '_blank' }).text('Index page')
-                    ));;
+                    ));
                     row.append($('<td/>').text('-'));
                 } else {
                     row.append($('<td/>').text(data.post_id));

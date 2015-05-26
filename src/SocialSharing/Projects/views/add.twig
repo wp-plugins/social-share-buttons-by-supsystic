@@ -64,7 +64,7 @@
                                                    value="{{ network.id }}"
                                                    type="hidden"/>
 
-                                            {#<input type="text" name="networksTooltip" style="float: right; width: 200px;"/>#}
+                                            <input type="text" id="{{ network.id }}" class="networks-tooltip" name="networksTooltip" value="{{ networkTooltips[network.id] }}"/>
                                         </div>
                                         <!-- /#network{{ network.id }}.network -->
                                     {% endif %}
@@ -278,8 +278,8 @@
                                 <a data-animation="{{ project.settings.animation | default('no-animation') }}" class="sharer-flat sharer-{{ project.settings.design | default('flat-1') }} twitter {{ project.settings.animation | default('no-animation') }} animation-preview" href="javascript:void(0);">
                                     <i class="fa fa-fw fa-twitter icon-animation-preview" data-animation="no-animation"></i>
                                     <!-- /.fa fa-fw fa-twitter -->
-                                    <div class="counter-wrap">
-                                        <span class="counter">preview</span>
+                                    <div class="counter-wrap" {% if project.settings.display_total_shares is not defined or project.settings.display_total_shares == 'false' %}hidden{% endif %}>
+                                        <span class="counter">5731</span>
                                         <!-- /.counter -->
                                     </div>
                                     <!-- /.counter-wrap -->

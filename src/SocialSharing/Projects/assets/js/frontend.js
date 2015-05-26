@@ -84,13 +84,7 @@
             }
 
             if(buttonChangeSize == 'on') {
-                var buttonWidht = $buttons.width();
-
-                $buttons.filter('.sharer-flat-2, .sharer-flat-4').on('mouseover', function() {
-                    $(this).css('width', buttonWidht - buttonWidht/4);
-                }).on('mouseleave', function() {
-                    $(this).css('width', buttonWidht);
-                });
+                $container.addClass('chage-size');
             }
 
             checkNavOrientation();
@@ -130,6 +124,11 @@
                 window.open('mailto:adresse@example.com?subject=' + document.title + '&body=' + url);
             });
 
+            $('a.tooltip').tooltipster({
+                animation: 'swing',
+                position: 'bottom',
+                theme: 'tooltipster-shadow'
+            });
         });
 
         var onResize = function () {
