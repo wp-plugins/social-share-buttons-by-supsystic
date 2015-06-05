@@ -2,7 +2,7 @@
 Contributors: supsystic.com
 Tags: share counter, social media share, social network share, social share, social share buttons, social sharing, facebook like, facebook share, like, share buttons, share links, sharebar
 Tested up to: 4.2.2
-Stable tag: 1.1.9
+Stable tag: 1.2.0
 License: GPLv2 or later
 
 Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
@@ -151,6 +151,19 @@ Here you can set when to show social share buttons:
 
 
 == Changelog ==
+
+= 1.2.0 / 05.06.2015 =
+ * Buttons tooltips fixed system added
+ * Change size effect fixed, buttons size live fix, warnings fixed
+ * Show all button transition added, changes in checkboxes and radio buttons focus effects
+ * List buttons shares fixed
+ * Fixes for popup view
+ * Settings layout change, stats moved to tab, new cbox and radio styles with iCheck
+ * Activation fixed, admin menu changes
+ * New shortcode styles
+ * Multiple post fix, networks style fixed, custom tooltips added for all buttons, preview fixed
+ * Functional fixes
+ * Minor changes
 
 = 1.1.9 / 26.05.2015 =
  * Preview section changed

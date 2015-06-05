@@ -64,7 +64,7 @@
                                                    value="{{ network.id }}"
                                                    type="hidden"/>
 
-                                            <input type="text" id="{{ network.id }}" class="networks-tooltip" name="networksTooltip" value="{{ networkTooltips[network.id] }}"/>
+                                            <input type="text" id="{{ network.id }}" class="networks-tooltip" name="networksTooltip" value="{{ networkTooltips[network.id] }}" style="padding: 0px 5px;"/>
                                         </div>
                                         <!-- /#network{{ network.id }}.network -->
                                     {% endif %}
@@ -91,10 +91,10 @@
                         <input name="route[action]" type="hidden" value="save"/>
                         <input name="settings[popup_id]" value="{{ project.settings.popup_id | default(0) }}" type="hidden"/>
 
-                        <div class="scroll" data-navigation="design" style="border-right: 1px solid rgb(200, 200, 200);" hidden>
+                        <div class="scroll" data-navigation="design" hidden>
                             <h2>{{ environment.translate('Buttons Design') }}</h2>
 
-                            <table class="form-table form">
+                            <table class="form-table form" style="float: left; width: 50%;">
                                 <tbody>
                                 <tr class="supsystic-social-sharing">
                                     <th scope="row"><input type="radio"
@@ -183,16 +183,91 @@
                                         <!-- /.sharer-flat sharer-flat-1 twitter -->
                                     </th>
                                 </tr>
+                                {% if environment.isPro() is not defined or environment.isPro() != 'true' %}
+                                    <h3 style="display: inline-block;">{{ environment.translate('Get PRO to enable additional buttons') }}</h3>
+                                {% else %}
+                                <tr class="supsystic-social-sharing">
+                                    <th scope="row"><input type="radio"
+                                                           name="settings[design]"
+                                                           value="flat-6"
+                                                           {% if project.settings.design | default('flat-1') == 'flat-6' %}checked="checked"{% endif %}
+                                                           id="flat-6"/>
+                                        <!-- /#flat-1 --><a
+                                                class="pricon sharer-flat sharer-flat-6 twitter {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
+                                                href="javascript:void(0);"><i
+                                                    class="fa fa-fw fa-twitter" style="margin-left: 20%;"></i>
+                                            <!-- /.fa fa-fw fa-twitter -->
+                                            <div class="counter-wrap"><span
+                                                        class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
+                                                <!-- /.counter --></div>
+                                            <!-- /.counter-wrap -->
+                                        </a>
+                                        <!-- /.sharer-flat sharer-flat-1 twitter -->
+                                    </th>
+                                    <th scope="row"><input type="radio"
+                                                           name="settings[design]"
+                                                           value="flat-7"
+                                                           {% if project.settings.design | default('flat-1') == 'flat-7' %}checked="checked"{% endif %}
+                                                           id="flat-7"/>
+                                        <!-- /#flat-1 --><a
+                                                class="pricon sharer-flat sharer-flat-7 twitter {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
+                                                href="javascript:void(0);"><i
+                                                    class="fa fa-fw fa-twitter" style="margin-left: 20%;"></i>
+                                            <!-- /.fa fa-fw fa-twitter -->
+                                            <div class="counter-wrap"><span
+                                                        class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
+                                                <!-- /.counter --></div>
+                                            <!-- /.counter-wrap -->
+                                        </a>
+                                        <!-- /.sharer-flat sharer-flat-1 twitter -->
+                                    </th>
+                                    <th scope="row"><input type="radio"
+                                                           name="settings[design]"
+                                                           value="flat-8"
+                                                           {% if project.settings.design | default('flat-1') == 'flat-8' %}checked="checked"{% endif %}
+                                                           id="flat-8"/>
+                                        <!-- /#flat-1 --><a
+                                                class="pricon sharer-flat sharer-flat-8 twitter {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
+                                                href="javascript:void(0);"><i
+                                                    class="fa fa-fw fa-twitter" style="margin-left: 20%;">Twitter</i>
+                                            <!-- /.fa fa-fw fa-twitter -->
+                                            <div class="counter-wrap"><span
+                                                        class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
+                                                <!-- /.counter --></div>
+                                            <!-- /.counter-wrap -->
+                                        </a>
+                                        <!-- /.sharer-flat sharer-flat-1 twitter -->
+                                    </th>
+                                    <th scope="row"><input type="radio"
+                                                           name="settings[design]"
+                                                           value="flat-9"
+                                                           {% if project.settings.design | default('flat-1') == 'flat-9' %}checked="checked"{% endif %}
+                                                           id="flat-9"/>
+                                        <!-- /#flat-1 --><a
+                                                class="pricon sharer-flat sharer-flat-9 twitter {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
+                                                href="javascript:void(0);"><i
+                                                    class="fa fa-fw fa-twitter" style="margin-left: 20%;">Twitter</i>
+                                            <!-- /.fa fa-fw fa-twitter -->
+                                            <div class="counter-wrap"><span
+                                                        class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
+                                                <!-- /.counter --></div>
+                                            <!-- /.counter-wrap -->
+                                        </a>
+                                        <!-- /.sharer-flat sharer-flat-1 twitter -->
+                                    </th>
+                                </tr>
+                                {% endif %}
                                 </tbody>
                             </table>
                             <!-- /.form-table form -->
 
-                            <table class="form-table form">
+                            <table class="form-table form" style="display: inline-block; width: 50%;">
                                 <tbody>
                                 <tr>
                                     <th scope="row">
-                                        <label for="bd-spacing">
-                                            {{ environment.translate('Add button spacing') }}
+                                        <label for="bd-spacing" data-toggle="tooltip" data-original-title="{{ environment.translate('Adds space between the buttons.') }}">
+                                            {{ environment.translate('Add button spac/ing') }}
+		                                    <i class="fa fa-question location-tooltip" title="{{ tooltips['spacing-tooltip'] }}"></i>
                                         </label>
                                     </th>
                                     <td>
@@ -205,8 +280,9 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        <label for="bd-buttons-size">
+                                        <label for="bd-buttons-size" data-toggle="tooltip" data-original-title="{{ environment.translate('Choose the size for social buttons. This option allows you to accent the attention for as much as you want it.') }}">
                                             {{ environment.translate('Buttons size') }}
+											<i class="fa fa-question location-tooltip" title="{{ tooltips['buttons-size'] }}"></i>
                                         </label>
                                     </th>
                                     <td>
@@ -221,8 +297,9 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        <label for="bd-display-total-shares">
+                                        <label for="bd-display-total-shares" data-toggle="tooltip" data-original-title="{{ environment.translate('Displays counters of social shares on buttons.') }}">
                                             {{ environment.translate('Display counters') }}
+											<i class="fa fa-question location-tooltip" title="{{ tooltips['display-counters'] }}"></i>
                                         </label>
                                     </th>
                                     <td>
@@ -235,7 +312,7 @@
 
                                 <tr>
                                     <th scope="row">
-                                        <label for="bd-counter-type">
+                                        <label for="bd-counter-type" data-toggle="tooltip" data-original-title="{{ environment.translate('Choose from what exactly to count the shares – the all projects, the entire project, the each page.') }}">
                                             {{ environment.translate('Show numbers from') }}
                                         </label>
                                     </th>
@@ -252,8 +329,9 @@
 
                                 <tr>
                                     <th scope="row">
-                                        <label for="bd-use-short-numbers">
+                                        <label for="bd-use-short-numbers" data-toggle="tooltip" data-original-title="{{ environment.translate('Rounds up big numbers of counters and displays the short numbers. Available only with enabled "Display counters" option.') }}">
                                             {{ environment.translate('Use short numbers') }}
+											<i class="fa fa-question location-tooltip" title="{{ tooltips['use-short-numbers'] }}"></i>
                                         </label>
                                     </th>
                                     <td>
@@ -268,10 +346,24 @@
 
                                 </tbody>
                             </table>
+                            <div class="clearfix"></div>
+
+                            <div class="pro-buttons">
+                                <input type="radio" name="settings[design]">
+                                <a href="javascript:void(0);"
+                                   id="pro-designs"
+                                   class="button button-primary"
+                                   {% if environment.isPro() is not defined or environment.isPro() != 'true' %}disabled{% endif %}>
+                                    <i class="fa fa-fw fa-plus"></i>
+                                    {{ environment.translate('Pro designs') }}
+                                </a>
+                            </div>
+                            <label style="margin-left: 10px;" {% if environment.isPro() is not defined or environment.isPro() != 'true' %}data-toggle="tooltip" data-original-title={{ environment.translate('Get PRO to enable this option') }}{% endif %}>{{ environment.translate('Enable gradient mode') }}</label>
+                            <input type="checkbox" name="settings[grad]" {% if project.settings.grad == 'on' %}checked{% endif %} style="margin-left: 10px;" {% if environment.isPro() is not defined or environment.isPro() != 'true' %}disabled{% endif %}>
                         </div>
                         <!-- /.scroll -->
 
-                        <div class="scroll" data-navigation="design" hidden>
+                        <div class="scroll" data-navigation="effects" hidden>
 
                             <h3>{{ environment.translate('Preview') }}</h3>
                             <div class="supsystic-social-sharing" data-overlay="{{ project.settings.overlay_with_shadow }}" style="text-align: center; padding: 40px 0; border-bottom: 1px solid rgb(200, 200, 200);">
@@ -375,7 +467,7 @@
                         <!-- /.scroll -->
 
                         <div class="scroll" data-navigation="main">
-                            <h2>Where to show</h2>
+                            <h2>{{ environment.translate('Where to show') }}</h2>
                             <ul class="where-to-show">
                                 <li>
                                     <label for="wts-sidebar" data-toggle="tooltip" title="{{ environment.translate('Adds buttons to the selected side of the page.') }}">
@@ -384,7 +476,7 @@
                                                value="sidebar"
                                                id="wts-sidebar" {% if project.settings.where_to_show == 'sidebar' %}checked="checked"{% endif %}/>
                                         {{ environment.translate('Sidebar') }}
-                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['sidebar-tooltip'] }}"></i>
+                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['sidebar-tooltip'] }}"></i>#}
                                     </label>
                                     <ul class="wts-extra" {% if project.settings.where_to_show != 'sidebar' %}style="display: none;"{% endif %}>
                                         <li>
@@ -394,6 +486,7 @@
                                                        value="top"
                                                        id="wts-sidebar-top" {% if project.settings.where_to_show_extra == 'top' %}checked="checked"{% endif %}/>
                                                 {{ environment.translate('Top') }}
+                                                {% block sidebarTop %}{% endblock %}
                                             </label>
                                         </li>
                                         <li>
@@ -432,7 +525,7 @@
                                                value="content"
                                                id="wts-content" {% if project.settings.where_to_show == 'content' %}checked="checked"{% endif %}/>
                                         {{ environment.translate('Content') }}
-                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['content-tooltip'] }}"></i>
+                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['content-tooltip'] }}"></i>#}
                                     </label>
                                     <ul class="wts-extra" {% if project.settings.where_to_show != 'content' %}style="display: none;"{% endif %}>
                                         <li>
@@ -477,7 +570,7 @@
                                         {% if popup_installed == false %}
                                             <small>({{ environment.translate('You need to install <a href="%s" target="_blank">Popup by Supsystic</a> to use this feature.') | format('http://supsystic.com/plugins/popup-plugin/') | raw }})</small>
                                         {% endif %}
-                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['popup-tooltip'] }}"></i>
+                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['popup-tooltip'] }}"></i>#}
                                     </label>
                                 </li>
                                 <li>
@@ -489,7 +582,7 @@
                                                id="wts-widget"/>
                                         <!-- /#wts-widget -->
                                         {{ environment.translate('Widget') }}
-                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['widget-tooltip'] }}"></i>
+                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['widget-tooltip'] }}"></i>#}
                                     </label>
                                 </li>
                                 <li>
@@ -498,11 +591,11 @@
                                                name="settings[where_to_show]"
                                                value="code" id="wts-code" {% if project.settings.where_to_show == 'code' %}checked="checked"{% endif %}/>
                                         {{ environment.translate('Shortcode or PHP code') }}
-                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['shortcode-tooltip'] }}"></i>
+                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['shortcode-tooltip'] }}"></i>#}
                                     </label>
                                     <div id="wts-shortcode" style="margin-top: 10px; {% if project.settings.where_to_show == 'code' %}display: block; {% else %}display: none;{% endif %}">
-                                        <code>[supsystic-social-sharing id="{{ project.id }}"]</code>
-                                        <code style="font-size: 10px; display: block; margin-top: 10px;">{{ "<?php echo do_shortcode('[supsystic-social-sharing id=\"" ~ project.id ~ "\"]') ?>" }}</code>
+                                        <input class="code" style="width: 240px; background-color: #F5F5F5 !important; border: 1px solid #CCCCCC !important; border-radius: 4px !important; color: #333333 !important; font-size: 13px !important; margin: 0 0 10px !important; padding: 9.5px !important; font-family: monospace !important; cursor: pointer;" value="[supsystic-social-sharing id='{{ project.id }}']">
+                                        <input class="code" style="width: 240px; display: block; margin-top: 10px; background-color: #F5F5F5 !important; border: 1px solid #CCCCCC !important; border-radius: 4px !important; color: #333333 !important; font-size: 13px !important; margin: 0 0 10px !important; padding: 9.5px !important; font-family: monospace !important; cursor: pointer;" value="{{ "<?php echo do_shortcode('[supsystic-social-sharing id=\"" ~ project.id ~ "\"]') ?>" }}">
                                     </div>
                                 </li>
                             </ul>
@@ -519,6 +612,12 @@
                                        name="settings[show_more]"
                                        {% if project.settings.show_more == 'on' %}checked{% endif %}/>
                                 {{ environment.translate('Add button to show all networks') }}
+                            </div>
+                            <div data-toggle="tooltip" data-original-title="Content lock settings" style="margin-top: 10px;">
+                                <button id="lock-dialog" class="button button-primary" {% if environment.isPro() is not defined or environment.isPro() != 'true' %}disabled{% endif %}>
+                                    <i class="fa fa-lock"></i>
+                                    {{ environment.translate('Content lock') }}
+                                </button>
                             </div>
                         </div>
                         <!-- /.scroll -->
@@ -617,6 +716,11 @@
                             </table>
                             <!-- /.form-table form -->
                         </div>
+
+                        <div class="scroll" data-navigation="statistic" hidden>
+                            {% import '@shares/statistic.twig' as shares %}
+                            {{ shares.show() }}
+                        </div>
                     </form>
 
                     <!-- /.scroll -->
@@ -640,8 +744,8 @@
                 <div>
                     <label for="network{{ network.id }}-checkbox">
                         <input type="checkbox" name="networks"
-                               value="{{ network|json_encode }}"
-                               id="network{{ network.id }}-checkbox" {% if network | json_encode in project.networks | json_encode %}checked="checked"{% endif %}/>
+                                value="{{ network|json_encode }}"
+                                id="network{{ network.id }}-checkbox" {% if network | json_encode in project.networks | json_encode %}checked="checked"{% endif %}/>
                         <!-- /#network-{{ network.id }} -->
                         <span>{{ network.name }}</span>
                     </label>

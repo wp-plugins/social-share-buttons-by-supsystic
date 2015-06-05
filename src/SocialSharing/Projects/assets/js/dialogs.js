@@ -16,7 +16,7 @@
             width:    600,
             buttons : {
                 Close : function() {
-                    self.$iconsDialog.dialog('close');
+                    self.$buttonsDialog.dialog('close');
                 }
             }
         });

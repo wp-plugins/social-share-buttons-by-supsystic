@@ -7,14 +7,25 @@
 }
 
 .supsystic-plugin .overtable-buttons .layer {
-    margin-left: 50px;
     display: inline-block;
 }
 
 .supsystic-plugin .overtable-buttons h2 {
     display: inline-block;
     position: relative;
-    top: 12px;
+    top: 4px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.supsystic-plugin li {
+    margin-bottom: 14px;
+}
+
+.supsystic-plugin .supsystic-social-sharing .iradio_minimal {
+    position: absolute !important;
+    top: 20px;
+    left: -16px;
+    z-index: 2;
 }
 
 .supsystic-plugin .overtable-buttons .layer .button {
@@ -22,21 +33,27 @@
 }
 
 .supsystic-plugin .admin-nav-button {
-    border-bottom: 1px solid black !important;
+    border: 1px solid #ccc;
+    background: #e4e4e4;
+    line-height: 16px;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: -3px;
+    color: #000;
+    font-size: 16px;
+    padding: 10px 20px;
+    font-weight: 800;
     position: relative;
     top: 1px;
-    right: 1px;
-    margin-left: 0 !important;
-    box-shadow: none !important;
-}
-
-.supsystic-plugin .admin-nav-button.first {
-    right: 0 !important;
 }
 
 .supsystic-plugin .admin-nav-button.active {
-    border-bottom: 1px solid white !important;
-    background: transparent;
+    background-color: #fff;
+    border-bottom-color: #fff !important;
+}
+
+.supsystic-plugin .admin-nav-button:hover {
+    background-color: #fff;
 }
 
 .supsystic-plugin .projects .title {
@@ -59,7 +76,11 @@
 .supsystic-plugin .scroll {
     padding: 30px;
     float: left;
-    width: 50%;
+    width: 100%;
+}
+
+.supsystic-plugin .scroll[data-navigation="main"] {
+    width: 33%;
 }
 
 .supsystic-plugin .scroll ul ul {
@@ -104,4 +125,12 @@
     font-weight: bold;
     color: #000;
     font-size: 15px;
+}
+
+.supsystic-plugin .wp-list-table [scope="col"] {
+    font-weight: bold;
+}
+
+.supsystic-plugin .projects {
+    border: none !important;
 }

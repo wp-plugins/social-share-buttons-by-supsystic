@@ -1,27 +1,26 @@
 <?php
 
-
 abstract class SocialSharing_Projects_Sharer
 {
     /**
      * @var SocialSharing_Projects_Project
      */
-    private $project;
+    protected $project;
 
     /**
      * @var Rsc_Environment
      */
-    private $environment;
+    protected $environment;
 
     /**
      * @var SocialSharing_HtmlBuilder_Module
      */
-    private $builder;
+    protected $builder;
 
     /**
      * @var Rsc_Dispatcher
      */
-    private $dispatcher;
+    protected $dispatcher;
 
     /**
      * Sharer constructor.

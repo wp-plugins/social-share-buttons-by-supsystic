@@ -1,12 +1,12 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-    <div class="overtable-buttons">
+    {#<div class="overtable-buttons">
         <a class="button" href="#" id="addProject">
             <i class="fa fa-plus"></i>
             {{ environment.translate('Add Project') }}
         </a>
-    </div>
+    </div>#}
     <!-- /.overtable-buttons -->
 
     <table class="wp-list-table widefat projects">
@@ -14,6 +14,7 @@
         <tr>
             <th scope="col" class="id">ID</th>
             <th scope="col" class="title">{{ environment.translate('Project Title') }}</th>
+            <th scope="col" class="shares">{{ environment.translate('Total shares') }}</th>
             <th scope="col" class="date">{{ environment.translate('Create Date') }}</th>
             {#<th scope="col" class="likes">{{ environment.translate('Likes / Shares') }}</th>#}
             <th scope="col" class="actions">{{ environment.translate('Actions') }}</th>
@@ -24,10 +25,12 @@
                 <tr>
                     <th scope="row" class="id">{{ project.id }}</th>
                     <th scope="row" class="title">
-                        <a href="{{ environment.generateUrl('projects', 'view', { 'id': project.id }) }}" data-toggle="tooltip" title="{{ environment.translate('Edit project') }}">
+                        <a href="{{ environment.generateUrl('projects', 'view', { 'id': project.id }) }}" data-toggle="tooltip" title="{{ environment.translate('Edit project') }}" style="color: black; text-decoration: underline;">
                             {{ project.title }}
+                            <i class="fa fa-fw fa-pencil"></i>
                         </a>
                     </th>
+                    <th scope="row" class="shares">{{ project.totalShares }}</th>
                     <th scope="row" class="date">
                         {{ project.date | date('d/m/Y') }}
                     </th>
@@ -35,11 +38,11 @@
                         {#0 / 0#}
                     {#</th>#}
                     <th scope="row" class="actions">
-                        <a class="button" href="{{ environment.generateUrl('projects', 'view', { 'id': project.id }) }}">
+                        {#<a class="button" href="{{ environment.generateUrl('projects', 'view', { 'id': project.id }) }}">
                             <i class="fa fa-fw fa-pencil"></i>
                             <!-- /.fa fa-fw fa-pencil -->
                             {{ environment.translate('Edit') }}
-                        </a>
+                        </a>#}
                         <!-- /.button -->
                         <a class="button delete" href="{{ environment.generateUrl('projects', 'delete', { 'id': project.id }) }}">
                             <i class="fa fa-fw fa-trash-o"></i>

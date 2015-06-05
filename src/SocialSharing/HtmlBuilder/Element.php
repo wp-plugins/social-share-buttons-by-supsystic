@@ -46,7 +46,7 @@ class SocialSharing_HtmlBuilder_Element extends SocialSharing_HtmlBuilder_Abstra
     /**
      * {@inheritdoc}
      */
-    public function build()
+    public function build($text = null)
     {
         $elements = array();
 
@@ -56,6 +56,6 @@ class SocialSharing_HtmlBuilder_Element extends SocialSharing_HtmlBuilder_Abstra
             }
         }
 
-        return '<'.$this->tagName.$this->compileAttributes().'>'.implode('', $elements).'</'.$this->tagName.'>';
+        return '<'.$this->tagName.$this->compileAttributes().'>' . ($text ? '<h3>' . $text . '</h3>' : '') .implode('', $elements).'</'.$this->tagName.'>';
     }
 }

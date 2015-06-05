@@ -51,7 +51,7 @@ class SupsysticSocialSharing
                 'uploads_rw'       => true,
                 'jpeg_quality'     => 95,
                 'plugin_db_update' => true,
-                'revision'         => 58
+                'revision'         => 81
             )
         );
 
@@ -77,8 +77,8 @@ class SupsysticSocialSharing
         if (!get_option($this->environment->getPluginName().'_installed', false)) {
             register_activation_hook($bootstrap, array($this, 'createSchema'));
         } else {
-            if($this->environment->getConfig()->get('revision') > 31 && !get_option($this->environment->getPluginName().'_updated', false)) {
-                register_activation_hook($bootstrap, array($this, 'updateDb'));
+            if($this->environment->getConfig()->get('revision') > 31) {
+                //register_activation_hook($bootstrap, array($this, 'updateDb'));
                 update_option($this->environment->getPluginName().'_updated', 1);
             }
         }

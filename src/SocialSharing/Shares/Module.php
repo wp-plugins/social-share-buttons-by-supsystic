@@ -121,16 +121,7 @@ class SocialSharing_Shares_Module extends SocialSharing_Core_BaseModule
      */
     public function loadChartScripts(SocialSharing_Ui_Module $ui)
     {
-        if (!$this->getEnvironment()->isModule('shares', 'statistic')) {
-            return;
-        }
-
         $hookName = 'admin_enqueue_scripts';
-
-        $ui->addAsset(
-            $ui->create('script', 'jquery')
-                ->setHookName($hookName)
-        );
 
         $ui->addAsset(
             $ui->create('script', 'sss-chartjs')
@@ -149,6 +140,15 @@ class SocialSharing_Shares_Module extends SocialSharing_Core_BaseModule
             $ui->create('style', 'sss-shares-statistic')
                 ->setHookName($hookName)
                 ->setModuleSource($this, 'css/shares.statistic.css')
+        );
+
+        if (!$this->getEnvironment()->isModule('shares', 'statistic')) {
+            return;
+        }
+
+        $ui->addAsset(
+            $ui->create('script', 'jquery')
+                ->setHookName($hookName)
         );
     }
 }

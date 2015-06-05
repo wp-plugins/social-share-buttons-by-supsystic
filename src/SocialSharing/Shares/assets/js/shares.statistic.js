@@ -5,20 +5,20 @@
             module: 'shares',
             action: 'getTotalSharesByDays'
         }, {
-            project_id: app.getParameterByName('project_id'),
+            project_id: app.getParameterByName('id'),
             days: parseInt(days)
         });
     };
 
     var totalShares = function () {
         var canvas = $('#totalStatistic'),
-            ctx = canvas.get(0).getContext('2d'),
+            ctx = canvas.length ? canvas.get(0).getContext('2d') : null,
             data = [];
 
         app.request({
             module: 'shares',
             action: 'getTotalShares'
-        }, {project_id: app.getParameterByName('project_id')}).done(function (response) {
+        }, {project_id: app.getParameterByName('id')}).done(function (response) {
             if (!response.stats.length) {
                 canvas.after('Not enough data.');
                 canvas.remove();
@@ -81,7 +81,7 @@
     var popular5Pages = function () {
         var table = $('#popularPages'),
             request = app.request({module:'shares',action:'getPopularPagesByDays'}, {
-                project_id: app.getParameterByName('project_id'),
+                project_id: app.getParameterByName('id'),
                 days: 30
             });
 
@@ -122,9 +122,16 @@
 
     $(document).ready(function () {
 
-        totalShares();
-        last30();
-        popular5Pages();
+        $('[data-block="statistic"]').on('click', function() {
+
+            if(!$(this).data('shown')) {
+                totalShares();
+                last30();
+                popular5Pages();
+            }
+
+            $(this).attr('data-shown', true);
+        });
     });
 
 }(jQuery, window.supsystic.SocialSharing));

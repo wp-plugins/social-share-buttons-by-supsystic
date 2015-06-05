@@ -13,7 +13,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         // Current post
         $current = $this->isHome() ? null : get_post();
         // Buttons classes
-        $classes = array('sharer-flat', 'sharer-'.$this->getProject()->get('design', 'flat-1'));
+        $classes = array('sharer-flat', 'sharer-'.$this->getProject()->get('design', 'flat-1'), $this->getProject()->get('grad', '') ? 'grad' : '');
         // Buttons
         $buttons = array();
         // Use short numbers or not
@@ -85,6 +85,8 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                                 $this->getFontAwesomeIcon($network)
                             )
                         )
+                    )->addElement(
+                         $this->getBuilder()->createTextElement((($this->getProject()->get('design', 'flat-1') == 'flat-8' || $this->getProject()->get('design', 'flat-1') == 'flat-9') ? $network->class : ''))
                     )
                 )
                 ->addElement(
@@ -109,7 +111,8 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                             $this->getBuilder()->createTextElement($totalShares)
                         )
                     )
-                );
+                )
+            ;
 
             $buttons[] = $button;
         }

@@ -16,8 +16,20 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
      */
     public function indexAction(Rsc_Http_Request $request)
     {
+        $projects = $this->modelsFactory->get('projects')->all();
+
+        foreach($projects as $project) {
+            $shares = $this->modelsFactory->get('shares')->getProjectShares($project->id);
+            $totalShares = 0;
+
+            foreach($shares as $share) {
+                $totalShares += $share->shares;
+            }
+            $project->totalShares = $totalShares;
+        }
+
         return $this->response('@projects/index.twig', array(
-            'projects' => $this->modelsFactory->get('projects')->all()
+            'projects' => $projects
         ));
     }
 

@@ -148,6 +148,11 @@ abstract class SocialSharing_Ui_Asset implements SocialSharing_Ui_AssetInterface
         return $this->setSource($baseUrl.'app/assets/'.$localSource);
     }
 
+    public function setProModuleSource($path, $moduleSource) {
+
+        return $this->setSource($path.'/assets/'.$moduleSource);
+    }
+
     /**
      * @param string|Rsc_Mvc_Module $module
      * @param string $moduleSource

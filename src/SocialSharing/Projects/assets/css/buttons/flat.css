@@ -123,6 +123,9 @@
 .supsystic-social-sharing .sharer-flat.without-counter .counter-wrap {
     display: none;
 }
+.networks-list-container .counter-wrap {
+    display: none;
+}
 .supsystic-social-sharing .sharer-flat.twitter {
     background-color: #83c3f3;
 }

@@ -114,7 +114,7 @@
             var type = $design.filter(':checked').val(),
                 $preview = $('.animation-preview');
 
-            $preview.removeClass('sharer-flat-1 sharer-flat-2 sharer-flat-3 sharer-flat-4 sharer-flat-5');
+            $preview.removeClass('sharer-flat-1 sharer-flat-2 sharer-flat-3 sharer-flat-4 sharer-flat-5 sharer-flat-6 sharer-flat-7 sharer-flat-8 sharer-flat-9');
             $preview.addClass('sharer-'+type);
         });
 
@@ -166,7 +166,7 @@
         });
 
         // Extra "Where to show" fields
-        $wtsList.find('li > label > input').bind('click', function () {
+        $wtsList.find('input[type="radio"]').on('click', function () {
             $wtsExtras.hide();
 
             var hasExtra = $(this).parents('li').has('ul.wts-extra').length;
@@ -182,10 +182,12 @@
             if (this.value == 'code') {
                 $('#wts-shortcode').show();
             }
+            window.ppsCheckUpdateArea($(this).closest('ul'));
         });
 
         $wtsExtras.find('input').bind('click', function (e) {
             $(e.currentTarget).attr('checked', 'checked');
+            window.ppsCheckUpdateArea($(this).closest('ul'));
         });
 
         // Initialize horizontal scroll
@@ -359,10 +361,12 @@
                 $networkCheckboxes = $('[name="networks"]');
 
             if($icon.hasClass('fa-check')) {
-                $networkCheckboxes.attr('checked', true);
+                $networkCheckboxes.attr('checked', true)
+                    .iCheck('update');
                 $icon.removeClass('fa-check').addClass('fa-remove');
             } else {
-                $networkCheckboxes.attr('checked', false);
+                $networkCheckboxes.attr('checked', false)
+                    .iCheck('update');
                 $icon.removeClass('fa-remove').addClass('fa-check');
             }
         });
@@ -393,7 +397,7 @@
             }
         }).on('mouseleave', function() {
             if($('[name="settings[change_size]"]').is(':checked')) {
-                $(this).css('width', buttonWidth);
+                $(this).css('width', '');
             }
         });
 
@@ -402,12 +406,16 @@
         }).trigger('change');
 
         $('[data-navigation="design"] .sharer-flat').on('click', function() {
-            $(this).parent().find('[type="radio"]').attr('checked', true);
+            $(this).parent().find('[type="radio"]').attr('checked', true)
+                .trigger('click');
+            window.ppsCheckUpdateArea($('.supsystic-social-sharing'));
         });
 
         $('.location-tooltip').tooltipster({
             animation: 'slide',
-            position: 'right'
+            position: 'right',
+            theme: 'tooltipster-shadow',
+            contentAsHTML: true
         });
 
         $('.choose-effect-buttons').on('mouseover', function() {
@@ -432,6 +440,7 @@
             } else {
                 $('#wts-sidebar-nav').parent().hide();
             }
+            window.ppsCheckUpdateArea($(this).closest('.where-to-show'));
         });
 
         var saveTooltip = function($element) {
@@ -461,6 +470,10 @@
             } else {
                 $preview.find('.counter-wrap').hide();
             }
+        });
+
+        $('.code').on('click focus', function() {
+            $(this).select();
         });
 
     });

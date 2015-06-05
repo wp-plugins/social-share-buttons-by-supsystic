@@ -14,6 +14,7 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
     {
         parent::onInit();
 
+        $this->registerMenu();
         $dispatcher = $this->getEnvironment()->getDispatcher();
         $dispatcher->on('after_ui_loaded', array($this, 'onUiLoaded'));
         $dispatcher->on('after_modules_loaded', array($this, 'doFrontendStuff'));
@@ -62,6 +63,12 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
             $ui->create('style', 'sss-tooltipster-shadow')
                 ->setModuleSource($this, 'css/tooltipster-shadow.css')
                 ->setHookName('wp_enqueue_scripts')
+        );
+
+        $ui->addAsset(
+            $ui->create('style', 'sss-tooltipster-shadow')
+                ->setModuleSource($this, 'css/tooltipster-shadow.css')
+                ->setHookName($hookName)
         );
 
         $ui->addAsset($ui->create('script', 'jquery'));
@@ -195,7 +202,7 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
             $this->getEnvironment()
         );
 
-        if (($project->isShowAtShortcode() || $project->isShowAt('popup')) && is_single()) {
+        if (($project->isShowAtShortcode() || $project->isShowAt('popup'))) {
 
             return $sharer->build();
         }
@@ -236,5 +243,31 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
         }
 
         return $this->handleProject($project);
+    }
+
+    public function registerMenu() {
+
+        $lang = $this->getEnvironment()->getLang();
+        $menu = $this->getEnvironment()->getMenu();
+        $submenuProjects = $menu->createSubmenuItem();
+        $submenuProjectsNew = $menu->createSubmenuItem();
+
+        $submenuProjectsNew->setCapability('manage_options')
+            ->setMenuSlug('supsystic-social-sharing&module=projects#add')
+            ->setMenuTitle($lang->translate('Add new'))
+            ->setPageTitle($lang->translate('Add new'))
+            ->setModuleName('add-new');
+
+        $menu->addSubmenuItem('add-new', $submenuProjectsNew)
+            ->register();
+
+        $submenuProjects->setCapability('manage_options')
+            ->setMenuSlug('supsystic-social-sharing&module=projects')
+            ->setMenuTitle($lang->translate('Projects'))
+            ->setPageTitle($lang->translate('Projects'))
+            ->setModuleName('projects');
+
+        $menu->addSubmenuItem('projects', $submenuProjects)
+            ->register();
     }
 }

@@ -1,10 +1,8 @@
-{% extends 'layout.twig' %}
-
-{% block content %}
+{% macro show() %}
     <div class="supsystic-item">
         <!-- /.container-fluid -->
         <div class="container-fluid">
-            <div class="row">
+            {#<div class="row">
                 <div class="col-xs-12">
                     <a href="{{ environment.generateUrl('projects', 'view', { id: project.id }) }}" class="button" title="{{ environment.translate('Return to the project "%s"') | format(project.title) }}">
                         <i class="fa fa-fw fa-angle-left"></i>
@@ -12,14 +10,14 @@
                     </a>
                 </div>
                 <!-- /.col-xs-12 -->
-            </div>
+            </div>#}
             <!-- /.row -->
-            <div class="row">
+            {#<div class="row">
                 <div class="col-xs-12">
                     <h2>{{ environment.translate('Project "%s" statistics') | format(project.title) }}</h2>
                 </div>
                 <!-- /.col-xs-12 -->
-            </div>
+            </div>#}
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
@@ -40,13 +38,13 @@
                 <h2>{{ environment.translate('Most popular pages for last 30 days') }}</h2>
                 <table class="wp-list-table widefat" id="popularPages">
                     <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">{{ environment.translate('Title') }}</th>
-                            <th scope="col">{{ environment.translate('Type') }}</th>
-                            <th scope="col">{{ environment.translate('Shares') }}</th>
-                            {#<th scope="col">{{ environment.translate('Views') }}</th>#}
-                        </tr>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">{{ environment.translate('Title') }}</th>
+                        <th scope="col">{{ environment.translate('Type') }}</th>
+                        <th scope="col">{{ environment.translate('Shares') }}</th>
+                        {#<th scope="col">{{ environment.translate('Views') }}</th>#}
+                    </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
@@ -56,4 +54,4 @@
         <!-- /.row -->
     </div>
     <!-- /.supsystic-item -->
-{% endblock %}
+{% endmacro %}

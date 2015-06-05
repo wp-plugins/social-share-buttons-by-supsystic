@@ -24,8 +24,8 @@ class SocialSharing_Popup_Module extends SocialSharing_Core_Module
         $this->frameClass = 'framePps';
         $this->templateId = 10;
 
-//        dump($this->getModel()->getById(38)['params']);
-//        dump($this->getDefaultPopupSettings());
+//       dump($this->getModel()->getById(38)['params']);
+//       dump($this->getDefaultPopupSettings());
     }
 
     /**
@@ -47,7 +47,7 @@ class SocialSharing_Popup_Module extends SocialSharing_Core_Module
         $popup = $this->getDefaultPopupSettings();
 
         $popup['id'] = $settings['popup_id'];
-        $popup['params']['tpl']['txt_0'] = '[supsystic-social-sharing id="'.$id.'"]';
+        $popup['params']['tpl']['txt_0'] = '[supsystic-social-sharing id="' . $id . '"]';
 
         if ($settings['when_show'] === 'click') {
             $popup['params']['main']['show_on'] = 'click_on_page';

@@ -38,6 +38,18 @@ class SocialSharing_Ui_Module extends SocialSharing_Core_BaseModule
                 ->setVersion('1.4.2')
         );
 
+        $this->addAsset(
+            $this->create('script', 'sss-icheck')
+                ->setHookName('admin_enqueue_scripts')
+                ->setLocalSource('js/plugins/icheck.min.js')
+        );
+
+        $this->addAsset(
+            $this->create('style', 'sss-icheck')
+                ->setHookName('admin_enqueue_scripts')
+                ->setLocalSource('css/libraries/minimal/minimal.css')
+        );
+
         $this->getEnvironment()
             ->getDispatcher()
             ->on('after_modules_loaded', array($this, 'registerAssets'));

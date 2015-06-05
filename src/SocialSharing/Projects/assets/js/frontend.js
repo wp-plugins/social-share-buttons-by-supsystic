@@ -84,7 +84,15 @@
             }
 
             if(buttonChangeSize == 'on') {
-                $container.addClass('chage-size');
+                var buttonWidth = $('.sharer-flat').width();
+
+                //$container.addClass('chage-size');
+
+                $('div.supsystic-social-sharing .sharer-flat').on('mouseover', function() {
+                        $(this).css('width', buttonWidth - buttonWidth / 4);
+                }).on('mouseleave', function() {
+                        $(this).css('width', '');
+                });
             }
 
             checkNavOrientation();
@@ -92,11 +100,18 @@
                 if($(this).hasClass('hide')) {
                     $(this).removeClass('hide').addClass('show');
 
-                    $container.find('a').css('transform', buttonsTransition);
+                    $container
+                        .find('a').css('transform', buttonsTransition);
+
+                    $container
+                        .find('.list-button').css('transform', buttonsTransition);
                 } else {
                     $(this).addClass('hide').removeClass('show');
 
                     $container.find('a').css('transform', 'translateX(0)');
+
+                    $container
+                        .find('.list-button').css('transform', 'translateX(0)');
                 }
             });
 
