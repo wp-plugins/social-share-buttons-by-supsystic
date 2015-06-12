@@ -32,7 +32,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
 
         foreach ($networks as $network) {
             $finalClasses = array_merge($classes, array($network->class));
-            $totalShares = $shortNumbers ? $this->humanizeTotalShares($network->shares) : $network->shares;
+            $totalShares = $shortNumbers ? $this->humanizeTotalShares((isset($network->shares) ? $network->shares : 0)) : (isset($network->shares) ? $network->shares : 0);
 
             if(isset($savedData[$network->id]) && $savedData[$network->id]) {
                 array_push($finalClasses, 'tooltip');

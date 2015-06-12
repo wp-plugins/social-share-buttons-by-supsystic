@@ -86,6 +86,7 @@
     top: 0.75em;
     /*top: 1em;*/
     z-index: 1001;
+    width: 100%;
 }
 .supsystic-social-sharing[data-buttons-size="1"] .sharer-flat.sharer-flat-5 .fa-fw:after {
     content: "";

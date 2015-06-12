@@ -7,6 +7,13 @@
                 <ul>
                     {% block navigation %}
                         <li>
+                            <a class="{% if request.query.module == 'overview' %}active{% endif %}" href="{{ environment.generateUrl('overview') }}">
+                                <i class="fa fa-fw fa-info"></i>
+                                <!-- /.fa fa-fw fa-plus -->
+                                {{ environment.translate('Overview') }}
+                            </a>
+                        </li>
+                        <li>
                             <a id="addProject_modal" href="{{ environment.generateUrl('projects') }}#add">
                                 <i class="fa fa-fw fa-plus"></i>
                                 <!-- /.fa fa-fw fa-plus -->

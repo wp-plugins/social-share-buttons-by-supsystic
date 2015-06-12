@@ -3,8 +3,8 @@
 /**
  * Plugin Name: Social Share Buttons by Supsystic
  * Plugin URI: http://supsystic.com
- * Description: Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Tweeter and other social networks
- * Version: 1.2.0
+ * Description: Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
+ * Version: 1.2.1
  * Author: supsystic.com
  * Author URI: http://supsystic.com
  **/

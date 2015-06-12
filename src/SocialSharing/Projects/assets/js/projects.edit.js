@@ -436,9 +436,11 @@
 
         $('[name="settings[where_to_show]"]').on('click', function() {
             if($(this).val() == 'sidebar') {
-                $('#wts-sidebar-nav').parent().show();
+                $('#wts-sidebar-nav').iCheck('update')
+                    .parent().show();
             } else {
-                $('#wts-sidebar-nav').parent().hide();
+                $('#wts-sidebar-nav').iCheck('update')
+                    .parent().hide();
             }
             window.ppsCheckUpdateArea($(this).closest('.where-to-show'));
         });

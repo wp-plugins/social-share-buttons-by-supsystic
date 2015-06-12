@@ -2,7 +2,7 @@
 Contributors: supsystic.com
 Tags: share counter, social media share, social network share, social share, social share buttons, social sharing, facebook like, facebook share, like, share buttons, share links, sharebar
 Tested up to: 4.2.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 
 Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
@@ -16,14 +16,14 @@ Simple, eye-catching with great customization and tons of features:
 * Fully Responsive
 * Add Sharing Buttons in Different Locations
 * Professional Templates of the Social Media Icons & Share Buttons
-* Choose pages to show social buttons
-* Simple Configuration
+* Choose pages to show social share buttons
+* Simple share buttons configuration and design
 * Customizable design and animation effects
 * Shortcode support
 
 = Increase Numbers of Social Sharing =
 
-With our Social Share solution you will increase your social popularity and will take social sharing on a next level. It will contribute of increase the social activity on your site. Social Share by Supsystic is an easy and fast way to let your visitors share your content to social networks, helping you in growth of your social traffic on your website.
+With our Social Share button solution you will increase your social popularity and will take social sharing on a next level. It will contribute of increase the social activity on your site. Social Share by Supsystic is an easy and fast way to let your visitors share your content to social networks, helping you in growth of your social traffic on your website.
 
 = Fully Responsive and Easy to Use =
 
@@ -33,13 +33,13 @@ Social Share by Supsystic buttons are fully responsive and look nice on differen
 
 Social Share plugin supports many different popular social networks - LinkdIn, Twitter, Google+, Vkontakte, Pinterest, Digg, Reddit, Facebook buttons and much more! You can add any numbers of social networks and create excellent sharing toolbar, which help your visitors to choose the most suitable network for them.
 
-= Different Placement Options of Share Buttons =
+= Different Placement Options of Social Share Buttons =
 
 Social Share by Supsystic provides you the ability to choose where to show share buttons - on different sides of the page, at any place of page or post content. Even in a popup window using our awesome Popup plugin! Using our plugin you can create widget with share buttons and show the sharing toolbar at theme’s widgets areas. Also you can use shortcode and show buttons where you want. With this options of Social Share buttons, you have much more chances to attract a wide variety of your website visitors.
 
 = When to Show Option =
 
-Plugin allows you to choose the various options when to show social buttons - when page load or when user click on page. Besides you can specify pages or posts where you want to show share buttons - everywhere or on specific pages/posts. Also it allows you to hide social buttons on mobile devices. Social Share by Supsystic gets users sharing the right content аt the right moments, and keeps them engaged on your website.
+Plugin allows you to choose the various options when to show social buttons (like Facebook share button) - when page load or when user click on page. Besides you can specify pages or posts where you want to show share buttons - everywhere or on specific pages/posts. Also it allows you to hide social buttons on mobile devices. Social Share by Supsystic gets users sharing the right content аt the right moments, and keeps them engaged on your website.
 
 = Customizable Design and Amazing Effects =
 
@@ -47,7 +47,7 @@ Social Share solution offers you wonderful collection of multiple design buttons
 
 == Screenshots ==
 
-1. Social Sharing Buttons by Supsystic - admin interface. Where and when to show social buttons
+1. [Social Share Buttons](http://supsystic.com/plugins/social-share-plugin/ "Social Share Buttons") by Supsystic - admin interface. Where and when to show social buttons
 
 2. Social Buttons Design
 
@@ -151,6 +151,14 @@ Here you can set when to show social share buttons:
 
 
 == Changelog ==
+
+= 1.2.1 / 11.06.2015 =
+ * New social buttons templates
+ * Notice fixed
+ * New share buttons design layout on settings tab
+ * Social network buttons shares fixed
+ * Facebook share button fix
+ * Fixed social buttons PO/MO files
 
 = 1.2.0 / 05.06.2015 =
  * Buttons tooltips fixed system added

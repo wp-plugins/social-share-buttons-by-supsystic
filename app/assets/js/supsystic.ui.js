@@ -17,6 +17,7 @@
         });*/
 
         ppsInitCustomCheckRadio();
+        removeDuplicateSubmenu();
 
         $('[data-toggle="tooltip"]').tooltip();
     });
@@ -54,6 +55,12 @@
     }
     window.ppsCheckUpdateArea = function ppsCheckUpdateArea(selector) {
         jQuery(selector).find('input[type=radio]').iCheck('update');
+    };
+
+    function removeDuplicateSubmenu() {
+        var $menu = $('#toplevel_page_supsystic-social-sharing .wp-submenu');
+
+        $menu.find('.wp-first-item').remove();
     };
 
 }(jQuery, window, 'supsystic'));

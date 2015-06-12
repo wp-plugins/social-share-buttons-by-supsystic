@@ -10,6 +10,36 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+msgid "Customize"
+msgstr ""
+
+msgid "Sidebar customization"
+msgstr ""
+
+msgid "Bacground color"
+msgstr ""
+
+msgid "Custom text"
+msgstr ""
+
+msgid "Background opacity"
+msgstr ""
+
+msgid "Font color"
+msgstr ""
+
+msgid "Content lock settings"
+msgstr ""
+
+msgid "Element class"
+msgstr ""
+
+msgid "Additional buttons styles"
+msgstr ""
+
+msgid "Share"
+msgstr ""
+
 msgid "Unable to clone project: %s"
 msgstr ""
 
@@ -17,6 +47,9 @@ msgid "Order by can be %s, \"%s\" given."
 msgstr ""
 
 msgid "Failed to execute query: %s"
+msgstr ""
+
+msgid "Add new"
 msgstr ""
 
 msgid "Project title"
@@ -34,7 +67,19 @@ msgstr ""
 msgid "Saving networks sort order..."
 msgstr ""
 
-msgid "Add button spacing"
+msgid "Buttons Design"
+msgstr ""
+
+msgid "Get PRO to enable additional buttons"
+msgstr ""
+
+msgid "Adds space between the buttons."
+msgstr ""
+
+msgid "Add button spac/ing"
+msgstr ""
+
+msgid "Choose the size for social buttons. This option allows you to accent the attention for as much as you want it."
 msgstr ""
 
 msgid "Buttons size"
@@ -55,7 +100,13 @@ msgstr ""
 msgid "Biggest"
 msgstr ""
 
+msgid "Displays counters of social shares on buttons."
+msgstr ""
+
 msgid "Display counters"
+msgstr ""
+
+msgid "Choose from what exactly to count the shares – the all projects, the entire project, the each page."
 msgstr ""
 
 msgid "Show numbers from"
@@ -70,7 +121,19 @@ msgstr ""
 msgid "The each page"
 msgstr ""
 
+msgid "Rounds up big numbers of counters and displays the short numbers. Available only with enabled \"Display counters\" option."
+msgstr ""
+
 msgid "Use short numbers"
+msgstr ""
+
+msgid "Pro designs"
+msgstr ""
+
+msgid "Get PRO to enable this option"
+msgstr ""
+
+msgid "Enable gradient mode"
 msgstr ""
 
 msgid "Preview"
@@ -95,6 +158,9 @@ msgid "Choose Animation"
 msgstr ""
 
 msgid "Icons animation"
+msgstr ""
+
+msgid "Where to show"
 msgstr ""
 
 msgid "Adds buttons to the selected side of the page."
@@ -151,6 +217,15 @@ msgstr ""
 msgid "Shortcode or PHP code"
 msgstr ""
 
+msgid "Show navigation button"
+msgstr ""
+
+msgid "Add button to show all networks"
+msgstr ""
+
+msgid "Content lock"
+msgstr ""
+
 msgid "Show at next pages"
 msgstr ""
 
@@ -193,6 +268,9 @@ msgstr ""
 msgid "Project Title"
 msgstr ""
 
+msgid "Total shares"
+msgstr ""
+
 msgid "Create Date"
 msgstr ""
 
@@ -217,19 +295,25 @@ msgstr ""
 msgid "Click to rename project and hit [Enter]"
 msgstr ""
 
-msgid "Clone"
+msgid "Main"
+msgstr ""
+
+msgid "Design"
+msgstr ""
+
+msgid "Effects"
 msgstr ""
 
 msgid "Statistic"
 msgstr ""
 
-msgid "Where and what"
-msgstr ""
-
-msgid "Buttons design"
+msgid "Clone"
 msgstr ""
 
 msgid "Delete"
+msgstr ""
+
+msgid "Get Pro"
 msgstr ""
 
 msgid "Return to the project \"%s\""
@@ -257,4 +341,13 @@ msgid "Type"
 msgstr ""
 
 msgid "Shares"
+msgstr ""
+
+msgid "Views"
+msgstr ""
+
+msgid "Views statistic"
+msgstr ""
+
+msgid "Projects total views"
 msgstr ""

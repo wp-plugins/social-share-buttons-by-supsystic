@@ -207,7 +207,7 @@ abstract class SocialSharing_Projects_Sharer
         $listClasses = array();
         $buttons = $this->buildButtons('all', $listClasses);
 
-        if($settings['show_more'] == 'on') {
+        if(isset($settings['show_more']) && $settings['show_more'] == 'on') {
             $this->showMore($container, $buttons, $listClasses);
         }
 

@@ -23,7 +23,9 @@ class SocialSharing_Shares_Module extends SocialSharing_Core_BaseModule
         $dispatcher->on('before_build', array($this, 'filterAddProjectShares'));
 
         $shareRequestHandler = array($this, 'handleShareRequest');
+        $viewRequestHandler = array($this, 'handleViewRequest');
         add_action('wp_ajax_social-sharing-share', $shareRequestHandler);
+        add_action('wp_ajax_social-sharing-view', $viewRequestHandler);
         add_action('wp_ajax_nopriv_social-sharing-share', $shareRequestHandler);
     }
 
@@ -36,6 +38,20 @@ class SocialSharing_Shares_Module extends SocialSharing_Core_BaseModule
         $request = $this->getRequest();
         $controller = $this->getController();
         $action = 'saveAction';
+        $callableHandler = array($controller, $action);
+
+        return call_user_func_array($callableHandler, array($request));
+    }
+
+    /**
+     * Handles the AJAX request for view buttons.
+     * @return Rsc_Http_Response
+     */
+    public function handleViewRequest()
+    {
+        $request = $this->getRequest();
+        $controller = $this->getController();
+        $action = 'saveViewsAction';
         $callableHandler = array($controller, $action);
 
         return call_user_func_array($callableHandler, array($request));

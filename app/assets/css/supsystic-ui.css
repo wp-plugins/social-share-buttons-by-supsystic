@@ -196,24 +196,6 @@ ul.supsystic-bar-controls > li.separator {
     -o-box-shadow: 1px 1px 10px #ccc;
 }
 
-.ui-dialog .ui-dialog-titlebar-close {
-    display: none;
-}
-
-.ui-dialog .ui-dialog-buttonpane {
-    padding: 0;
-    margin-top: 10px;
-    text-align: right;
-}
-
-.ui-dialog .ui-dialog-buttonpane button {
-    margin-right: 10px;
-}
-
-.ui-dialog .ui-dialog-title {
-    font-size: 17px;
-}
-
 .ui-widget-overlay {
     background: #aaaaaa !important;
     opacity: .3;
@@ -227,21 +209,15 @@ ul.supsystic-bar-controls > li.separator {
 
 .ui-widget-content {
     background: #fff !important;
-    padding: 15px 5px;
-    z-index: 9999;
 }
 
 .ui-widget-header {
     border: none !important;
     border-bottom: 1px solid #ddd !important;
-    background: white !important;
+    background: #e8eded !important;
     color: #777 !important;
     border-radius: 0 !important;
-    padding: 15px 10px 15px 10px;
-}
-
-.ui-dialog-titlebar-close {
-    background: none !important;
+    padding: 10px;
 }
 
 .supsystic-title-row {
@@ -256,42 +232,14 @@ ul.supsystic-bar-controls > li.separator {
     font-size: 1.4em;
 }
 
-#gg-overlay-transparency {
-    -webkit-appearance: none;
-    width: 300px;
-    height: 2px !important;
-    background-color: #ddd;
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    text-align: right;
+    padding: 10px;
 }
 
-#gg-overlay-transparency::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
-    background-color: #3498db;
-}
-
-#gg-overlay-transparency:focus {
-    outline: none;
-}
-
-input[type="color"] {
-    width: 300px;
-    height: 30px;
-    border: 1px solid #ddd;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .07);
-}
-
-.column-title.title .photo-editor {
-    margin-top: 10px;
-}
-
-.column-title.title .photo-editor input {
-    margin-left: 4px;
-}
-
-.column-title.title .photo-editor input[type="text"] {
-    width: 100%;
+.ui-dialog .ui-dialog-titlebar-close {
+    float: right;
+    display: none;
 }
 
 /*Breadcrumbs*/
@@ -488,7 +436,7 @@ h2.nav-tab-wrapper, h3.nav-tab-wrapper {
 .supsystic-sticky-active {
     position: fixed !important;
     /*top: 32px;*/
-    z-index: 9998;
+    z-index: 1;
 }
 
 .supsystic-sticky-active.supsystic-sticky-active-bordered {

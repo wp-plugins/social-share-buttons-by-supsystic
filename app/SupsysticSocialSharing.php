@@ -23,7 +23,7 @@ class SupsysticSocialSharing
                 'optimizations'    => 1,
                 'environment'      => $this->getPluginEnvironment(),
                 'default_module'   => 'projects',
-                'lang_domain'      => 'supsystic-social-sharing',
+                'lang_domain'      => 'social_sharing',
                 'lang_path'        => plugin_basename(
                         dirname(__FILE__)
                     ) . '/langs',
@@ -51,7 +51,7 @@ class SupsysticSocialSharing
                 'uploads_rw'       => true,
                 'jpeg_quality'     => 95,
                 'plugin_db_update' => true,
-                'revision'         => 81
+                'revision'         => 91
             )
         );
 
@@ -77,9 +77,9 @@ class SupsysticSocialSharing
         if (!get_option($this->environment->getPluginName().'_installed', false)) {
             register_activation_hook($bootstrap, array($this, 'createSchema'));
         } else {
-            if($this->environment->getConfig()->get('revision') > 31) {
-                //register_activation_hook($bootstrap, array($this, 'updateDb'));
-                update_option($this->environment->getPluginName().'_updated', 1);
+            if(get_option($this->environment->getPluginName().'_updated') < 92) {
+                register_activation_hook($bootstrap, array($this, 'updateDb'));
+                update_option($this->environment->getPluginName().'_updated', $this->environment->getConfig()->get('revision'));
             }
         }
     }
@@ -88,6 +88,7 @@ class SupsysticSocialSharing
         global $wpdb;
 
         $schema = dirname(__FILE__) . '/configs/dbupdate.sql';
+        $networks = dirname(__FILE__) . '/configs/update_networks.sql';
         $prefix = $wpdb->prefix . $this->environment
                 ->getConfig()
                 ->get('db_prefix');
@@ -95,11 +96,15 @@ class SupsysticSocialSharing
             require_once(ABSPATH.'wp-admin/includes/upgrade.php');
         }
 
-        $sql = str_replace('%prefix%', $prefix, file_get_contents($schema));
+        $checkTable = 'SHOW TABLES LIKE "'. $prefix .'views";';
 
-        dbDelta('SET FOREIGN_KEY_CHECKS=0');
-        dbDelta($sql);
-        dbDelta('SET FOREIGN_KEY_CHECKS=1');
+        if(!$wpdb->get_results($checkTable)) {
+            $sql = str_replace('%prefix%', $prefix, file_get_contents($schema));
+
+            dbDelta('SET FOREIGN_KEY_CHECKS=0');
+            dbDelta($sql);
+            dbDelta('SET FOREIGN_KEY_CHECKS=1');
+        }
     }
 
     public function createSchema()

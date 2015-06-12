@@ -64,7 +64,7 @@
                 $button.on('click', function() {
                     $networksContainer.removeClass('hidden')
                         .bPopup({
-                            position: [100, 'auto']
+                            //position: [100, 'auto']
                         });
                 });
             };

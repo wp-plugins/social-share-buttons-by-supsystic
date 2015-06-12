@@ -124,6 +124,8 @@
     background-color: #fff;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0 0 25px 5px #999;
+    width: 100%;
+    text-align: center;
 }
 
 .supsystic-social-sharing.networks-list-container.hidden {
