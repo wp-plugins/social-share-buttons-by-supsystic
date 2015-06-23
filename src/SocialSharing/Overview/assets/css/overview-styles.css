@@ -1,6 +1,5 @@
 .supsystic-overview {
     width: 100%;
-    margin-top: 20px;
     float: left;
 }
 
@@ -16,6 +15,10 @@
     float: left;
     margin:0 20px;
     width: 40%;
+}
+
+.supsystic-overview .half-page-right a {
+    color: #4ae8ea;
 }
 
 .supsystic-overview .description {
@@ -50,9 +53,10 @@
 }
 
 .supsystic-overview .button {
-    float: right;
     margin-top: 24px;
     display: block;
+    width: 35%;
+    margin-left: 65%;
 }
 
 .supsystic-overview .video {
@@ -101,14 +105,16 @@
     float: left;
     font-size: 18px;
     font-weight: 800;
-    margin-top: 10px;
 }
 
 .supsystic-overview form input,
 .supsystic-overview form select,
 .supsystic-overview form textarea {
-    float: left;
-    margin-left: 50px;
+    width: 100% !important;
+}
+
+.supsystic-overview td {
+    padding-bottom: 10px;
 }
 
 .supsystic-overview-news a {

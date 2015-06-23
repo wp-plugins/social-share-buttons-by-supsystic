@@ -60,6 +60,12 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
         );
 
         $ui->addAsset(
+            $ui->create('style', 'sss-brand-icons')
+                ->setModuleSource($this, 'css/buttons/brand-icons.css')
+                ->setHookName('wp_enqueue_scripts')
+        );
+
+        $ui->addAsset(
             $ui->create('style', 'sss-tooltipster-shadow')
                 ->setModuleSource($this, 'css/tooltipster-shadow.css')
                 ->setHookName('wp_enqueue_scripts')

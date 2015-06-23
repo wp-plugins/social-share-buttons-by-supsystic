@@ -27,6 +27,7 @@
                         <p>1. On the left navigation menu click “Add new project”.</p>
                         <p>2. Enter the title of project and click “Create”.</p>
                         <p>Step2: Customizing of Social Share by Supsystic</p>
+                        <p>More detail information you can find here – <a href="http://supsystic.com/how-to-create-social-share-buttons-in-wordpress/">How to Create Social Share Buttons in WordPress</a></p>
                     </div>
                 </div>
                 <div class="faq-title">
@@ -70,36 +71,37 @@
             </div>
         </div>
         <div class="half-page-right">
+            <h3>{{ environment.translate('News') }}</h3>
             <div class="supsystic-overview-news">
                 {{ news|raw }}
             </div>
-            <p>
-                <a href="http://supsystic.com/plugins/photo-gallery/#faq" class="button button-primary button-hero">
+            <p style="border-bottom: 1px solid rgba(164, 170, 172, 0.28); padding-bottom: 20px;">
+                <a href="http://supsystic.com/plugins/social-share-plugin/" class="button button-primary button-hero" style="color: #000000;">
                     <i class="fa fa-info-circle"></i>
                     All news
                 </a>
             </p>
 
             <div class="overview-contact-form">
-                <h3>Contact form</h3>
+                <h3>{{ environment.translate('Contact Form') }}</h3>
                 {#<div class="description">Translate plugin in your language and get a Premium license for FREE</div>#}
 
                 {% import '@overview/form.twig' as form %}
 
-                {{ form.open('post', environment.generateUrl('overview', 'sendMail'), { 'id': 'form-settings', 'style': 'max-width: 428px;' }) }}
+                {{ form.open('post', environment.generateUrl('overview', 'sendMail'), { 'id': 'form-settings', 'style': 'width: 100%;' }) }}
 
-                <table class="contact-form-table">
+                <table class="contact-form-table" style="width: 100%;">
                     <thead>
 
-                    {{ form.row(environment.translate('Your name'),
+                    {{ form.row(environment.translate('Name'),
                         form.text('mail[name]', '', { 'style': { 'width': 'auto;' } })) }}
 
-                    {{ form.row(environment.translate('Your email'),
-                        form.text('mail[email]', '', { 'style': { 'width': 'auto;' } })
+                    {{ form.row(environment.translate('Email'),
+                        form.text('mail[email]', user.user_email , { 'style': { 'width': 'auto;' } })
                     ) }}
 
                     {{ form.row(environment.translate('Website'),
-                        form.text('mail[website]', '', { 'style': { 'width': 'auto;' } })) }}
+                        form.text('mail[website]', user.url, { 'style': { 'width': 'auto;' } })) }}
 
                     {{ form.row(environment.translate('Subject'),
                         form.text('mail[subject]', '', { 'style': { 'width': 'auto;' } })) }}
@@ -109,7 +111,7 @@
                             <label for="select-question">{{ environment.translate('Topic') }}</label>
                         </th>
                         <td>
-                            <select id="select-question" style="width: 200px;" name="mail[question]">
+                            <select id="select-question" style="width: 207px;" name="mail[question]">
                                 <option value="plugin_options">
                                     {{ environment.translate('Plugin options') }}
                                 </option>
@@ -128,19 +130,19 @@
 
                     <tr>
                         <th scope="row">
-                            <label for="mail-text">{{ environment.translate('Type your message') }}</label>
+                            <label for="mail-text">{{ environment.translate('Message') }}</label>
                         </th>
                         <td>
-                            <textarea id="mail-text" name="mail[message]" style="width: auto; height: 100px;"></textarea>
+                            <textarea id="mail-text" name="mail[message]" style="width: auto; height: 100px;" placeholder="Hello Supsystic Team!"></textarea>
                         </td>
                     </tr>
 
                     </thead>
                 </table>
 
-                <button id="send-mail" type="submit" class="button button-primary button-hero" style="margin-left: 60%;">
+                <button id="send-mail" type="submit" class="button button-primary button-hero" style="margin-left: 65%;">
                     <i class="fa fa-upload"></i>
-                    Send email
+                    {{ environment.translate('Send email') }}
                 </button>
 
                 {#<div class="required-notification" style="color: red; float: left;" hidden></div>#}

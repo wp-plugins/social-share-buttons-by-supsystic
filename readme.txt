@@ -2,7 +2,7 @@
 Contributors: supsystic.com
 Tags: share counter, social media share, social network share, social share, social share buttons, social sharing, facebook like, facebook share, like, share buttons, share links, sharebar
 Tested up to: 4.2.2
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 
 Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
@@ -89,7 +89,7 @@ Now more details about sections of properties -
 
 = Networks to show =
 
-1. Click “Add Networks” social button.
+1. Click “Add Networks” social button (for example Facebook social button)
 2. Choose networks, with which you want to create social buttons. You can select any numbers of social networks. Also here you can choose “Like” button for your site.
 3. Click “Select” button.
 
@@ -151,6 +151,24 @@ Here you can set when to show social share buttons:
 
 
 == Changelog ==
+
+= 1.2.3 / 19.06.2015 =
+ * Helpers added to networks meta
+ * Evernote sharing button added
+ * Designs changed, tooltips fixed, modal dialogs fixed, notifications added
+ * Overlay added, admin settings changed
+ * New counter style
+ * Overview navigation changed
+ * Networks updating new version
+ * Functional fixes
+
+= 1.2.2 / 19.06.2015 =
+ * New Facebook share button design
+ * Evernote sharing button added
+ * Share brand icons styles added
+ * Network button title and name added
+ * Sharing buttons network meta and meta navigation added
+ * Social network buttons tooltips changed
 
 = 1.2.1 / 11.06.2015 =
  * New social buttons templates

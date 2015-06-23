@@ -139,7 +139,6 @@ abstract class SocialSharing_Projects_Sharer
 
         $sidebarClasses = array('supsystic-social-sharing-right', 'supsystic-social-sharing-left', 'supsystic-social-sharing-top', 'supsystic-social-sharing-bottom');
 
-
         if ((!array_key_exists('action', $_GET) || $_GET['action'] !== 'getPreviewHtml') && $this->project->isShowOnPosts()) {
             $current = get_post();
 
@@ -212,7 +211,7 @@ abstract class SocialSharing_Projects_Sharer
         }
 
         foreach($classes as $class) {
-            if(in_array($class, $sidebarClasses) && $settings['sidebar_navigation'] == 'on') {
+            if(in_array($class, $sidebarClasses) && isset($settings['sidebar_navigation']) && $settings['sidebar_navigation'] == 'on') {
                 $navButton = $this->getBuilder()->createElement('div', array($this->getBuilder()->createAttribute('class', 'nav-button hide ' . $settings['where_to_show_extra'])));
                 $container->addElement($navButton);
             }
@@ -279,6 +278,8 @@ abstract class SocialSharing_Projects_Sharer
             if (is_admin_bar_showing()) {
                 $classes[] = 'supsystic-social-sharing-adminbar';
             }
+        } else {
+            $classes[] = 'supsystic-social-sharing-content';
         }
 
         return $classes;

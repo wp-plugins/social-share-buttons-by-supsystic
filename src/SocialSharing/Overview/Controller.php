@@ -9,11 +9,15 @@ class SocialSharing_Overview_Controller extends SocialSharing_Core_BaseControlle
         $serverSettings = $this->getServerSettings();
         $config = $this->getEnvironment()->getConfig();
 
+        $user = wp_get_current_user();
+        $user->url = get_site_url();
+
         return $this->response(
             '@overview/index.twig',
             array(
                 'serverSettings' => $serverSettings,
-                'news' => $this->loadNews($config['post_url'])
+                'news' => $this->loadNews($config['post_url']),
+                'user' => $user
             )
         );
     }

@@ -12,10 +12,10 @@
             <i class="fa fa-desktop"></i>
             {{ environment.translate('Design') }}
         </button>
-        <button class="admin-nav-button" data-block="effects">
+        {#<button class="admin-nav-button" data-block="effects">
             <i class="fa fa-gear"></i>
             {{ environment.translate('Effects') }}
-        </button>
+        </button>#}
         <button class="admin-nav-button" data-block="statistic">
             <i class="fa fa-line-chart"></i>
             {{ environment.translate('Statistic') }}
@@ -23,7 +23,7 @@
         <!-- /.button -->
     </div>
 
-    <div class="layer" style="float: right; margin-top: px;">
+    <div class="layer" style="float: right; margin-top: 8px;">
         <button class="button" id="save">
             <i class="fa fa-save"></i>
             {{ environment.translate('Save') }}
@@ -48,11 +48,11 @@
 {% endblock %}
 
 {% block sidebarTop %}
-    <button id="top-sidebar-dialog" class="button button-primary"
+    {#<button id="top-sidebar-dialog" class="button button-primary"
             data-toggle="tooltip"
             data-original-title="Open sidebar customization dialog available in PRO"
             style="font-size: 10px; border-radius: 20px !important; height: 20px; line-height: 20px !important; margin-top: 1px;" disabled>
         <i class="fa fa-eye"></i>
         {{ environment.translate('Get Pro') }}
-    </button>
+    </button>#}
 {% endblock %}

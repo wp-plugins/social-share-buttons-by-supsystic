@@ -51,7 +51,7 @@ class SupsysticSocialSharing
                 'uploads_rw'       => true,
                 'jpeg_quality'     => 95,
                 'plugin_db_update' => true,
-                'revision'         => 91
+                'revision'         => 110
             )
         );
 
@@ -105,6 +105,12 @@ class SupsysticSocialSharing
             dbDelta($sql);
             dbDelta('SET FOREIGN_KEY_CHECKS=1');
         }
+
+        $sql = str_replace('%prefix%', $prefix, file_get_contents($networks));
+
+        dbDelta('SET FOREIGN_KEY_CHECKS=0');
+        dbDelta($sql);
+        dbDelta('SET FOREIGN_KEY_CHECKS=1');
     }
 
     public function createSchema()

@@ -31,6 +31,12 @@ class SocialSharing_Overview_Module extends Rsc_Mvc_Module
     public function loadAssets(SocialSharing_Ui_Module $ui)
     {
         $ui->addAsset(
+            $ui->create('script', 'ss-notify-js')
+                ->setModuleSource($this, 'js/notify.js')
+                ->setHookName('admin_enqueue_scripts')
+        );
+
+        $ui->addAsset(
             $ui->create('script', 'ss-overview-js')
                 ->setModuleSource($this, 'js/overview-settings.js')
                 ->setHookName('admin_enqueue_scripts')

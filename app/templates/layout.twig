@@ -6,8 +6,8 @@
             <nav class="supsystic-navigation supsystic-sticky supsystic-sticky-active">
                 <ul>
                     {% block navigation %}
-                        <li>
-                            <a class="{% if request.query.module == 'overview' %}active{% endif %}" href="{{ environment.generateUrl('overview') }}">
+                        <li class="{% if request.query.module == 'overview' %}active{% endif %}">
+                            <a href="{{ environment.generateUrl('overview') }}">
                                 <i class="fa fa-fw fa-info"></i>
                                 <!-- /.fa fa-fw fa-plus -->
                                 {{ environment.translate('Overview') }}

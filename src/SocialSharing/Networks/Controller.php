@@ -63,6 +63,34 @@ class SocialSharing_Networks_Controller extends SocialSharing_Core_BaseControlle
         return $this->ajaxSuccess();
     }
 
+    public function saveTitlesAction(Rsc_Http_Request $request) {
+        $projectId = $request->post->get('project_id');
+        $data = $request->post->get('data');
+
+        if(!$savedData = get_option('networks_titles_' . $projectId)) {
+            update_option('networks_titles_' . $projectId, array($data['id'] => $data['value']));
+        } else {
+            $savedData[$data['id']] = $data['value'];
+            update_option('networks_titles_' . $projectId, $savedData);
+        }
+
+        return $this->ajaxSuccess();
+    }
+
+    public function saveNamesAction(Rsc_Http_Request $request) {
+        $projectId = $request->post->get('project_id');
+        $data = $request->post->get('data');
+
+        if(!$savedData = get_option('networks_names_' . $projectId)) {
+            update_option('networks_names_' . $projectId, array($data['id'] => $data['value']));
+        } else {
+            $savedData[$data['id']] = $data['value'];
+            update_option('networks_names_' . $projectId, $savedData);
+        }
+
+        return $this->ajaxSuccess();
+    }
+
     public function updateSortingAction(Rsc_Http_Request $request)
     {
         $projectId = $request->post->get('project_id');

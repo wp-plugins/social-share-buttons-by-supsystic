@@ -19,6 +19,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         // Use short numbers or not
         $shortNumbers = false;
         $savedData = get_option('networks_tooltips_' . $this->getProject()->getId());
+        $networkName = get_option('networks_titles_' . $this->getProject()->getId());
 
         if (!$this->getProject()->isDisplayTotalShares()) {
             $classes[] = 'without-counter';
@@ -33,6 +34,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         foreach ($networks as $network) {
             $finalClasses = array_merge($classes, array($network->class));
             $totalShares = $shortNumbers ? $this->humanizeTotalShares((isset($network->shares) ? $network->shares : 0)) : (isset($network->shares) ? $network->shares : 0);
+            $buttonName = ((isset($networkName[$network->id]) && $networkName[$network->id]) ? $networkName[$network->id] : null);
 
             if(isset($savedData[$network->id]) && $savedData[$network->id]) {
                 array_push($finalClasses, 'tooltip');
@@ -86,7 +88,9 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                             )
                         )
                     )->addElement(
-                         $this->getBuilder()->createTextElement((($this->getProject()->get('design', 'flat-1') == 'flat-8' || $this->getProject()->get('design', 'flat-1') == 'flat-9') ? $network->class : ''))
+                         $this->getBuilder()->createTextElement(
+                              (($this->getProject()->get('design', 'flat-1') == 'flat-8' || $this->getProject()->get('design', 'flat-1') == 'flat-9')
+                                  ? ($buttonName ? $buttonName : $network->class) : ''))
                     )
                 )
                 ->addElement(
@@ -95,7 +99,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                         array(
                             $this->getBuilder()->createAttribute(
                                 'class',
-                                'counter-wrap'
+                                'counter-wrap ' . ($this->getProject()->get('shares_style', '') ? $this->getProject()->get('shares_style', '') : 'standard')
                             )
                         )
                     )->addElement(
@@ -181,6 +185,9 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                 break;
             case 'mail':
                 $classes[] = 'fa-comment';
+                break;
+            case 'evernote':
+                $classes[] = 'bd-evernote';
                 break;
         }
 

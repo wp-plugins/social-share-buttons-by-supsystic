@@ -14,6 +14,7 @@
             autoOpen: false,
             modal:    true,
             width:    600,
+            appendTo: '#wpwrap',
             buttons : {
                 Close : function() {
                     self.$buttonsDialog.dialog('close');
@@ -42,6 +43,7 @@
             autoOpen: false,
             modal:    true,
             width:    600,
+            appendTo: '#wpwrap',
             buttons : {
                 Close : function() {
                     self.$iconsDialog.dialog('close');

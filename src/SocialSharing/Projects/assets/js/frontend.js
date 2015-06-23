@@ -64,7 +64,7 @@
                 $button.on('click', function() {
                     $networksContainer.removeClass('hidden')
                         .bPopup({
-                            //position: [100, 'auto']
+                            position: [0, 200]
                         });
                 });
             };
@@ -88,7 +88,7 @@
 
                 //$container.addClass('chage-size');
 
-                $('div.supsystic-social-sharing .sharer-flat').on('mouseover', function() {
+                $('div.supsystic-social-sharing[data-change-size="on"] .sharer-flat').on('mouseover', function() {
                         $(this).css('width', buttonWidth - buttonWidth / 4);
                 }).on('mouseleave', function() {
                         $(this).css('width', '');

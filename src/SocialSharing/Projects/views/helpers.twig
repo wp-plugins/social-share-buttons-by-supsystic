@@ -1,0 +1,19 @@
+{% macro networkSettings(network, data, environment) %}
+    <nav class="network-navigation">
+        <a href="" class="network-nav-item admin-nav-button active" data-type="title">
+            {{ environment.translate('Title') }}
+        </a>
+        <a href="" class="network-nav-item admin-nav-button" data-type="name">
+            {{ environment.translate('Name') }}
+        </a>
+        <a href="" class="network-nav-item admin-nav-button" data-type="tooltip">
+            {{ environment.translate('Tooltip') }}
+        </a>
+    </nav>
+
+    <div class="information-container">
+        <input type="text" class="network-title" data-id="{{ network.id }}" value="{{ data.networkTitles[network.id] }}">
+        <input type="text" class="network-name" data-id="{{ network.id }}" value="{{ data.networkNames[network.id] }}" hidden>
+        <input type="text" class="network-tooltip" name="networkTooltip" data-id="{{ network.id }}" value="{{ data.networkTooltips[network.id] }}" hidden/>
+    </div>
+{% endmacro %}

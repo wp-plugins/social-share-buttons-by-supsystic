@@ -18,14 +18,16 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
     {
         $projects = $this->modelsFactory->get('projects')->all();
 
-        foreach($projects as $project) {
-            $shares = $this->modelsFactory->get('shares')->getProjectShares($project->id);
-            $totalShares = 0;
+        if($projects && sizeof($projects)) {
+            foreach($projects as $project) {
+                $shares = $this->modelsFactory->get('shares')->getProjectShares($project->id);
+                $totalShares = 0;
 
-            foreach($shares as $share) {
-                $totalShares += $share->shares;
+                foreach($shares as $share) {
+                    $totalShares += $share->shares;
+                }
+                $project->totalShares = $totalShares;
             }
-            $project->totalShares = $totalShares;
         }
 
         return $this->response('@projects/index.twig', array(
@@ -103,7 +105,11 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
         $project = $this->modelsFactory->get('projects')->get($projectId);
         $networks = $this->modelsFactory->get('networks')->all();
         $tooltips = $this->modelsFactory->get('projects')->getTooltips();
-        $networkTooltips = get_option('networks_tooltips_' . $projectId);
+        $networkMeta = array(
+            'networkTooltips' => get_option('networks_tooltips_' . $projectId),
+            'networkTitles' => get_option('networks_titles_' . $projectId),
+            'networkNames' => get_option('networks_names_' . $projectId)
+        );
 
         return $this->response(
             '@projects/view.twig',
@@ -116,7 +122,7 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
                     'popup'
                 )->isInstalled(),
                 'tooltips'        => $tooltips,
-                'networkTooltips' => $networkTooltips
+                'networkMeta' => $networkMeta
             )
         );
     }

@@ -18,15 +18,17 @@
 
     Controller.prototype.checkMail = function() {
         var $userMail = $('[name="mail[email]"]'),
-            $userText = $('[name="mail[message]"]');
+            $userText = $('[name="mail[message]"]'),
+            $table = $('.contact-form-table');
 
         this.$mailButton.on('click', function(e) {
-            if(!$userMail.val() || !$userText.val()) {
-                e.preventDefault();
-                $userMail.closest('tr').find('.required').css('color', 'red');
-                $userText.closest('tr').find('.required').css('color', 'red');
-                $('.required-notification').show();
-            }
+                $table.find('input, textarea').each(function() {
+                    if(!$(this).val()) {
+                        e.preventDefault();
+
+                        $(this).notify('You need to fill this field');
+                    }
+                });
         });
     };
 

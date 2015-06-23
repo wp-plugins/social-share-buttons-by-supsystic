@@ -19,7 +19,7 @@
         ppsInitCustomCheckRadio();
         removeDuplicateSubmenu();
 
-        $('[data-toggle="tooltip"]').tooltip();
+        //$('[data-toggle="tooltip"]').tooltip();
     });
 
     function ppsInitCustomCheckRadio(selector) {

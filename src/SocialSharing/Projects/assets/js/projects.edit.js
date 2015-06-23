@@ -111,7 +111,7 @@
 
         // Design and animation
         $design.on('click', function () {
-            var type = $design.filter(':checked').val(),
+            var type = $(this).val(),
                 $preview = $('.animation-preview');
 
             $preview.removeClass('sharer-flat-1 sharer-flat-2 sharer-flat-3 sharer-flat-4 sharer-flat-5 sharer-flat-6 sharer-flat-7 sharer-flat-8 sharer-flat-9');
@@ -248,6 +248,7 @@
             autoOpen: false,
             modal: true,
             width: 500,
+            appendTo: '#wpwrap',
             buttons: {
                 Save: (function btnSelect() {
                     var checked = $(this).find(':checked'),
@@ -263,8 +264,7 @@
                             $networkContainer = $('<div/>', {
                                 class: 'network',
                                 id: 'network' + network.id
-                            }),
-                            $tooltipVal = $('<input>', { type: 'text', id: network.id, name: 'networksTooltip', class: 'networks-tooltip'});
+                            });
 
                         $networkContainer.append(
                             $('<a/>', { class: 'delete', href: '#' })
@@ -277,14 +277,48 @@
                             $('<input>', { type: 'hidden', name: 'networks[]' })
                                 .val(network.id)
                         ).append(
-                            $tooltipVal
+                            $('<nav/>', {class: 'network-navigation'})
+                        ).append(
+                            $('<div/>', {class: 'information-container'})
                         );
+
+                        $.each(['title', 'name', 'tooltip'], function (index, value) {
+                            $networkContainer.find('nav').append(
+                                $('<a/>', { href: '', class: 'network-nav-item admin-nav-button ' + (!index ? 'active' : '') , data: { type: value } })
+                                    .text(value[0].toUpperCase() + value.slice(1))
+                            );
+                        });
+
+                        $.each(['title', 'name', 'tooltip'], function (index, value) {
+                            var $line = null;
+                            $networkContainer.find('div').append(
+                                $line = $('<input/>', { class: 'network-' + value , name: (value == 'tooltip' ? 'networkTooltip' : '' ), data: { id: network.id }, hidden: 'hidden' })
+                                    .text(value[0].toUpperCase() + value.slice(1))
+                            );
+
+                            if(value == 'title') {
+                                $line.show();
+                            }
+                        });
 
                         if (!$networksList.has('#network' + network.id).length) {
                             $networksList.append($networkContainer);
-                            $tooltipVal.bind('focusout', function() {
-                                saveTooltip($(this));
+                            $networkContainer.find('.information-container input').bind('focusout', function() {
+
+                                switch ($(this).attr('class').split('network-')[1]) {
+                                    case 'title' : {
+                                        return saveTitle($(this));
+                                    } break;
+                                    case 'name' : {
+                                        return saveName($(this));
+                                    } break;
+                                    case 'tooltip' : {
+                                        return saveTooltip($(this));
+                                    } break;
+                                }
                             });
+
+                            networkNavigation();
                         }
                     });
 
@@ -374,11 +408,13 @@
         $adminNavButtons.on('click', function() {
             var $sections = $('.scroll');
 
-            $adminNavButtons.removeClass('active');
-            $(this).addClass('active');
+            if(!$(this).hasClass('network-nav-item')) {
+                $adminNavButtons.removeClass('active');
+                $(this).addClass('active');
 
-            $sections.hide()
-                .filter('[data-navigation="' + $(this).data('block') + '"]').show();
+                $sections.hide()
+                    .filter('[data-navigation="' + $(this).data('block') + '"]').show();
+            }
         });
 
         $('[name="settings[overlay_with_shadow]"]').on('click', function() {
@@ -402,7 +438,15 @@
         });
 
         $('[name="settings[buttons_size]"]').on('change', function() {
-            $('.supsystic-social-sharing').css('font-size', $(this).val() + 'em');
+            $('.supsystic-social-sharing a').css('font-size', $(this).val() + 'em');
+        }).trigger('change');
+
+        $('[name="settings[spacing]"]').on('change', function() {
+            if($(this).is(':checked')) {
+                $('.supsystic-social-sharing a').css('margin-left', '20px');
+            } else {
+                $('.supsystic-social-sharing a').css('margin-left', '0');
+            }
         }).trigger('change');
 
         $('[data-navigation="design"] .sharer-flat').on('click', function() {
@@ -415,7 +459,9 @@
             animation: 'slide',
             position: 'right',
             theme: 'tooltipster-shadow',
-            contentAsHTML: true
+            contentAsHTML: true,
+            maxWidth: '320',
+            interactive: true,
         });
 
         $('.choose-effect-buttons').on('mouseover', function() {
@@ -446,7 +492,7 @@
         });
 
         var saveTooltip = function($element) {
-            var networkId = $element.attr('id'),
+            var networkId = $element.data('id'),
                 tooltip = $element.val();
 
             $.post($('form#networks').attr('action'), {
@@ -462,8 +508,50 @@
             });
         };
 
-        $('[name="networksTooltip"]').on('focusout', function() {
+        var saveTitle = function($element) {
+            var networkId = $element.data('id'),
+                title = $element.val();
+
+            $.post($('form#networks').attr('action'), {
+                'action': 'social-sharing',
+                'route': {
+                    'module': 'networks',
+                    'action': 'saveTitles'
+                },
+                'project_id': parseInt($('#networks [name="project_id"]').val()),
+                'data': { 'id': networkId, 'value': title }
+            }).done(function(response) {
+                console.log(response);
+            });
+        };
+
+        var saveName = function($element) {
+            var networkId = $element.data('id'),
+                name = $element.val();
+
+            $.post($('form#networks').attr('action'), {
+                'action': 'social-sharing',
+                'route': {
+                    'module': 'networks',
+                    'action': 'saveNames'
+                },
+                'project_id': parseInt($('#networks [name="project_id"]').val()),
+                'data': { 'id': networkId, 'value': name }
+            }).done(function(response) {
+                console.log(response);
+            });
+        };
+
+        $('[name="networkTooltip"]').on('focusout', function() {
             saveTooltip($(this));
+        });
+
+        $('.network-title').on('focusout', function() {
+            saveTitle($(this));
+        });
+
+        $('.network-name').on('focusout', function() {
+            saveName($(this));
         });
 
         $('[name="settings[display_total_shares]"]').on('change', function() {
@@ -478,6 +566,31 @@
             $(this).select();
         });
 
+        var networkNavigation = function() {
+            var $buttons = $('.network-nav-item');
+
+            $buttons.off('click');
+
+            $buttons.on('click', function(e) {
+                e.preventDefault();
+
+                $(this).parent().find('a').removeClass('active');
+                $(this).addClass('active');
+
+                $('.information-container input').hide()
+                    .filter('.network-' + $(this).data('type')).show();
+            });
+        };
+
+        networkNavigation();
+
+
+        $('#bd-shares-style').on('change', function() {
+
+            $preview.filter('.supsystic-social-sharing-preview')
+                .find('.counter-wrap').removeClass('standard arrowed')
+                    .addClass($(this).val());
+        });
     });
 
 }(window.jQuery, window.supsystic.SocialSharing));

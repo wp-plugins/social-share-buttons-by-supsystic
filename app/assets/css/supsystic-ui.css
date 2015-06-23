@@ -197,10 +197,12 @@ ul.supsystic-bar-controls > li.separator {
 }
 
 .ui-widget-overlay {
-    background: #aaaaaa !important;
-    opacity: .3;
-    -ms-filter: Alpha(opacity=30);
-    filter: Alpha(opacity=30);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999 !important;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .ui-widget-overlay.ui-front {
@@ -209,6 +211,7 @@ ul.supsystic-bar-controls > li.separator {
 
 .ui-widget-content {
     background: #fff !important;
+    z-index: 9999;
 }
 
 .ui-widget-header {
@@ -383,6 +386,7 @@ h2.nav-tab-wrapper, h3.nav-tab-wrapper {
     box-shadow: none;
     border: 1px solid #000 !important;
     line-height: 31px;
+    margin-right: 10px;
 }
 
 .supsystic-plugin .button.hover,
