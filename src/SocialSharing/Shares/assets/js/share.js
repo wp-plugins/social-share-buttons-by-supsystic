@@ -6,7 +6,9 @@
             $buttons = $(selector);
 
         $('.supsystic-social-sharing').each(function() {
-            saveViews($(this).find('a:first'));
+            if($(this).find('a').length && !$(this).hasClass('networks-list-container')) {
+                saveViews($(this).find('a:first'));
+            }
         });
 
         $buttons.on('click', function (e) {
@@ -21,8 +23,6 @@
             data.project_id = projectId;
             data.network_id = networkId;
             data.post_id = isNaN(postId) ? null : postId;
-
-            console.log(data);
 
             $.post(url, data).done(function () {
                 $button.find('.counter').text(function (index, text) {
@@ -48,7 +48,9 @@
         data.project_id = projectId;
         data.post_id = isNaN(postId) ? null : postId;
 
-        $.post(url, data);
+        if(data.project_id) {
+            $.post(url, data);
+        }
     }
 
 }(jQuery));

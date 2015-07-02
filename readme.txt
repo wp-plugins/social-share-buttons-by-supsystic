@@ -2,7 +2,7 @@
 Contributors: supsystic.com
 Tags: share counter, social media share, social network share, social share, social share buttons, social sharing, facebook like, facebook share, like, share buttons, share links, sharebar
 Tested up to: 4.2.2
-Stable tag: 1.2.2
+Stable tag: 1.2.4
 License: GPLv2 or later
 
 Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
@@ -151,6 +151,15 @@ Here you can set when to show social share buttons:
 
 
 == Changelog ==
+
+= 1.2.4 / 01.07.2015 =
+ * Ajax requests optimized
+ * Evernote sharing button added
+ * Buttons layout fixed
+ * Admin settings changed
+ * Sidebar customization additional options added
+ * Minor changes
+ * Functional fixes
 
 = 1.2.3 / 19.06.2015 =
  * Helpers added to networks meta

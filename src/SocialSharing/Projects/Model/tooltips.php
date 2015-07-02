@@ -10,7 +10,7 @@
         'widget-tooltip' => 'Widget tooltip image',
         'shortcode-tooltip' => 'Shortcode tooltip image',
 		'spacing-tooltip' => "<p>Adds space between the buttons</p><img src=" . $url ."/tooltips-images/distance-between-buttons.jpg />",
-		'buttons-size' => "<p>Choose the size for social buttons. This option allows you to accent the attention for as much as you want it</p><img src=" . $url ."/tooltips-images/buttons-size.jpg />",
+		'buttons-size' => "<p>Choose the size for social buttons. This option allows you to accent the attention for as much as you want</p><img src=" . $url ."/tooltips-images/buttons-size.jpg />",
 		'display-counters' => "<p>Displays counters of social shares on buttons</p><img src=" . $url . "/tooltips-images/display-counters.jpg />",
 		'use-short-numbers' => "<p>Rounds up big numbers of counters and displays the short numbers. Available only with enabled \"Display counters\" option.</p><img src=" . $url . "/tooltips-images/display-short-numbers.jpg />",
         'enable-grad-mode' => "<p>Gradient mode creates smooth transitions from the one color to another. Available in PRO</p>

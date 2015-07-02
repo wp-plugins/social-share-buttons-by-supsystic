@@ -70,7 +70,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                         ),
                         $this->getBuilder()->createAttribute(
                             'title',
-                            $savedData[$network->id] ? $savedData[$network->id] : null
+                            isset($savedData[$network->id]) ? $savedData[$network->id] : null
                         ),
                         $this->getBuilder()->createAttribute(
                             'data-url',
