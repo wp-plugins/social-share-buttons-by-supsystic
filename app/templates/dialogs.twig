@@ -29,3 +29,21 @@
         </div>
     </div>
 {% endmacro %}
+
+{% macro contentLockPromo() %}
+    <div id="content-lock-dialog-promo" title="{{ environment.translate('Content lock settings') }}" hidden>
+        <div style="line-height: 2; margin: 20px;">Please be advised that this option is available only in
+            <a class="pro-url" href="http://supsystic.com/plugins/social-share-plugin/">PRO version. </a>
+            You can <a class="ui-button" href="http://supsystic.com/plugins/social-share-plugin/" style="padding: 5px 10px;">Get PRO </a>
+            today and get this and other PRO options for your Social Buttons</div>
+    </div>
+{% endmacro %}
+
+{% macro proAd() %}
+    <div id="pro-ad" title="{{ environment.translate('Get PRO') }}" hidden>
+        <div style="line-height: 2; margin: 20px;">Please be advised that this option is available only in
+            <a class="pro-url" href="http://supsystic.com/plugins/social-share-plugin/">PRO version. </a>
+            You can <a class="ui-button" href="http://supsystic.com/plugins/social-share-plugin/" style="padding: 5px 10px;">Get PRO </a>
+            today and get this and other PRO options for your Social Buttons</div>
+    </div>
+{% endmacro %}

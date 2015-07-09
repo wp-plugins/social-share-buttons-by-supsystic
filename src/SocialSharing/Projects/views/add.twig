@@ -294,6 +294,22 @@
                                             <!-- /.sharer-flat sharer-flat-1 twitter -->
                                         </th>
                                     </tr>
+                                    {% if environment.isPro() is not defined or environment.isPro() != 'true' %}
+                                        <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
+                                            <th scope="row">
+                                                <input type="radio" class="disabled-pro" />
+                                                <img src="{{ environment.getModule('projects').getLocationUrl() }}/assets/images/grad_adv.png" style="margin-top: 10px;">
+                                                <a class="pro-url" href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="display: block;">PRO option</a>
+                                            </th>
+                                        </tr>
+                                        <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
+                                            <th scope="row">
+                                                <input type="radio" class="disabled-pro" />
+                                                <img src="{{ environment.getModule('projects').getLocationUrl() }}/assets/images/grad_adv1.png" style="margin-top: 10px;">
+                                                <a class="pro-url" href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="display: block;">PRO option</a>
+                                            </th>
+                                        </tr>
+                                    {% endif %}
                                     </tbody>
                                 </table>
                             </div>
@@ -415,10 +431,13 @@
                                             <label for="bd-use-short-numbers">
                                                 {{ environment.translate('Enable gradient mode') }}
                                                 <i class="fa fa-question location-tooltip" title="{% if environment.isPro() is not defined or environment.isPro() != 'true' %}{{ tooltips['enable-grad-mode'] }}{% else %}{{ tooltips['grad-mode'] }}{% endif %}"></i>
+                                                {% if environment.isPro() != 'true' %}
+                                                    <a href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="font-size: 10px;">PRO option</a>
+                                                {% endif %}
                                             </label>
                                         </th>
                                         <td>
-                                            <input type="checkbox" name="settings[grad]" {% if project.settings.grad == 'on' %}checked{% endif %}{% if environment.isPro() is not defined or environment.isPro() != 'true' %}disabled{% endif %}>
+                                            <input type="checkbox" class="{% if environment.isPro() is not defined or environment.isPro() != 'true' %}disabled-pro{% endif %}" name="settings[grad]" {% if project.settings.grad == 'on' %}checked{% endif %}>
                                         </td>
                                     </tr>
 
@@ -522,13 +541,13 @@
                             <h2>{{ environment.translate('Where to show') }}</h2>
                             <ul class="where-to-show">
                                 <li>
-                                    <label for="wts-sidebar" data-toggle="tooltip" title="{{ environment.translate('Adds buttons to the selected side of the page.') }}">
+                                    <label for="wts-sidebar" data-toggle="tooltip">
                                         <input type="radio"
                                                name="settings[where_to_show]"
                                                value="sidebar"
                                                id="wts-sidebar" {% if project.settings.where_to_show == 'sidebar' %}checked="checked"{% endif %}/>
                                         {{ environment.translate('Sidebar') }}
-                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['sidebar-tooltip'] }}"></i>#}
+                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['sidebar-tooltip'] }}"></i>
                                     </label>
                                     <ul class="wts-extra" {% if project.settings.where_to_show != 'sidebar' %}style="display: none;"{% endif %}>
                                         <li>
@@ -571,13 +590,13 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <label for="wts-content" data-toggle="tooltip" title="{{ environment.translate('Buttons will appear at the post or page content.') }}">
+                                    <label for="wts-content" data-toggle="tooltip">
                                         <input type="radio"
                                                name="settings[where_to_show]"
                                                value="content"
                                                id="wts-content" {% if project.settings.where_to_show == 'content' %}checked="checked"{% endif %}/>
                                         {{ environment.translate('Content') }}
-                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['content-tooltip'] }}"></i>#}
+                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['content-tooltip'] }}"></i>
                                     </label>
                                     <ul class="wts-extra" {% if project.settings.where_to_show != 'content' %}style="display: none;"{% endif %}>
                                         <li>
@@ -610,7 +629,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <label for="wts-popup" data-toggle="tooltip" title="{{ environment.translate('Popup window with buttons using our awesome Popup plugin.') }}">
+                                    <label for="wts-popup" data-toggle="tooltip">
                                         <input type="radio"
                                                name="settings[where_to_show]"
                                                value="popup"
@@ -622,11 +641,11 @@
                                         {% if popup_installed == false %}
                                             <small>({{ environment.translate('You need to install <a href="%s" target="_blank">Popup by Supsystic</a> to use this feature.') | format('http://supsystic.com/plugins/popup-plugin/') | raw }})</small>
                                         {% endif %}
-                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['popup-tooltip'] }}"></i>#}
+                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['popup-tooltip'] }}"></i>
                                     </label>
                                 </li>
                                 <li>
-                                    <label for="wts-widget" data-toggle="tooltip" title="{{ environment.translate('Creates a widget of the current project at Appearance > Widgets and allows you to use project at theme\'s widgets areas.') }}">
+                                    <label for="wts-widget" data-toggle="tooltip">
                                         <input type="radio"
                                                name="settings[where_to_show]"
                                                value="widget"
@@ -634,16 +653,16 @@
                                                id="wts-widget"/>
                                         <!-- /#wts-widget -->
                                         {{ environment.translate('Widget') }}
-                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['widget-tooltip'] }}"></i>#}
+                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['widget-tooltip'] }}"></i>
                                     </label>
                                 </li>
                                 <li>
-                                    <label for="wts-code" data-toggle="tooltip" title="{{ environment.translate('Allows you to insert project shortcode and show buttons where you want.') }}">
+                                    <label for="wts-code" data-toggle="tooltip">
                                         <input type="radio"
                                                name="settings[where_to_show]"
                                                value="code" id="wts-code" {% if project.settings.where_to_show == 'code' %}checked="checked"{% endif %}/>
                                         {{ environment.translate('Shortcode or PHP code') }}
-                                        {#<i class="fa fa-question location-tooltip" title="{{ tooltips['shortcode-tooltip'] }}"></i>#}
+                                        <i class="fa fa-question location-tooltip" title="{{ tooltips['shortcode-tooltip'] }}"></i>
                                     </label>
                                     <div id="wts-shortcode" style="margin-top: 10px; {% if project.settings.where_to_show == 'code' %}display: block; {% else %}display: none;{% endif %}">
                                         <input class="code" style="width: 240px; background-color: #F5F5F5 !important; border: 1px solid #CCCCCC !important; border-radius: 4px !important; color: #333333 !important; font-size: 13px !important; margin: 0 0 10px !important; padding: 9.5px !important; font-family: monospace !important; cursor: pointer;" value="[supsystic-social-sharing id='{{ project.id }}']">
@@ -668,11 +687,14 @@
                                 <i class="fa fa-question location-tooltip" title="{{ tooltips['all-button'] }}"></i>
                             </div>
                             <div style="margin-top: 10px;">
-                                <button id="lock-dialog" class="button button-primary" data-toggle="tooltip" data-original-title="Content lock settings" {% if environment.isPro() is not defined or environment.isPro() != 'true' %}disabled{% endif %}>
+                                <button id="{% if environment.isPro() != 'true' %}lock-dialog-promo{% else %}lock-dialog{% endif %}" class="button button-primary" data-toggle="tooltip" data-original-title="Content lock settings">
                                     <i class="fa fa-lock"></i>
                                     {{ environment.translate('Content lock') }}
                                     <i class="fa fa-question location-tooltip" title="{{ tooltips['content-lock'] }}"></i>
                                 </button>
+                                {% if environment.isPro() != 'true' %}
+                                    <a href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="display: block; font-size: 10px;">PRO option</a>
+                                {% endif %}
                             </div>
                         </div>
                         <!-- /.scroll -->
@@ -746,6 +768,7 @@
                                     <th scope="row">
                                         <label for="ws-page-load">
                                             {{ environment.translate('When page load') }}
+                                            <i class="fa fa-question location-tooltip" title="{{ tooltips['page-load'] }}"></i>
                                         </label>
                                     </th>
                                     <td>
@@ -758,6 +781,7 @@
                                     <th scope="row">
                                         <label for="ws-page-click">
                                             {{ environment.translate('User click on page') }}
+                                            <i class="fa fa-question location-tooltip" title="{{ tooltips['user-click'] }}"></i>
                                         </label>
                                     </th>
                                     <td>
@@ -812,6 +836,10 @@
         {% import 'dialogs.twig' as dialogs %}
         {{ dialogs.buttonsAnimation(['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble']) }}
         {{ dialogs.iconsAnimation(['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble']) }}
+        {% if environment.isPro() != 'true' %}
+            {{ dialogs.contentLockPromo() }}
+            {{ dialogs.proAd() }}
+        {% endif %}
     </div>
     <!-- /.supsystic-item -->
 

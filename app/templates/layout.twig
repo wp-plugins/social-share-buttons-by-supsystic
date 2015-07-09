@@ -27,6 +27,15 @@
                                 {{ environment.translate('Projects') }}
                             </a>
                         </li>
+                        {% if environment.isPro() %}
+                            <li class="{% if request.query.module == 'license' %}active{% endif %}">
+                                <a href="{{ environment.generateUrl('license') }}">
+                                    <i class="fa fa-fw fa-hand-o-right"></i>
+                                    <!-- /.fa fa-fw fa-plus -->
+                                    {{ environment.translate('License') }}
+                                </a>
+                            </li>
+                        {% endif %}
                         {#<li>#}
                             {#<a href="#">#}
                                 {#<i class="fa fa-fw fa-cogs"></i>#}

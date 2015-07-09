@@ -3,6 +3,8 @@
     var Controller = function() {
         this.$buttonsDialog = $('.buttons-adnimation-dialog');
         this.$iconsDialog = $('.icons-adnimation-dialog');
+        this.$lockDialog = $('#content-lock-dialog-promo');
+        this.$promoDialog = $('#pro-ad');
     };
 
     Controller.prototype.initButtonsDialog = function() {
@@ -63,9 +65,61 @@
         });
     };
 
+    Controller.prototype.initLockDialog = function() {
+        var $button = $('#lock-dialog-promo'),
+            self = this;
+
+        this.$lockDialog.dialog({
+            autoOpen: false,
+            modal:    true,
+            width:    600,
+            appendTo: '#wpwrap',
+            buttons : {
+                Close : function() {
+                    self.$lockDialog.dialog('close');
+                },
+            }
+        });
+
+        $button.on('click', function(e) {
+            e.preventDefault();
+
+            self.$lockDialog.dialog('open');
+        });
+    };
+
+    Controller.prototype.initPromoDialog = function() {
+        var $button = $('.disabled-pro'),
+            self = this;
+
+        this.$promoDialog.dialog({
+            autoOpen: false,
+            modal:    true,
+            width:    600,
+            appendTo: '#wpwrap',
+            buttons : {
+                Close : function() {
+                    self.$promoDialog.dialog('close');
+                },
+            }
+        });
+
+        $button.on('click', function(e) {
+
+            self.$promoDialog.dialog('open');
+        });
+
+        this.$promoDialog.on('dialogclose', function() {
+
+            $button.attr('checked', false).iCheck('update');
+        });
+    };
+
     Controller.prototype.init = function() {
         this.initButtonsDialog();
         this.initIconsDialog();
+        this.initLockDialog();
+        this.initPromoDialog();
     };
 
     $(document).ready(function() {

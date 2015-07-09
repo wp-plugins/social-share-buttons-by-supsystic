@@ -57,9 +57,13 @@ class SocialSharing_Core_ModelsFactory
         $className = 'SocialSharing_'.$module.'_Model_'.ucfirst($alias);
 
         if (!class_exists($className)) {
-            throw new RuntimeException(
-                sprintf('Class "%s" not found.', $className)
-            );
+
+            $className = 'SocialSharingPro_'.$module.'_Model_'.ucfirst($alias);
+            if (!class_exists($className)) {
+                throw new RuntimeException(
+                    sprintf('Class "%s" not found.', $className)
+                );
+            }
         }
 
         $model = new $className;

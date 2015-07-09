@@ -12,8 +12,11 @@
     font-size: 15px;
 }
 
-.supsystic-plugin a {
+.supsystic-plugin a,
+.ui-dialog a.pro-url,
+.tooltipster-content a {
     color: #4ae8ea;
+    outline: none !important;
 }
 
 #projectTitle:focus {

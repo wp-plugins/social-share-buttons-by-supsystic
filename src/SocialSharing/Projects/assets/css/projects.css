@@ -141,3 +141,7 @@
 .supsystic-plugin .projects {
     border: none !important;
 }
+
+.supsystic-plugin .pro-url {
+    font-size: 10px !important;
+}
