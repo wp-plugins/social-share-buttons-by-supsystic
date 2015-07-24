@@ -58,6 +58,10 @@ class SupsysticSocialSharing
         $this->environment = $environment;
     }
 
+	public function getEnvironment() {
+		return $this->environment;
+	}
+	
     public function run()
     {
         /*if (isset($_GET['sharing_install_db'])) {

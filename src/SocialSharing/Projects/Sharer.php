@@ -139,9 +139,8 @@ abstract class SocialSharing_Projects_Sharer
 
         $sidebarClasses = array('supsystic-social-sharing-right', 'supsystic-social-sharing-left', 'supsystic-social-sharing-top', 'supsystic-social-sharing-bottom');
 
-        if ((!array_key_exists('action', $_GET) || $_GET['action'] !== 'getPreviewHtml') && $this->project->isShowOnPosts()) {
+        if ((!array_key_exists('action', $_GET) || $_GET['action'] !== 'getPreviewHtml') && $this->project->isShowOnPosts() && !$this->project->isShowAt('popup')) {
             $current = get_post();
-
 
             if ($current === null) {
                 return '';
@@ -216,6 +215,8 @@ abstract class SocialSharing_Projects_Sharer
                 $container->addElement($navButton);
             }
         }
+
+        $this->dispatcher->dispatch('before_html_build');
 
         return $container->build();
     }

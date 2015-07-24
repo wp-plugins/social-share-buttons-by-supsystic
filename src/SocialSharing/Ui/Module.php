@@ -61,9 +61,12 @@ class SocialSharing_Ui_Module extends SocialSharing_Core_BaseModule
     public function registerAssets()
     {
         $environment = $this->getEnvironment();
+        $config = $environment->getConfig();
+        $prefix = $config->get('hooks_prefix');
 
         foreach ($this->assets as $asset) {
             if ('admin_enqueue_scripts' !== $asset->getHookName()) {
+                $asset->setHookName($prefix . 'before_html_build');
                 $asset->register();
             } elseif ($environment->isPluginPage()) {
                 $asset->register();

@@ -18,7 +18,8 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
     {
         $projects = $this->modelsFactory->get('projects')->all();
 
-        if($projects && sizeof($projects)) {
+        // COUNT => SIZEOF!!!
+        if($projects && count($projects)) {
             foreach($projects as $project) {
                 $shares = $this->modelsFactory->get('shares')->getProjectShares($project->id);
                 $totalShares = 0;
@@ -83,7 +84,15 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
 
                 if (!$hasPopup) {
                     $settings['popup_id'] = 0;
-                }
+				} else {
+					if(!isset($hasPopup['params']['tpl']['enb_sm']) || empty($hasPopup['params']['tpl']['enb_sm'])) {
+						$hasPopup['params']['tpl']['enb_sm'] = 1;
+						$hasPopup['params']['tpl']['use_sss_prj_id'] = 1;
+						$popup->call('getModule', array('popup'))
+							->getModel()
+							->updateParamsById( $hasPopup );
+					}
+				}
             }
         }
 
@@ -111,6 +120,11 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
             'networkNames' => get_option('networks_names_' . $projectId)
         );
 
+        $popup = $this->getEnvironment()->getModule('popup');
+		$popupInstalled = $popup->isInstalled();
+		$popups = $popupInstalled ? $popup->getModel()->getSimpleList('original_id != 0') : array();
+		$popupAddUrl = $popupInstalled ? $popup->call('getModule', array('options'))->getTabUrl('popup_add_new') : '';
+
         return $this->response(
             '@projects/view.twig',
             array(
@@ -118,11 +132,11 @@ class SocialSharing_Projects_Controller extends SocialSharing_Core_BaseControlle
                 'networks'        => $networks,
                 'posts'           => get_posts(array('posts_per_page' => -1)),
                 'pages'           => get_pages(array('posts_per_page' => -1)),
-                'popup_installed' => $this->getEnvironment()->getModule(
-                    'popup'
-                )->isInstalled(),
+                'popup_installed' => $popupInstalled,
+                'popups'          => $popups,
+				'popup_add_new_url' => $popupAddUrl,
                 'tooltips'        => $tooltips,
-                'networkMeta' => $networkMeta
+                'networkMeta'     => $networkMeta,
             )
         );
     }

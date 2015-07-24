@@ -24,8 +24,26 @@ class SocialSharing_Popup_Module extends SocialSharing_Core_Module
         $this->frameClass = 'framePps';
         $this->templateId = 10;
 
-//       dump($this->getModel()->getById(38)['params']);
-//       dump($this->getDefaultPopupSettings());
+        add_filter('supsystic_popup_sm_html', array($this, 'injectProjectHtml'), 10, 2);
+    }
+
+    public function injectProjectHtml($html, $popup)
+    {
+        if (!is_array($popup) || !array_key_exists('id', $popup)) {
+            return $html;
+        }
+
+        $search = $this->getSearchString($popup['id']);
+
+        /** @var SocialSharing_Projects_Model_Projects $projects */
+        $projects = $this->getProjectsModule()->getModelsFactory()->get('projects');
+        $project = $projects->searchByPopupId($search);
+
+        if (null === $project) {
+            return $html;
+        }
+
+        return $this->getProjectsModule()->doShortcode(array('id' => $project->id));
     }
 
     /**
@@ -90,6 +108,7 @@ class SocialSharing_Popup_Module extends SocialSharing_Core_Module
      * Call method from the Supsystic Popup frame class.
      * @param string $method Method name.
      * @param array $arguments An array of the arguments.
+     * @throws BadMethodCallException
      * @return mixed
      */
     public function call($method, array $arguments = array())
@@ -118,7 +137,17 @@ class SocialSharing_Popup_Module extends SocialSharing_Core_Module
      */
     public function getModule()
     {
-        return $this->call('getModule', array('popup'));
+        return $this->findModule('popup');
+    }
+
+    /**
+     * Find and returns popup module.
+     * @param string $name Module name
+     * @return modulePps
+     */
+    public function findModule($name)
+    {
+        return $this->call('getModule', array($name));
     }
 
     /**
@@ -259,5 +288,29 @@ class SocialSharing_Popup_Module extends SocialSharing_Core_Module
         }
 
         return $identifiers;
+    }
+
+    /**
+     * @return SocialSharing_Projects_Module
+     */
+    protected function getProjectsModule()
+    {
+        $resolver = $this->getEnvironment()->getResolver();
+
+        return $resolver->getModulesList()->get('projects');
+    }
+
+    protected function getSearchString($id)
+    {
+        // Need to be a string
+        $id = (string)$id;
+
+        // Popup ID saved in the database with the other serialized settings.
+        // So we need to serialize value.
+        $serialized = serialize(array('popup_id' => $id));
+        // Take part like s:8:"popup_id";s:2:"54";
+        $search = substr($serialized, 5, strlen($serialized) - 6);
+
+        return '%' . $search . '%';
     }
 }

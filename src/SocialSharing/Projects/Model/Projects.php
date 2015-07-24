@@ -55,6 +55,23 @@ class SocialSharing_Projects_Model_Projects extends SocialSharing_Core_BaseModel
         return $this->applyFilters($project);
     }
 
+    public function searchByPopupId($like)
+    {
+        $query = $this->getQueryBuilder()
+            ->select('*')
+            ->from($this->getTable())
+            ->where('settings', 'LIKE', $like)
+            ->limit(1);
+
+        $project = $this->db->get_row($query->build());
+
+        if (!$project) {
+            return null;
+        }
+
+        return $this->applyFilters($project);
+    }
+
     /**
      * Returns all projects.
      *
@@ -117,39 +134,39 @@ class SocialSharing_Projects_Model_Projects extends SocialSharing_Core_BaseModel
     public function save($id, array $settings)
     {
         /** @var SocialSharing_Popup_Module $facade */
-        $facade = $this->environment->getModule('popup');
+//        $facade = $this->environment->getModule('popup');
 
-        if ($settings['where_to_show'] === 'popup') {
-            if ($settings['popup_id'] == 0) {
-                $project = $this->get($id);
-                $popupId = $facade->getModel()->createFromTpl(
-                    array(
-                        'label'       => htmlspecialchars(
-                            'Social Sharing \"' . $project->title . '\"'
-                        ),
-                        'original_id' => $facade->getTemplateId()
-                    )
-                );
-
-                if (!$popupId) {
-                    throw new RuntimeException(
-                        sprintf(
-                            $this->translate(
-                                'Failed to create popup for project "%s".'
-                            ),
-                            $project->title
-                        )
-                    );
-                }
-
-                $settings['popup_id'] = $popupId;
-            }
-
-            $facade->getModel()->save($facade->getPopupSettings($id, $settings));
-        } elseif ($settings['popup_id'] != 0) {
-            $facade->getModel()->remove($settings['popup_id']);
-            $settings['popup_id'] = 0;
-        }
+//        if ($settings['where_to_show'] === 'popup') {
+//            if ($settings['popup_id'] == 0) {
+//                $project = $this->get($id);
+//                $popupId = $facade->getModel()->createFromTpl(
+//                    array(
+//                        'label'       => htmlspecialchars(
+//                            'Social Sharing \"' . $project->title . '\"'
+//                        ),
+//                        'original_id' => $facade->getTemplateId()
+//                    )
+//                );
+//
+//                if (!$popupId) {
+//                    throw new RuntimeException(
+//                        sprintf(
+//                            $this->translate(
+//                                'Failed to create popup for project "%s".'
+//                            ),
+//                            $project->title
+//                        )
+//                    );
+//                }
+//
+//                $settings['popup_id'] = $popupId;
+//            }
+//
+//            $facade->getModel()->save($facade->getPopupSettings($id, $settings));
+//        } elseif ($settings['popup_id'] != 0) {
+//            $facade->getModel()->remove($settings['popup_id']);
+//            $settings['popup_id'] = 0;
+//        }
 
         $query = $this->getQueryBuilder()
             ->update($this->getTable())

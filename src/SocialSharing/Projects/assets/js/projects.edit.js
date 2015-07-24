@@ -591,6 +591,28 @@
                 .find('.counter-wrap').removeClass('standard arrowed')
                     .addClass($(this).val());
         });
+
+        // Select popup on popup radio
+        var $popupDialog = $('#selectPopupDialog').dialog({
+            width: 400,
+            modal: true,
+            autoOpen: false,
+            buttons: {
+                Select: function () {
+                    $('#popupId').val($popupDialog.find('select').val());
+                    $(this).dialog('close');
+                },
+                Cancel: function () {
+                    $(this).dialog('close');
+                }
+            }
+        });
+
+        $('#wts-popup').on('click', function () {
+            $popupDialog.dialog('open');
+
+            return false;
+        });
     });
 
 }(window.jQuery, window.supsystic.SocialSharing));

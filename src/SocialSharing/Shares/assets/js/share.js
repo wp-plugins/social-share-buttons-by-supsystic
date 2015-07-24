@@ -39,6 +39,10 @@
     });
 
     function saveViews($button) {
+		// This global variable can be set from outside plugin to ignore saving statistics.
+		// Used for now in popupControllerPps::_generateSocSharingAssetsForPreview() to avoid send statistic on PopUp preview in admin area
+		if(typeof(sssIgnoreSaveStatistics) !== 'undefined' && sssIgnoreSaveStatistics)
+			return;
         var projectId = parseInt($button.data('pid')),
             postId = parseInt($button.data('post-id')),
             data = {},

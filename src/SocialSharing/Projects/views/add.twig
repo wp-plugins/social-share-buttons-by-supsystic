@@ -91,7 +91,7 @@
                         <input name="action" type="hidden" value="social-sharing"/>
                         <input name="route[module]" type="hidden" value="projects"/>
                         <input name="route[action]" type="hidden" value="save"/>
-                        <input name="settings[popup_id]" value="{{ project.settings.popup_id | default(0) }}" type="hidden"/>
+                        <input name="settings[popup_id]" id="popupId" value="{{ project.settings.popup_id | default(0) }}" type="hidden"/>
 
                         <div class="scroll" data-navigation="design" hidden>
                             <div class="half-page-left" style="float: left; width: 50%;">
@@ -832,6 +832,27 @@
             {% endfor %}
         </div>
         <!-- /#networks-dialog -->
+
+        <div id="selectPopupDialog" title="{{ environment.translate('Select popup') }}">
+            <div style="padding: 15px;">
+                {% if popups | length %}
+                    <div>
+                        <label for="selectPopup">
+                            {{ environment.translate('Select popup') }}
+                        </label>
+                    </div>
+                    <div>
+                        <select id="selectPopup">
+                            {% for popupObject in popups %}
+                                <option value="{{ popupObject.id }}" {% if project.settings.popup_id == popupObject.id %}selected="selected"{% endif %}>{{ popupObject.label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% else %}
+                    <p>{{ environment.translate('Currently you haven\'t any popups. <a style="display: inline-block; text-decoration: none !important; padding-left: 5px; padding-right: 5px; margin: 0;" href="%s" target="_blank" class="ui-button">Create your first PopUp</a> and then just return to this page and select PopUp here.') | format(popup_add_new_url) | raw  }}</p>
+                {% endif %}
+            </div>
+        </div>
 
         {% import 'dialogs.twig' as dialogs %}
         {{ dialogs.buttonsAnimation(['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble']) }}
