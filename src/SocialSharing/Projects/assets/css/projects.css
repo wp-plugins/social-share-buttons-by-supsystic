@@ -44,22 +44,26 @@
     padding: 10px 20px;
     font-weight: 800;
     position: relative;
-    top: 1px;
+    top: 0px;
     outline: none !important;
 }
 
 .supsystic-plugin .admin-nav-button.active {
-    background-color: #fff;
-    border-bottom-color: #fff !important;
+    background-color: #4ae8ea !important;
+    border: 1px solid #4ae8ea !important;
 }
 
 .supsystic-plugin .admin-nav-button:hover {
-    background-color: #fff;
-    outline: none !important;
+    background-color: #4ae8ea !important;
+    border: 1px solid #4ae8ea !important;
 }
 
 .supsystic-plugin .admin-nav-button.network-nav-item {
     padding: 8px 10px !important;
+    border: 1px solid #000;
+    margin-right: 5px;
+    background-color: #fff;
+    font-size: 1em;
 }
 
 .supsystic-plugin .projects .title {
@@ -129,9 +133,13 @@
 }
 
 .supsystic-plugin .networks .network .network-title {
-    font-weight: bold;
-    color: #000;
-    font-size: 15px;
+    /*font-weight: bold;*/
+    /*color: #000;*/
+    /*font-size: 15px;*/
+}
+
+.supsystic-plugin .networks .network input {
+    width: 100%;
 }
 
 .supsystic-plugin .wp-list-table [scope="col"] {
@@ -144,4 +152,24 @@
 
 .supsystic-plugin .pro-url {
     font-size: 10px !important;
+}
+
+.choose-effect-buttons,
+.choose-effect-icons {
+    opacity: .4;
+}
+
+.choose-effect-buttons:hover,
+.choose-effect-icons:hover {
+    opacity: 1;
+}
+
+.choose-effect-buttons.current-effect,
+.choose-effect-icons.current-effect {
+    opacity: 1;
+}
+
+.anim-d .wrapper {
+    width: 50%;
+    float: left;
 }

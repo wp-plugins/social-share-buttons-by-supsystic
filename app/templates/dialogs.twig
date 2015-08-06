@@ -1,32 +1,37 @@
-{% macro buttonsAnimation(effects) %}
-    <div class="buttons-adnimation-dialog" title="Choose effect" hidden>
+{% macro buttonsAnimation(effects, current) %}
+    <div class="buttons-adnimation-dialog anim-d" title="Choose effect" hidden>
         <div class="supsystic-social-sharing" data-overlay="{{ project.settings.overlay_with_shadow }}" style="text-align: center; padding: 40px 0;">
             {% for effect in effects %}
                 <div class="wrapper">
-                    <a data-animation="{{ effect }}" class="sharer-flat sharer-flat-1 twitter choose-effect-buttons" href="javascript:void(0);">
+                    <a data-animation="{{ effect }}" class="sharer-flat sharer-flat-1 twitter choose-effect-buttons {% if current == effect %}current-effect{% endif %}" href="javascript:void(0);">
                         <i class="fa fa-fw fa-twitter icon-animation-preview" data-animation="no-animation"></i>
                         <!-- /.fa fa-fw fa-twitter -->
                     </a>
                     <!-- /.sharer-flat sharer-flat-1 -->
+                    <div>{{ effect }}</div>
                 </div>
             {% endfor %}
         </div>
+        <div class="clear"></div>
     </div>
 {% endmacro %}
 
-{% macro iconsAnimation(effects) %}
-    <div class="icons-adnimation-dialog" title="Choose effect" hidden>
+{% macro iconsAnimation(effects, current) %}
+    <div class="icons-adnimation-dialog anim-d" title="Choose effect" hidden>
         <div class="supsystic-social-sharing" data-overlay="{{ project.settings.overlay_with_shadow }}" style="text-align: center; padding: 40px 0;">
             {% for effect in effects %}
                 <div class="wrapper">
-                    <a data-animation="{{ effect }}" class="sharer-flat sharer-flat-1 twitter choose-effect-icons" href="javascript:void(0);">
+                    <a data-animation="{{ effect }}" class="sharer-flat sharer-flat-1 twitter choose-effect-icons {% if current == effect %}current-effect{% endif %}" href="javascript:void(0);">
                         <i class="fa fa-fw fa-twitter"></i>
                         <!-- /.fa fa-fw fa-twitter -->
                     </a>
                     <!-- /.sharer-flat sharer-flat-1 -->
+                    <div>{{ effect }}</div>
                 </div>
+                {#<p style="text-align: center;">{{ effect }}</p>#}
             {% endfor %}
         </div>
+        <div class="clear"></div>
     </div>
 {% endmacro %}
 

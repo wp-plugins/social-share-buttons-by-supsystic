@@ -50,6 +50,12 @@ class SocialSharing_Ui_Module extends SocialSharing_Core_BaseModule
                 ->setLocalSource('css/libraries/minimal/minimal.css')
         );
 
+        $this->addAsset(
+            $this->create('style', 'sss-admin')
+                ->setHookName('admin_enqueue_scripts')
+                ->setLocalSource('css/admin.css')
+        );
+
         $this->getEnvironment()
             ->getDispatcher()
             ->on('after_modules_loaded', array($this, 'registerAssets'));
@@ -68,7 +74,11 @@ class SocialSharing_Ui_Module extends SocialSharing_Core_BaseModule
             if ('admin_enqueue_scripts' !== $asset->getHookName()) {
                 $asset->setHookName($prefix . 'before_html_build');
                 $asset->register();
-            } elseif ($environment->isPluginPage()) {
+            } elseif ($environment->isPluginPage() && 'sss-admin' !== $asset->getHandle()) {
+                $asset->register();
+            }
+
+            if('sss-admin' === $asset->getHandle()) {
                 $asset->register();
             }
         }

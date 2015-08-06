@@ -105,211 +105,30 @@
                                 ] %}
                                 <table class="form-table form" style="float: left; width: 100%;">
                                     <tbody>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-2"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-2' %}checked="checked"{% endif %}
-                                                               id="flat-2"/>
-                                            <!-- /#flat-2 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-2 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-2 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-1"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-1' %}checked="checked"{% endif %}
-                                                               id="flat-1"/>
-                                            <!-- /#flat-1 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-1 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-1 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-3"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-3' %}checked="checked"{% endif %}
-                                                               id="flat-3"/>
-                                            <!-- /#flat-3 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-3 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-3 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-4"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-4' %}checked="checked"{% endif %}
-                                                               id="flat-3"/>
-                                            <!-- /#flat-3 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-4 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-3 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-5"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-5' %}checked="checked"{% endif %}
-                                                               id="flat-4"/>
-                                            <!-- /#flat-1 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-5 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-1 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-6"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-6' %}checked="checked"{% endif %}
-                                                               id="flat-6"/>
-                                            <!-- /#flat-1 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-6 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-1 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-7"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-7' %}checked="checked"{% endif %}
-                                                               id="flat-7"/>
-                                            <!-- /#flat-1 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-7 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-1 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-8"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-8' %}checked="checked"{% endif %}
-                                                               id="flat-8"/>
-                                            <!-- /#flat-1 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-8 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-1 twitter -->
-                                        </th>
-                                    </tr>
-                                    <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                        <th scope="row"><input type="radio"
-                                                               name="settings[design]"
-                                                               value="flat-9"
-                                                               {% if project.settings.design | default('flat-1') == 'flat-9' %}checked="checked"{% endif %}
-                                                               id="flat-9"/>
-                                            <!-- /#flat-1 -->
-                                            {% for button in buttonsTemplates %}
-                                                <a class="pricon sharer-flat sharer-flat-9 {{ button }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
-                                                   href="javascript:void(0);"><i
-                                                            class="fa fa-fw fa-{{ button }}"></i>
-                                                    <!-- /.fa fa-fw fa-twitter -->
-                                                    <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}"><span
-                                                                class="counter">{% if project.settings.short_numbers == 'on' %}5.7k{% else %}5731{% endif %}</span>
-                                                        <!-- /.counter --></div>
-                                                    <!-- /.counter-wrap -->
-                                                </a>
-                                            {% endfor %}
-                                            <!-- /.sharer-flat sharer-flat-1 twitter -->
-                                        </th>
-                                    </tr>
-                                    {% if environment.isPro() is not defined or environment.isPro() != 'true' %}
-                                        <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                            <th scope="row">
-                                                <input type="radio" class="disabled-pro" />
-                                                <img src="{{ environment.getModule('projects').getLocationUrl() }}/assets/images/grad_adv.png" style="margin-top: 10px;">
-                                                <a class="pro-url" href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="display: block;">PRO option</a>
-                                            </th>
-                                        </tr>
-                                        <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
-                                            <th scope="row">
-                                                <input type="radio" class="disabled-pro" />
-                                                <img src="{{ environment.getModule('projects').getLocationUrl() }}/assets/images/grad_adv1.png" style="margin-top: 10px;">
-                                                <a class="pro-url" href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="display: block;">PRO option</a>
-                                            </th>
-                                        </tr>
-                                    {% endif %}
+                                        {% for number in 1..9 %}
+                                            {% set design = 'flat-' ~ number %}
+                                            <tr class="supsystic-social-sharing supsystic-social-sharing-preview">
+                                                <th scope="row">
+                                                    <input type="radio" name="settings[design]" value="{{ design }}" {% if project.settings.design | default('flat-1') == design %}checked="checked"{% endif %} id="{{ design }}"/>
+                                                    {% for button in buttonsTemplates %}
+                                                        <a class="pricon sharer-flat sharer-{{ design }} {{ button }} counter-{{ project.settings.shares_style | default('standard') }} {% if project.settings.display_total_shares is not defined %}without-counter{% endif %}"
+                                                           href="javascript:void(0);">
+                                                            <i class="fa fa-fw fa-{{ button }}"></i>
+                                                            <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}">
+                                                                <span class="counter">
+                                                                    {% if project.settings.short_numbers == 'on' %}
+                                                                        5.7k
+                                                                    {% else %}
+                                                                        5731
+                                                                    {% endif %}
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    {% endfor %}
+                                                    <!-- /.sharer-flat sharer-flat-2 twitter -->
+                                                </th>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -317,7 +136,7 @@
                             <div class="half-page-right" style="display: inline-block; width: 50%;">
                                 <h2 style="margin-bottom: 20px;">{{ environment.translate('Preview') }}</h2>
                                 <div class="supsystic-social-sharing supsystic-social-sharing-preview" data-overlay="{{ project.settings.overlay_with_shadow }}" style="text-align: center; padding: 40px 0; border-bottom: 1px solid rgb(200, 200, 200); display: inline-block; width: 100%;">
-                                    <a data-animation="{{ project.settings.animation | default('no-animation') }}" class="sharer-flat sharer-{{ project.settings.design | default('flat-1') }} twitter {{ project.settings.animation | default('no-animation') }} animation-preview pricon" href="javascript:void(0);">
+                                    <a data-animation="{{ project.settings.animation | default('no-animation') }}" class="sharer-flat sharer-{{ project.settings.design | default('flat-1') }} counter-{{ project.settings.shares_style | default('standard') }} twitter {{ project.settings.animation | default('no-animation') }} animation-preview pricon" href="javascript:void(0);">
                                         <i class="fa fa-fw fa-twitter icon-animation-preview" data-animation="no-animation"></i>
                                         <!-- /.fa fa-fw fa-twitter -->
                                         <div class="counter-wrap {{ project.settings.shares_style | default('standard') }}" {% if project.settings.display_total_shares is not defined or project.settings.display_total_shares == 'false' %}hidden{% endif %}>
@@ -386,8 +205,9 @@
                                         </th>
                                         <td>
                                             <select id="bd-shares-style" name="settings[shares_style]">
-                                                <option value="standard" {% if project.settings.shares_style == 'standard' %}selected{% endif %}>{{ environment.translate('Standard') }}</option>
-                                                <option value="arrowed" {% if project.settings.shares_style == 'arrowed' %}selected{% endif %}>{{ environment.translate('Arrowed') }}</option>
+                                                {% for value in ['standard', 'arrowed', 'right-arrowed'] %}
+                                                    <option value="{{ value }}" {% if project.settings.shares_style == value %}selected{% endif %}>{{ value | title }}</option>
+                                                {% endfor %}
                                             </select>
                                         </td>
                                     </tr>
@@ -428,16 +248,13 @@
 
                                     <tr>
                                         <th scope="row">
-                                            <label for="bd-use-short-numbers">
+                                            <label for="bd-gradient">
                                                 {{ environment.translate('Enable gradient mode') }}
-                                                <i class="fa fa-question location-tooltip" title="{% if environment.isPro() is not defined or environment.isPro() != 'true' %}{{ tooltips['enable-grad-mode'] }}{% else %}{{ tooltips['grad-mode'] }}{% endif %}"></i>
-                                                {% if environment.isPro() != 'true' %}
-                                                    <a href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="font-size: 10px;">PRO option</a>
-                                                {% endif %}
+                                                <i class="fa fa-question location-tooltip" title="{{ tooltips['grad-mode'] }}"></i>
                                             </label>
                                         </th>
                                         <td>
-                                            <input type="checkbox" class="{% if environment.isPro() is not defined or environment.isPro() != 'true' %}disabled-pro{% endif %}" name="settings[grad]" {% if project.settings.grad == 'on' %}checked{% endif %}>
+                                            <input id="bd-gradient" type="checkbox" name="settings[grad]" {% if project.settings.grad == 'on' %}checked{% endif %}>
                                         </td>
                                     </tr>
 
@@ -687,14 +504,22 @@
                                 <i class="fa fa-question location-tooltip" title="{{ tooltips['all-button'] }}"></i>
                             </div>
                             <div style="margin-top: 10px;">
-                                <button id="{% if environment.isPro() != 'true' %}lock-dialog-promo{% else %}lock-dialog{% endif %}" class="button button-primary" data-toggle="tooltip" data-original-title="Content lock settings">
-                                    <i class="fa fa-lock"></i>
-                                    {{ environment.translate('Content lock') }}
-                                    <i class="fa fa-question location-tooltip" title="{{ tooltips['content-lock'] }}"></i>
-                                </button>
-                                {% if environment.isPro() != 'true' %}
-                                    <a href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="display: block; font-size: 10px;">PRO option</a>
-                                {% endif %}
+								<fieldset>
+									<legend>
+										<input type="checkbox"
+											   name="settings[enb_content_lock]"
+											   {% if project.settings.enb_content_lock == 'on' %}checked{% endif %}/>
+										{{ environment.translate('Enable Content Lock') }}
+									</legend>
+									<label>
+										<i class="fa fa-lock"></i> {{ environment.translate('Content Lock Element Class') }}<br />
+										<input type="text" name="settings[content_lock_selector]" value="{{project.settings.content_lock_selector}}" />
+									</label>
+									<i class="fa fa-question location-tooltip" title="{{ tooltips['content-lock'] }}"></i>
+									{% if environment.isPro() != 'true' %}
+										<a href="http://supsystic.com/plugins/social-share-plugin/" target="_blank" style="display: block; font-size: 10px;">PRO option</a>
+									{% endif %}
+								</fieldset>
                             </div>
                         </div>
                         <!-- /.scroll -->
@@ -855,8 +680,8 @@
         </div>
 
         {% import 'dialogs.twig' as dialogs %}
-        {{ dialogs.buttonsAnimation(['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble']) }}
-        {{ dialogs.iconsAnimation(['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble']) }}
+        {{ dialogs.buttonsAnimation(['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'], project.settings.buttons_animation) }}
+        {{ dialogs.iconsAnimation(['no-animation', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'], project.settings.icons_animation) }}
         {% if environment.isPro() != 'true' %}
             {{ dialogs.contentLockPromo() }}
             {{ dialogs.proAd() }}

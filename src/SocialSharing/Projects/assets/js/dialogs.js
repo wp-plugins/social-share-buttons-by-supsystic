@@ -1,5 +1,7 @@
 (function ($, app) {
 
+    var currentEffectClass = 'current-effect';
+
     var Controller = function() {
         this.$buttonsDialog = $('.buttons-adnimation-dialog');
         this.$iconsDialog = $('.icons-adnimation-dialog');
@@ -17,6 +19,15 @@
             modal:    true,
             width:    600,
             appendTo: '#wpwrap',
+            open: function () {
+                var animation = $('[name="settings[buttons_animation]"]').val(),
+                    $effect = $effects.filter('[data-animation=' + animation + ']');
+
+                if ($effect.length) {
+                    $effects.removeClass(currentEffectClass);
+                    $effect.addClass(currentEffectClass);
+                }
+            },
             buttons : {
                 Close : function() {
                     self.$buttonsDialog.dialog('close');
@@ -46,6 +57,15 @@
             modal:    true,
             width:    600,
             appendTo: '#wpwrap',
+            open: function () {
+                var animation = $('[name="settings[icons_animation]"]').val(),
+                    $effect = $effects.filter('[data-animation=' + animation + ']');
+
+                if ($effect.length) {
+                    $effects.removeClass(currentEffectClass);
+                    $effect.addClass(currentEffectClass);
+                }
+            },
             buttons : {
                 Close : function() {
                     self.$iconsDialog.dialog('close');

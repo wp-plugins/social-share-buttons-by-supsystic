@@ -586,10 +586,14 @@
 
 
         $('#bd-shares-style').on('change', function() {
-
             $preview.filter('.supsystic-social-sharing-preview')
-                .find('.counter-wrap').removeClass('standard arrowed')
+                .find('.counter-wrap').removeClass('standard arrowed right-arrowed')
                     .addClass($(this).val());
+
+            // Remove special classes
+            $preview.find('.pricon')
+                .removeClass('counter-standard counter-arrowed counter-right-arrowed')
+                .addClass('counter-' + $(this).val())
         });
 
         // Select popup on popup radio

@@ -1,0 +1,40 @@
+.supsystic-social-sharing .sharer-flat.counter-right-arrowed {
+  margin-right: 51px;
+}
+.supsystic-social-sharing .sharer-flat.counter-right-arrowed .counter-wrap {
+  background-color: #ffffff;
+  border: 1px solid #bdc3c7;
+  color: #333333;
+  left: 110%;
+  top: .5em;
+  padding: 0 5px 2px 5px;
+  min-width: 28px;
+  max-width: 36px;
+  text-align: center;
+}
+.supsystic-social-sharing .sharer-flat.counter-right-arrowed .counter-wrap:before,
+.supsystic-social-sharing .sharer-flat.counter-right-arrowed .counter-wrap:after {
+  position: absolute;
+  left: -5px;
+  top: .55em;
+  content: ' ';
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #bdc3c7;
+}
+.supsystic-social-sharing .sharer-flat.counter-right-arrowed .counter-wrap:after {
+  left: -3px;
+  border-right: 4px solid #ffffff;
+}
+.supsystic-social-sharing .sharer-flat.counter-right-arrowed .counter-wrap .counter {
+  font-size: .7em;
+}
+.supsystic-plugin .counter-right-arrowed .counter-wrap {
+  top: 0.7em !important;
+}
+.supsystic-plugin .counter-right-arrowed .counter-wrap:before,
+.supsystic-plugin .counter-right-arrowed .counter-wrap:after {
+  top: 0.35em !important;
+}

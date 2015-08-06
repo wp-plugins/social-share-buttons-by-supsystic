@@ -4,6 +4,10 @@
 class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
 {
 
+    const COUNTER_TYPE_STANDARD = 'standard';
+    const COUNTER_TYPE_ARROWED = 'arrowed';
+    const COUNTER_TYPE_ARROWED_RIGHT = 'right-arrow';
+
     /**
      * Builds the networks buttons.
      * @return string
@@ -13,7 +17,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         // Current post
         $current = $this->isHome() ? null : get_post();
         // Buttons classes
-        $classes = array('sharer-flat', 'sharer-'.$this->getProject()->get('design', 'flat-1'), $this->getProject()->get('grad', '') ? 'grad' : '');
+        $classes = array('sharer-flat', 'sharer-'.$this->getProject()->get('design', 'flat-1'), $this->getProject()->get('grad', ''));
         // Buttons
         $buttons = array();
         // Use short numbers or not
@@ -21,9 +25,15 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         $savedData = get_option('networks_tooltips_' . $this->getProject()->getId());
         $networkName = get_option('networks_titles_' . $this->getProject()->getId());
 
+        // Counter type
+        $counterType = $this->getProject()->get('shares_style', self::COUNTER_TYPE_STANDARD);
+
         if (!$this->getProject()->isDisplayTotalShares()) {
             $classes[] = 'without-counter';
         }
+
+        // Allows to change buttons styles for specific counter
+        $classes[] = 'counter-' . strtolower($counterType);
 
         if ($this->getProject()->isShortNumbers()) {
             $shortNumbers = true;
@@ -36,7 +46,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
             $totalShares = $shortNumbers ? $this->humanizeTotalShares((isset($network->shares) ? $network->shares : 0)) : (isset($network->shares) ? $network->shares : 0);
             $buttonName = ((isset($networkName[$network->id]) && $networkName[$network->id]) ? $networkName[$network->id] : null);
 
-            if(isset($savedData[$network->id]) && $savedData[$network->id]) {
+            if (isset($savedData[$network->id]) && $savedData[$network->id]) {
                 array_push($finalClasses, 'tooltip');
             }
 
@@ -99,7 +109,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
                         array(
                             $this->getBuilder()->createAttribute(
                                 'class',
-                                'counter-wrap ' . ($this->getProject()->get('shares_style', '') ? $this->getProject()->get('shares_style', '') : 'standard')
+                                array('counter-wrap', $counterType)
                             )
                         )
                     )->addElement(

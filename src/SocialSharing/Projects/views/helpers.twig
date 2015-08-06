@@ -12,8 +12,8 @@
     </nav>
 
     <div class="information-container">
-        <input type="text" class="network-title" data-id="{{ network.id }}" value="{{ data.networkTitles[network.id] }}">
-        <input type="text" class="network-name" data-id="{{ network.id }}" value="{{ data.networkNames[network.id] }}" hidden>
-        <input type="text" class="network-tooltip" name="networkTooltip" data-id="{{ network.id }}" value="{{ data.networkTooltips[network.id] }}" hidden/>
+        <input type="text" class="network-title" data-id="{{ network.id }}" value="{{ data.networkTitles[network.id] | default(network.name) }}">
+        <input type="text" class="network-name" data-id="{{ network.id }}" value="{{ data.networkNames[network.id] | default(network.name) }}" hidden>
+        <input type="text" class="network-tooltip" name="networkTooltip" data-id="{{ network.id }}" value="{{ data.networkTooltips[network.id] | default(network.name) }}" hidden/>
     </div>
 {% endmacro %}

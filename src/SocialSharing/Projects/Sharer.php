@@ -145,7 +145,7 @@ abstract class SocialSharing_Projects_Sharer
             if ($current === null) {
                 return '';
             }
-
+			
             if ($current->post_type === 'post'
                 && (!$this->project->isShowOnAllPosts()
                     && !$this->project->isShowOnSpecificPost($current->ID))
@@ -159,8 +159,14 @@ abstract class SocialSharing_Projects_Sharer
             ) {
                 return '';
             }
+			/*For other post types that can't be selected in our list, and if buttons should not be visible on all posts/pages - buttons should be hidden, right?*/
+			if(!$this->project->isShowOnAllPosts() 
+				&& !$this->project->isShowOnAllPages() 
+				&& !in_array($current->post_type, array('post', 'page'))
+			) {
+				return '';
+			}
         }
-
         $container = $this->getBuilder()->createElement(
             'div',
             array(

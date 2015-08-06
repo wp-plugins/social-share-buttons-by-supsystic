@@ -1,5 +1,8 @@
 /* Flat style */
 
+@import 'flat/gradient.css';
+@import 'flat/counter-right-arrowed.css';
+
 .supsystic-social-sharing .sharer-flat {
     background-color: #333333;
     border: none;
@@ -130,6 +133,7 @@
 .supsystic-social-sharing .sharer-flat-6 i.fa:after,
 .supsystic-social-sharing .sharer-flat-7 i.fa:after {
     content: 'Share';
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 /*.supsystic-social-sharing[data-buttons-size="1"] .sharer-flat.sharer-flat-5 .fa-fw:after {
     content: "";
@@ -195,9 +199,11 @@
 .supsystic-social-sharing.supsystic-social-sharing-bottom .sharer-flat .counter-wrap.arrowed,
 .supsystic-social-sharing.supsystic-social-sharing-content .sharer-flat .counter-wrap.arrowed,
 .supsystic-social-sharing.supsystic-social-sharing-preview .sharer-flat .counter-wrap.arrowed {
-    bottom: 3.4em;
-    left: 0.8em;
+    bottom: 3.5em;
+    width: 100%;
+    text-align: center;
 }
+
 .supsystic-social-sharing .sharer-flat .counter-wrap.arrowed .counter {
     position: relative;
     background-color: rgba(116, 116, 116, 0.46);
@@ -207,13 +213,13 @@
     padding: 4px 8px;
 }
 .supsystic-social-sharing .sharer-flat .counter-wrap.arrowed .counter:after {
-    border: solid transparent;
     content: " ";
     height: 0;
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-width: 5px;
+    border: 5px solid transparent;
+    margin-left: .4em;
 }
 .supsystic-social-sharing.supsystic-social-sharing-right .sharer-flat .counter-wrap.arrowed .counter:after {
     left: 95%;
