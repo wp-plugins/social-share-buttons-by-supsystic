@@ -17,7 +17,7 @@ class SocialSharing_Projects_Sharer_Flat extends SocialSharing_Projects_Sharer
         // Current post
         $current = $this->isHome() ? null : get_post();
         // Buttons classes
-        $classes = array('sharer-flat', 'sharer-'.$this->getProject()->get('design', 'flat-1'), $this->getProject()->get('grad', ''));
+        $classes = array('sharer-flat', 'sharer-'.$this->getProject()->get('design', 'flat-1'), $this->getProject()->get('grad', '') ? 'grad' : '');
         // Buttons
         $buttons = array();
         // Use short numbers or not

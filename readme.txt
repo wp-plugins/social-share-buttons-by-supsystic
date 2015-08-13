@@ -2,7 +2,7 @@
 Contributors: supsystic.com
 Tags: share counter, social media share, social network share, social share, social share buttons, social sharing, facebook like, facebook share, like, share buttons, share links, sharebar
 Tested up to: 4.2.4
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GPLv2 or later
 
 Social share buttons to increase social traffic and popularity. Social sharing to Facebook, Twitter and other social networks
@@ -151,6 +151,12 @@ Here you can set when to show social share buttons:
 
 
 == Changelog ==
+
+= 1.2.8 / 13.08.2015 =
+ * Fixed shortcode behavior for errors
+ * Fix Pinterest icon - submit share with image from current page
+ * Fix Gradient mode
+ * Minor issues fix
 
 = 1.2.7 / 05.08.2015 =
  * Fixed social buttons location

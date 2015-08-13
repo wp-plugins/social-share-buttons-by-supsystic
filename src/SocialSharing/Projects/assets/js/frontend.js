@@ -83,6 +83,13 @@
                             $(this).removeClass(getAnimationClasses(iconsAnimation));
                         });
                 });
+				var pinterestBtn = $buttons.filter('.pinterest');
+				if(pinterestBtn && pinterestBtn.size()) {
+					var $img = sssFindMostImportantImg();
+					if($img) {
+						pinterestBtn.attr('href', pinterestBtn.attr('href')+ '&media='+ encodeURIComponent($img.attr('src')));
+					}
+				}
             }
 
             if (buttonChangeSize == 'on') {
@@ -187,3 +194,26 @@
     });
 
 }(window.jQuery, window));
+function sssFindMostImportantImg() {
+	var $img = null;
+	var findWhere = ['article', '.entry-content', 'body'];
+	for(var i = 0; i < findWhere.length; i++) {
+		$img = _sssFindImg( jQuery(findWhere[i]) );
+		if($img)
+			break;
+	}
+	return $img;
+}
+function _sssFindImg($el) {
+	if($el && $el.size()) {
+		var $img = null;
+		$el.each(function(){
+			$img = jQuery(this).find('img');
+			if($img && $img.size()) {
+				return false;
+			}
+		});
+		return $img && $img.size() ? $img : false;
+	}
+	return false;
+}

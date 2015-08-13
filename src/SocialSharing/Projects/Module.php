@@ -221,13 +221,14 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
     public function doShortcode($attributes)
     {
         $isDebug = defined('WP_DEBUG') && WP_DEBUG;
+        $showErrors = $isDebug && (function_exists('is_super_admin') && is_super_admin());
 
         if (!array_key_exists('id', $attributes)) {
-            if ($isDebug) {
-                throw new Exception('ID is not specified.');
+            if ($showErrors) {
+                return $this->getEnvironment()->translate('ID is not specified.');
             }
 
-            return;
+            return null;
         }
 
         $project = $this->getController()
@@ -236,11 +237,11 @@ class SocialSharing_Projects_Module extends SocialSharing_Core_BaseModule
             ->get($attributes['id']);
 
         if (!$project) {
-            if ($isDebug) {
-                throw new Exception('Project not found.');
+            if ($showErrors) {
+                return $this->getEnvironment()->translate('Project not found');
             }
 
-            return;
+            return null;
         }
 
         if (array_key_exists('place', $attributes) && array_key_exists('extra', $attributes)) {
